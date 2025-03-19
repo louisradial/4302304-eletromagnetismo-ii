@@ -1,0 +1,59 @@
+% vim: spl=pt
+\begin{exercício}{Velocidade de energia em tubos condutores}{ex5}
+    A respeito do fluxo de energia em tubos condutores, é conveniente definir a \emph{velocidade de energia}, \(\mean{v_E}\), como sendo a razão entre a potência transmitida (através da seção transversal do tubo), \(\mean{P}\), e a energia armazenada no campo eletromagnético por unidade de comprimento do tubo, \(\frac{\mean{U}}{L}\). Mostre que \(\mean{v_E} = v_g\) para modos TM, onde \(v_g\) é a velocidade de grupo associado ao modo de propagação.
+\end{exercício}
+\begin{proof}[Resolução]
+    Como o operador diferencial da equação de Helmholtz é auto-adjunto, podemos tomar \(E_z\) e \(B_z\) como funções reais sem perda de generalidade. Assim, o vetor de Poynting é dado por
+    \begin{align*}
+        \mean{\vetor{S}} = \frac1{2\mu} \Re\left[\vetor{E} \times \conj{\vetor{B}}\right] 
+        &= \frac{1}{2\mu} \Re\left[(\vetor{E}_t + E_z \vetor{e}_z) \times (\conj{\vetor{B}}_t + B_z \vetor{e}_z)\right]\\
+        &= \frac{1}{2\mu} \Re\left[\vetor{E}_t \times \conj{\vetor{B}}_t + E_z \vetor{e}_z \times \conj{\vetor{B}}_t + B_z\vetor{E}_t\times\vetor{e}_z\right].
+    \end{align*}
+    Para o modo TM, os campos transversais são dados por
+    \begin{equation*}
+        \vetor{E}_t = \frac{i k}{\gamma^2} \nabla_t E_z
+        \quad\text{e}\quad
+        \conj{\vetor{B}}_t = -\frac{i \mu \epsilon \omega}{\gamma^2} \vetor{e}_z \times \nabla_t E_z,
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \mean{\vetor{S}} = \frac{\epsilon k \omega}{2\gamma^4} \nabla_t E_z \times (\vetor{e}_z \times \nabla_t E_z) = \frac{\epsilon k \omega}{2 \gamma^4} \vetor{e}_z \norm{\nabla_t E_z}^2.
+    \end{equation*}
+    Notemos que
+    \begin{equation*}
+        \int_A \dln2\x \norm{\nabla_t E_z}^2 = \int_A \dln2\x \left[\nabla_t \cdot (E_z \nabla_t E_z) - E_z \nabla^2 E_z\right] = \int_\Gamma \dli{\x} \vetor{n}_\Gamma \cdot (E_z \nabla_t E_z) - \int_A \dln2\x E_z \nabla^2 E_z,
+    \end{equation*}
+    portanto da equação de Helmholtz \((\nabla_t^2 + \gamma^2)E_z = 0\) e da condição de contorno \(\left.E_z\right|_\Gamma = 0,\) temos
+    \begin{equation*}
+        \int_A \dln2\x \norm{\nabla_t E_z}^2 = \gamma^2 \int_A \dln2\x E_z^2.
+    \end{equation*}
+    Assim, a potência média através da seção transversal \(A\) do tubo com borda \(\Gamma\) é 
+    \begin{equation*}
+        \mean{P} = \int_A \dln2\x \vetor{n}_A \cdot \mean{\vetor{S}} 
+        = \frac{\epsilon k \omega}{2 \gamma^4} \int_A \dln2\x \norm{\nabla_t E_z}^2
+        = \frac{\epsilon k \omega}{2 \gamma^2} \int_A \dln2\x E_z^2.
+    \end{equation*}
+    A densidade de energia é dada por
+    \begin{align*}
+        \mean{u} = \frac14 \Re\left[\epsilon \vetor{E} \cdot \conj{\vetor{E}} + \frac{1}{\mu} \vetor{B} \cdot \conj{\vetor{B}}\right] 
+        &= \frac14 \left[\epsilon \left(\norm{\vetor{E}_t}^2 + E_z^2\right) + \frac1{\mu} \norm{\vetor{B}_t}^2\right]\\
+        &= \frac14 \left[\left(\frac{\epsilon k^2}{\gamma^4} + \frac{\mu\epsilon^2 \omega^2}{\gamma^4}\right)\norm{\nabla_t E_z}^2 + \epsilon E_z^2\right]\\
+        &= \frac{\epsilon}{4} \left(\frac{\mu \epsilon \omega^2 + k^2}{\gamma^4}\norm{\nabla_t E_z}^2 + E_z^2\right),
+    \end{align*}
+    portanto a energia armazenada por unidade de comprimento é
+    \begin{align*}
+        \frac{\mean{U}}{L} &= \int_A \dln2\x \mean{u} = \frac{\epsilon}{4} \left(\frac{\mu \epsilon \omega^2 + k^2}{\gamma^4} \int_A \dln2\x \norm{\nabla_t E_z}^2 + \int_A \dln2\x E_z^2\right)\\
+                           &= \frac{\epsilon}{4}\left(\frac{\mu \epsilon \omega^2 + k^2}{\gamma^2} + 1\right) \int_A \dln2\x E_z^2\\
+                           &= \frac{\mu \epsilon \omega^2 + k^2 + \gamma^2}{2 k \omega} \mean{P}\\
+                           &= \frac{\mu \epsilon \omega}{k} \mean{P}.
+    \end{align*}
+    Da relação de dispersão \(\omega(k) = \frac{1}{v}\sqrt{\gamma^2 + k^2},\) temos a velocidade de grupo 
+    \begin{equation*}
+        v_g = \diff{\omega}{k} = \frac{1}{v} \frac{k}{\sqrt{\gamma^2 + k^2}} = \frac{kv^2}{\omega} = \frac{k}{\mu \epsilon \omega},
+    \end{equation*}
+    isto é,
+    \begin{equation*}
+        v_g = \frac{\mean{P}}{\mean{U}/L},
+    \end{equation*}
+    como desejado.
+\end{proof}
