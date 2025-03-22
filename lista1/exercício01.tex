@@ -3,5 +3,39 @@
     Considere um tubo de seção retangular cujos lados são \(a\) e \(b\), com \(a > b\), feito de um material condutor (aproximadamente perfeito). Considere que o interior é preenchido com um material dielétrico linear e isotrópico caracterizado pelas constantes \(\epsilon\) e \(\mu\). Obtenha os modos de propagação TM dentro do tubo e as respectivas frequências de corte.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Para o modo TM, temos \((\nabla_t^2 + \gamma^2)E_z = 0\) e \(\left.E_z\right|_S = 0\), com \(\gamma^2 = \mu \epsilon \omega^2 - k^2\). Separando variáveis, \(E_z(x,y) = X(x) Y(y),\) com \(X(a) = X(0) = Y(0) = Y(b) = 0,\) temos
+    \begin{equation*}
+        \frac{X''}{X} + \frac{Y''}{Y} + \gamma^2 = 0.
+    \end{equation*}
+    Assim, existem constantes \(\gamma_x, \gamma_y \in \mathbb{R} \setminus \set{0}\) com \(\gamma_x^2 + \gamma_y^2 = \gamma^2\) tais que \(X'' + \gamma_x^2 X = 0\) e \(Y'' + \gamma_y^2 Y = 0\). Logo, das condições de contorno, obtemos
+    \begin{equation*}
+        X(x) = X_0 \sin\left(\frac{n_x\pi}{a}x\right)
+        \quad\text{e}\quad
+        Y(y) = Y_0 \sin\left(\frac{n_y\pi}{b}y\right),
+    \end{equation*}
+    onde \(n_x, n_y \in \mathbb{N}_0 = \set{0,1,2, \dots}\), com \((n_x,n_y) \neq (0,0)\) e \(\left(\frac{n_x\pi}{a}\right)^2 + \left(\frac{n_y \pi}{b}\right)^2 = \gamma^2\). Assim, a frequência de corte do modo \((n_x, n_y)\) é \(\omega_{c_{n_x, n_y}} = \pi v \sqrt{\left(\frac{n_x}{a}\right)^2 + \left(\frac{n_y}{b}\right)^2}\), onde \(v = \frac{1}{\sqrt{\mu \epsilon}}.\) Para o modo \((n_x, n_y)\), o campo longitudinal é dado por
+    \begin{equation*}
+        E_z(x,y) = E_{n_x, n_y} \sin\left(\frac{n_x \pi x}{a}\right)\sin\left(\frac{n_y \pi y}{b}\right)
+    \end{equation*}
+    e os campos transversais por
+    \begin{equation*}
+        \textstyle
+        \vetor{E}_t = \frac{ik}{\gamma_{n_x, n_y}^2} \nabla_t E_z = \frac{i \pi k E_{n_x, n_y}}{\gamma^2_{n_x, n_y}}\left[\frac{n_x}{a}\cos\left(\frac{n_x \pi x}{a}\right)\sin\left(\frac{n_y \pi y}{b}\right)\vetor{e}_x + \frac{n_y}{b}\sin\left(\frac{n_x \pi x}{a}\right)\cos\left(\frac{n_y \pi y}{b}\right)\vetor{e}_y\right]
+    \end{equation*}
+    e
+    \begin{equation*}
+        \textstyle
+        \vetor{B}_t = \frac{i \mu \epsilon \omega}{\gamma^2_{n_x, n_y}} \vetor{e}_z \times \nabla_t E_z = \frac{i \pi \mu \epsilon \omega E_{n_x, n_y}}{\gamma^2_{n_x, n_y}}\left[\frac{n_x}{a}\cos\left(\frac{n_x \pi x}{a}\right)\sin\left(\frac{n_y \pi y}{b}\right)\vetor{e}_y - \frac{n_y}{b}\sin\left(\frac{n_x \pi x}{a}\right)\cos\left(\frac{n_y \pi y}{b}\right)\vetor{e}_x\right],
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \textstyle
+        \vetor{E}^\mathrm{TM}_{n_x, n_y} = E_{n_x, n_y} \sin \left(\frac{n_x \pi x}{a}\right)\sin\left(\frac{n_y \pi y}{b}\right)\left\{\frac{i \pi k E_{n_x, n_y}}{\gamma^2_{n_x, n_y}}\left[\frac{n_x}{a}\csc\left(\frac{n_x \pi x}{a}\right)\vetor{e}_x + \frac{n_y}{b}\csc\left(\frac{n_y \pi y}{b}\right)\vetor{e}_y\right] + \vetor{e}_z\right\}e^{i(kz - \omega t)}
+    \end{equation*}
+    e
+    \begin{equation*}
+        \textstyle
+        \vetor{B}^\mathrm{TM}_{n_x, n_y} = \frac{i \pi \mu \epsilon \omega E_{n_x, n_y}}{\gamma^2_{n_x, n_y}}\left[\frac{n_x}{a}\cos\left(\frac{n_x \pi x}{a}\right)\sin\left(\frac{n_y \pi y}{b}\right)\vetor{e}_y - \frac{n_y}{b}\sin\left(\frac{n_x \pi x}{a}\right)\cos\left(\frac{n_y \pi y}{b}\right)\vetor{e}_x\right] e^{i(kz - \omega t)}
+    \end{equation*}
+    são os campos no tubo.
 \end{proof}
