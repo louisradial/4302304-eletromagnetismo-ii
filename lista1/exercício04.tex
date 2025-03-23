@@ -8,5 +8,58 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Consideremos o problema com condutores perfeitos para o modo de propagação TEM, com o \emph{ansatz}
+    \begin{equation*}
+        \vetor{E}(\vetor{\x}) = \vetor{E}_\perp(\vetor{\x}_\perp) e^{i(k \x_\parallel - \omega t)}
+        \quad\text{e}\quad
+        \vetor{B}(\vetor{\x}) = \vetor{B}_\perp(\vetor{\x}_\perp) e^{i(k \x_\parallel - \omega t)},
+    \end{equation*}
+    onde \(\vetor{\x} = \vetor{\x}_\perp + \x_\parallel\vetor{e}_\parallel\) e \(\vetor{e}_\parallel\) é a direção de propagação, que coincide com o eixo da linha de transmissão, com \(\inner{\vetor{E}}{\vetor{e}_\parallel} = \inner{\vetor{B}}{\vetor{e}_\parallel} = 0\). Para tal solução, as equações de Maxwell são equivalentes às equações
+    \begin{align*}
+        \nabla_\perp \cdot \vetor{E}_\perp &= 0&
+        \nabla_\perp \times \vetor{E}_\perp + i k \vetor{e}_\parallel \times \vetor{E}_\perp &= i \omega \vetor{B}_\perp\\
+        \nabla_\perp \cdot \vetor{B}_\perp &= 0&
+        \nabla_\perp \times \vetor{B}_\perp + i k \vetor{e}_\parallel \times \vetor{B}_\perp &= -i \mu \epsilon \omega \vetor{E}_\perp,
+    \end{align*}
+    portanto como \(\nabla_\perp \times \vetor{E}_\perp\) e \(\nabla_\perp \times \vetor{B}_\perp\) são paralelos à direção de propagação, concluímos que
+    \begin{align*}
+        \nabla_\perp \cdot \vetor{E}_\perp &= 0&
+        \nabla_\perp \times \vetor{E}_\perp &= \vetor{0}&
+        \vetor{B}_\perp &= \frac{k}{\omega} \vetor{e}_\parallel \times \vetor{E}_\perp\\
+        \nabla_\perp \cdot \vetor{B}_\perp &= 0&
+        \nabla_\perp \times \vetor{E}_\perp &= \vetor{0}&
+        \vetor{E}_\perp &= - \frac{k}{\mu \epsilon \omega} \vetor{e}_\parallel \times \vetor{B}_\perp.
+    \end{align*}
+    Das últimas equações, obtemos
+    \begin{equation*}
+        \vetor{E}_\perp = -\frac{k^2}{\mu \epsilon \omega^2} \vetor{e}_\parallel \times (\vetor{e}_\parallel \times \vetor{E}_\perp) = \frac{k^2}{\mu \epsilon \omega^2} \vetor{E}_\perp,
+    \end{equation*}
+    isto é, \(\omega = vk,\) onde \(v^2 = \frac{1}{\mu \epsilon}.\) Como \(\nabla_\perp \cdot \vetor{E}_\perp = 0\) e \(\nabla_\perp \times \vetor{E}_\perp = \vetor{0},\) a componente transversal do campo elétrico é equivalente ao problema de eletrostática bidimensional com a mesma geometria. Escrevendo \(\vetor{E}_\perp = -\nabla\phi\), temos \(\phi = \phi(s)\) pela simetria radial, portanto como \(\phi \sim \ln s\) é solução da equação de Laplace na região entre os condutores, determinamos que os campos transversais são dados por
+    \begin{equation*}
+        \vetor{E}_\perp(s \vetor{e}_s) = \frac{\omega B_0a}{k s}\vetor{e}_s \implies
+        \vetor{B}_\perp(s\vetor{e}_s) = \frac{B_0 a}{s} \vetor{e}_\varphi
+    \end{equation*}
+    na região \(a < s < b\), resultando em
+    \begin{equation*}
+        \vetor{E}(s \vetor{e}_s + z \vetor{e}_z) = \frac{v B_0 a}{s} e^{i k(z - vt)}\vetor{e}_s
+        \quad\text{e}\quad
+        \vetor{B}(s \vetor{e}_s + z \vetor{e}_z) = \frac{B_0 a}{s} e^{i k(z - vt)}\vetor{e}_\varphi
+    \end{equation*}
+    como as expressões dos campos na região entre os condutores. Assim, o vetor de Poynting é dado por
+    \begin{equation*}
+        \mean{\vetor{S}} = \frac1{2\mu} \Re\left[\vetor{E} \times \conj{\vetor{B}}\right] = \frac{v \abs{B_0}^2 a^2}{2\mu s^2} \vetor{e}_z
+    \end{equation*}
+    logo a potência média transmitida é
+    \begin{equation*}
+        \mean{P} = \int_a^b \dli{s} \int_0^{2\pi} s\dli{\varphi} \vetor{e}_z \cdot \mean{\vetor{S}} = \frac{\pi v \abs{B_0}^2 a^2}{\mu} \ln\left(\frac{b}{a}\right).
+    \end{equation*}
+    Concluímos que 
+    \begin{align*}
+        \beta &= \frac{1}{2\mean{P}} \diff{P_\mathrm{loss}}{z}\\
+              &= \frac{\int_0^{2\pi} a \dli\varphi \norm{\vetor{H}_\parallel(a\vetor{e}_s)}^2 + \int_0^{2\pi} b \dli\varphi \norm{\vetor{H}_\parallel(b \vetor{e}_s)}^2}{4 \delta \sigma \mean{P}}\\
+              &= \frac{2\pi a \frac{\abs{B_0}^2}{\mu^2} + 2\pi b\frac{\abs{B_0}^2a^2}{b^2\mu^2}}{4 \sigma \delta \frac{\pi v \abs{B_0}^2 a^2}{\mu} \ln\left(\frac{b}{a}\right)}\\
+              &= \frac{a + \frac{a^2}{b}}{2 \sigma \delta \mu v a^2 \ln\left(\frac{b}{a}\right)}\\
+              &= \frac{1}{2 \sigma \delta}\sqrt{\frac{\epsilon}{\mu}}\frac{\frac1a + \frac1b}{\ln\left(\frac{b}{a}\right)}
+    \end{align*}
+    é a expressão para o coeficiente de atenuação de potência.
 \end{proof}
