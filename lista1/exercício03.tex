@@ -5,5 +5,41 @@
     Deseja-se estimar as perdas Ôhmicas no tubo, melhorando, mesmo que em uma primeira aproximação, a hipótese de condutor perfeito para as paredes. Calcule a potência perdida por efeito Joule nas paredes por unidade de comprimento \(\diff{P_\mathrm{loss}}{z}\) considerando apenas o modo TM de menor frequência de corte para o cálculo.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Para o modo TM, temos \((\nabla_t^2 + \gamma^2)E_z = 0\) e \(\left.E_z\right|_S = 0\), com \(\gamma^2 = \mu \epsilon \omega^2 - k^2\). Separando variáveis, \(E_z(s, \varphi) = \Xi(s) \Phi(\varphi),\) com \(\Xi(R) = 0\) e \(\Phi(\phi) = \Phi(2\pi + \phi)\), temos
+    \begin{equation*}
+        \frac{s}{S} \diff*{\left(s \diff{S}{s}\right)}{s} + \frac{1}{\Phi} \diff[2]{\Phi}{\varphi} + s^2\gamma^2 = 0 \implies
+        \diff[2]{\Phi}{\varphi} + \lambda \Phi = 0\quad\text{e}\quad s^2 \diff[2]{S}{s} + s \diff{S}{s} + (\gamma^2 s^2 - \lambda) S = 0.
+    \end{equation*}
+    Para que \(\Phi\) seja \(2\pi\)-periódica, devemos ter \(\lambda = \ell^2,\) com \(\ell \in \mathbb{Z},\) e então \(\Phi(\varphi) = e^{i\ell \varphi}.\) Introduzindo \(\rho = \gamma s\) e \(\Xi(\gamma s) = \S(s),\) obtemos a equação de Bessel de ordem \(\ell\)
+    \begin{equation*}
+        \rho^2 \diff[2]{\Xi}{\rho} + \rho \diff{\Xi}{\rho} + (\rho^2 - \ell^2) \Xi = 0,
+    \end{equation*}
+    logo a solução geral é 
+    \begin{equation*}
+        \Xi(\rho) = \alpha J_\ell(\rho) + \beta N_\ell(\rho).
+    \end{equation*}
+    Como o campo é bem definido na origem, devemos ter apenas \(\Xi(\rho) = \alpha J_\ell(\rho)\).
+    Da condição de contorno \(E_z(R, \varphi) = 0,\) \(\gamma R\) deve ser um zero da função de Bessel de ordem \(\ell\), isto é, os modos são dados por \(\gamma_{\ell, m} = \frac{j_{\ell,m}}{R},\) onde \(j_{\ell,m}\) é o \(m\)-ésimo zero da função \(J_\ell\), isto é
+    \begin{equation*}
+        E_z(s, \varphi) = E_{\ell,m}J_\ell\left(\frac{j_{\ell, m} s}{R}\right) e^{\pm i \ell \varphi}
+    \end{equation*}
+    é a componente longitudinal do campo elétrico. Assim, temos
+    \begin{equation*}
+        \nabla_t E_z = \diffp{E_z}{s} \vetor{e}_s + \frac{1}{s}\diffp{E_z}{\varphi} \vetor{e}_\varphi = E_{\ell, m}\left[\frac{j_{\ell, m}}{R} J_\ell'\left(\frac{j_{\ell,m} s}{R}\right)e^{\pm i \ell \varphi} \vetor{e}_s \pm \frac{i \ell}{s} J_\ell\left(\frac{j_{\ell,m} s}{R}\right)e^{\pm i \ell \varphi}\vetor{e}_\varphi\right],
+    \end{equation*}
+    e então
+    \begin{equation*}
+        \vetor{E}^{\mathrm{TM}}_{\ell,m} = E_{\ell, m}\left\{\frac{i kR^2}{j_{\ell, m}^2}\left[\frac{j_{\ell, m}}{R} J_\ell'\left(\frac{j_{\ell,m} s}{R}\right)e^{\pm i \ell \varphi} \vetor{e}_s \pm \frac{i \ell}{s} J_\ell\left(\frac{j_{\ell,m} s}{R}\right)e^{\pm i \ell \varphi}\vetor{e}_\varphi\right] + J_\ell\left(\frac{j_{\ell, m} s}{R}\right) e^{\pm i \ell \varphi}\vetor{e}_z\right\}e^{i(kz - \omega t)}
+    \end{equation*}
+    e
+    \begin{equation*}
+        \vetor{B}^\mathrm{TM}_{\ell, m} = \frac{i \mu \epsilon \omega R^2 E_{\ell, m}}{j_{\ell,m}^2}\left[\frac{j_{\ell, m}}{R} J_\ell'\left(\frac{j_{\ell,m} s}{R}\right)e^{\pm i \ell \varphi} \vetor{e}_\varphi \mp \frac{i \ell}{s} J_\ell\left(\frac{j_{\ell,m} s}{R}\right)e^{\pm i \ell \varphi}\vetor{e}_s\right] e^{i(kz - \omega t)}
+    \end{equation*}
+    são os campos no tubo no modo \((\ell, m) \in \mathbb{Z} \times \mathbb{N},\) com frequência de corte \(\omega_{\ell,m} = \frac{j_{\ell,m}}{R\sqrt{\mu \epsilon}}\).
+
+    A componente do campo \(\vetor{H}\) paralela à superfície condutora corresponde à componente tangencial do campo, portanto 
+    \begin{equation*}
+        \diff{P_\mathrm{loss}}{z} = \frac{1}{2 \sigma \delta} \int_0^{2\pi} R \dli{\varphi} \norm{\vetor{H}_\parallel}^2 = \frac{\pi \epsilon^2 \omega^2 R^3 \abs{E_{\ell,m}}^2}{\sigma \delta j_{\ell, m}^2} \left[J_\ell'(j_{\ell,m})\right]^2,
+    \end{equation*}
+    é a potência perdida por unidade de comprimento.
 \end{proof}
