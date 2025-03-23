@@ -7,5 +7,65 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Para o modo TM, temos
+    \begin{equation*}
+        \vetor{B}_\mathrm{TM} = \frac{2i \mu \epsilon \omega R^2 E_{\ell, m}}{j_{\ell,m}^2}\left[\frac{j_{\ell, m}}{R} J_\ell'\left(\frac{j_{\ell,m} s}{R}\right) \vetor{e}_\varphi \mp \frac{i \ell}{s} J_\ell\left(\frac{j_{\ell,m} s}{R}\right)\vetor{e}_s\right] \cos(k z) e^{i(\pm \ell \varphi - \omega t)},
+    \end{equation*}
+    e
+    \begin{equation*}
+        \vetor{E}_{\mathrm{TM}} = E_{\ell, m}\left\{-\frac{2 kR^2}{j_{\ell, m}^2}\left[\frac{j_{\ell, m}}{R} J_\ell'\left(\frac{j_{\ell,m} s}{R}\right) \vetor{e}_s \pm \frac{i \ell}{s} J_\ell\left(\frac{j_{\ell,m} s}{R}\right)\vetor{e}_\varphi\right]\sin(kz) + 2J_\ell\left(\frac{j_{\ell, m} s}{R}\right) \cos(kz)\vetor{e}_z\right\}e^{i(\pm \ell \varphi - \omega t)}
+    \end{equation*}
+    portanto para que o campo elétrico paralelo às superfícies em \(z = 0\) e em \(z = L\) se anule, as frequências ressonantes da cavidade são dadas por
+    \begin{equation*}
+        \omega^\mathrm{TM}_{n,\ell,m} = \frac{1}{\sqrt{\mu \epsilon}}\sqrt{\left(\frac{\pi n}{L}\right)^2 + \left(\frac{j_{\ell,m}}{R}\right)^2}.
+    \end{equation*}
+    Analogamente para o modo TE, as frequências ressonantes da cavidade são dadas por 
+    \begin{equation*}
+        \omega^\mathrm{TE}_{n,\ell,m} = \frac{1}{\sqrt{\mu \epsilon}}\sqrt{\left(\frac{\pi n}{L}\right)^2 + \left(\frac{j'_{\ell,m}}{R}\right)^2},
+    \end{equation*}
+    onde \(j'_{\ell,m}\) é o \(m\)-ésimo zero da função \(J'_{\ell}.\) As menores frequências ressonantes de cada modo são  \(\omega^\mathrm{TM}_{0, 0, 1} \approx \frac{2.405}{\sqrt{\mu \epsilon} R} = \SI{3.6e10}{\hertz}\) e \(\omega^\mathrm{TE}_{1,1,1} \approx \frac{1}{\sqrt{\mu \epsilon}}\sqrt{\left(\frac{\pi}{L}\right)^2 + \left(\frac{1.841}{R}\right)^2} = \SI{4.2e10}{\hertz}\) para a cavidade considerada e assumindo que para a matéria em seu interior vale \(\mu \epsilon c^2 \approx 1\).
+
+    Para o modo TM, vale
+    \begin{equation*}
+        \vetor{B}_\mathrm{TM} = \left(\frac{2i \mu \epsilon \omega}{\gamma^2} \vetor{e}_z \times \nabla_t E_z\right) e^{- i\omega t} \cos(kz)
+        \quad\text{e}\quad
+        \vetor{E}_\mathrm{TM} = \left[-\frac{2k \sin(kz)}{\gamma^2} \nabla_t E_z + 2E_z \cos(kz)\vetor{e}_z\right]e^{-i\omega t},
+    \end{equation*}
+    então
+    \begin{equation*}
+        \mean{u_E} = \frac14 \Re\left[\epsilon\vetor{E}_\mathrm{TM} \cdot \conj{\vetor{E}}_\mathrm{TM}\right] = \frac{\epsilon k^2 \sin^2(kz)}{\gamma^4}\norm{\nabla_t E_z}^2 + \epsilon\abs{E_z}^2 \cos^2(kz)
+    \end{equation*}
+    e
+    \begin{equation*}
+        \mean{u_M} = \frac14 \Re\left[\frac{1}{\mu} \vetor{B}_\mathrm{TM} \cdot \conj{\vetor{B}}_\mathrm{TM}\right] = \frac{\mu \epsilon^2 \omega^2}{\gamma^4} \norm{\nabla_t E_z}^2 \cos^2(kz).
+    \end{equation*}
+    Recordando que \(\int_A \dln2\x \norm{\nabla_t E_z}^2 = \gamma^2 \int_A \dln2\x \abs{E_z}^2,\) temos
+    \begin{equation*}
+        \mean{U_E} = \left(\frac{k^2}{\gamma^2} + 1\right)\frac{L \epsilon}{2} \int_A \dln2\x \abs{E_z}^2 = \frac{\mu \epsilon^2 \omega^2 L}{2\gamma^2} \int_A \dln2\x \abs{E_z}^2 = \mean{U_M},
+    \end{equation*}
+    logo
+    \begin{equation*}
+        \mean{U} = \frac{L \mu \epsilon^2 \omega^2}{\gamma^2} \int_A \dln2\x \abs{E_z}^2
+    \end{equation*}
+    é a energia armazenada na cavidade. A potência dissipada por perdas Ôhmicas é dada por
+    \begin{align*}
+        P^{\ell,m,n}_\mathrm{loss} &= \frac{L \pi \epsilon^2 \omega_{\ell,m,n}^2 R \abs{E_{\ell,m}}^2}{\sigma \delta \gamma_{\ell,m}^2} \left[J_\ell'(\gamma_{\ell,m} R)\right]^2 + \frac{2}{2 \sigma \delta} \int_A \dln2\x \norm{\vetor{H}_\parallel}_{z = 0}^2\\
+                        &= \frac{L \pi \epsilon^2 \omega_{\ell,m,n}^2 R \abs{E_{\ell,m}}^2}{\sigma \delta \gamma_{\ell,m}^2} \left[J_\ell'(\gamma_{\ell,m} R)\right]^2 + \frac{4 \epsilon^2 \omega_{\ell,m,n}^2}{\gamma_{\ell,m}^4 \sigma \delta} \int_A \dln2\x \norm{\nabla_t E_z}^2\\
+                        &= \frac{L \pi \epsilon^2 \omega_{\ell,m,n}^2 R \abs{E_{\ell,m}}^2}{\sigma \delta \gamma_{\ell,m}^2} \left[J_\ell'(\gamma_{\ell,m} R)\right]^2 + \frac{4 \epsilon^2 \omega_{\ell,m,n}^2}{\gamma_{\ell,m}^2 \sigma \delta} \int_A \dln2\x \abs{E_z}^2.
+    \end{align*}
+    Da ortogonalidade das funções de Bessel e de suas relações de recorrência, obtemos
+    \begin{align*}
+        \int_A \dln2\x\abs{E_z}^2 &= \int_0^R \dli{s} \int_0^{2\pi} s\dli\varphi \abs{E_{\ell,m}}^2J_\ell^2\left(\gamma_{\ell,m} s\right)\\
+                                  &= 2\pi R^2 \abs{E_{\ell,m}}^2 \int_0^1 \dli{\xi} \xi J_\ell^2\left(j_{\ell,m} \xi\right)\\
+                                  &= \pi R^2 \abs{E_{\ell,m}}^2  [J_\ell'(\gamma_{\ell,m} R)]^2,
+    \end{align*}
+    portanto
+    \begin{equation*}
+        P^{\ell,m,n}_\mathrm{loss} = \frac{\epsilon^2 \omega^2_{\ell,m,n}}{\gamma^2_{\ell,m} \sigma \delta} \left(\frac{L}{R} + 4\right)\int_A \dln2\x \abs{E_z}^2.
+    \end{equation*}
+    Assim, o fator de qualidade para o modo de menor frequência ressonante é
+    \begin{equation*}
+        Q = \omega^\mathrm{TM}_{0,0,1}\frac{\mean{U}}{P_\mathrm{loss}} = \frac{j_{0,1}\sigma \delta \mu L}{\sqrt{\mu\epsilon} (4R + L)},
+    \end{equation*}
+    e para a cavidade em questão temos \(Q = 4022.\)
 \end{proof}
