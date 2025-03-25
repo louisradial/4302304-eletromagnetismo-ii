@@ -3,5 +3,34 @@
     Um guia de ondas é construído de forma que sua seção transversal forma um triângulo retângulo de lados \(a, a,\) e \(\sqrt{2}a\). Assumindo condutividade infinita para as paredes, determine os possíveis modos de propagação TE e TM, obtendo as frequências de corte de cada um deles.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Orientemos os eixos de modo que o lado de comprimento \(\sqrt{2}a\) corresponda ao segmento de reta descrito por \(x - y = 0\) e outro lado descrito por \(y = 0\). Para o modo TM, devemos ter \(E_z(x,x) = 0\) além das condições de contorno para um guia de ondas de seção quadrada, portanto soluções são da forma
+    \begin{equation*}
+        E_z(x,y) = E_{n,m} = E_{n, m} \left[\sin\left(\frac{n \pi x}{a}\right) \sin\left(\frac{m \pi x}{a}\right) - \sin\left(\frac{m \pi x}{a}\right)\sin\left(\frac{n \pi y}{a}\right)\right],
+    \end{equation*}
+    com \(n, m \in \mathbb{N}\), \(n > m\), e \(\gamma = \frac{\pi}{a}\sqrt{n^2 + m^2}.\)
+    Semelhantemente, para o modo TE, devemos ter a derivada normal de \(B_z\) se anulando no segmento de reta \(x - y = 0,\) isto é, devemos ter \(\diffp{B_z}{x} = \diffp{B_z}{y}\) ao longo dessa reta, além das condições de contorno para um guia de ondas de seção quadrada, logo soluções são da forma
+    \begin{equation*}
+        B_z(x,y) = B_{n,m} \left[\cos\left(\frac{n \pi x}{a}\right)\cos\left(\frac{m \pi y}{a}\right) + \cos\left(\frac{m \pi x}{a}\right)\cos\left(\frac{n \pi y}{a}\right)\right],
+    \end{equation*}
+    com \(n,m \in \mathbb{N}_0 = \set{0,1,2,\dots}\), \((n,m) \neq (0,0)\) e \(\gamma = \frac{\pi}{a} \sqrt{n^2 + m^2}\).
+
+    Para concluir que essas são de fato as únicas soluções para o guia de ondas de seção triangular, orientemos os eixos agora de forma que o lado de comprimento \(\sqrt{2}a\) esteja sobre o eixo \(x\) positivo, que os demais lados se situem no semiplano \(y < 0,\) e que a origem seja coincidente com um vértice do triângulo. Estendemos uma solução \(E_z(x,y)\) do modo TM para o semi-plano \(y \geq 0\) de forma ímpar nesta variável
+    \begin{equation*}
+        \tilde{E}_z(x,y) = \begin{cases}
+            - E_z(x, -y),&\text{se }y>0\\
+            E_z(x, y),&\text{se }y\leq0
+        \end{cases}
+    \end{equation*}
+    e afirmamos que a solução estendida é uma solução para o guia de onda de seção quadrada. De fato, nos lados do quadrado temos \(\tilde{E}_z = 0,\) pois vale \(E_z = 0\) nos lados com \(y < 0\), e temos para \(y > 0\)
+    \begin{equation*}
+        (\tilde{\nabla}^2 + \gamma^2)\tilde{E}_z = -\left(\diffp*[2]{}{x} + \diffp*[2]{}{-y} + \gamma^2\right)E_z(x,-y) = - (\nabla^2 + \gamma^2) E_z = 0.
+    \end{equation*}
+    De forma análoga, com a extensão de uma solução \(B_z(x,y)\) do modo TE de forma par,
+    \begin{equation*}
+        \tilde{B}_z(x,y) = \begin{cases}
+            B_z(x, -y),&\text{se }y>0\\
+            B_z(x, y),&\text{se }y\leq0
+        \end{cases}
+    \end{equation*}
+    concluímos que \(\tilde{B}_z\) é solução para o modo TE no guia de onda de seção quadrada. Assim, vemos que soluções para a seção triangular devem gerar soluções para a seção quadrada, portanto as soluções encontradas para a seção triangular são as únicas possíveis.
 \end{proof}
