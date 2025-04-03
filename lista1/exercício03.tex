@@ -37,9 +37,13 @@
     \end{equation*}
     são os campos no tubo no modo \((\ell, m) \in \mathbb{Z} \times \mathbb{N},\) com frequência de corte \(\omega_{\ell,m} = \frac{j_{\ell,m}}{R\sqrt{\mu \epsilon}}\).
 
-    A componente do campo \(\vetor{H}\) paralela à superfície condutora corresponde à componente tangencial do campo, portanto 
+    A componente do campo \(\vetor{H}\) paralela à superfície condutora corresponde à componente tangencial do campo, portanto a potência perdida por unidade de comprimento é
     \begin{equation*}
-        \diff{P_\mathrm{loss}}{z} = \frac{1}{2 \sigma \delta} \int_0^{2\pi} R \dli{\varphi} \norm{\vetor{H}_\parallel}^2 = \frac{\pi \epsilon^2 \omega^2 R^3 \abs{E_{\ell,m}}^2}{\sigma \delta j_{\ell, m}^2} \left[J_\ell'(j_{\ell,m})\right]^2,
+        \diff{P_\mathrm{loss}}{z} = \frac{1}{2 \sigma \delta} \int_0^{2\pi} R \dli{\varphi} \norm{\vetor{H}_\parallel}^2 = \frac{\pi \epsilon^2 \omega^2 R^3 \abs{E_{\ell,m}}^2}{\sigma \delta j_{\ell, m}^2} \left[J_\ell'(j_{\ell,m})\right]^2.
     \end{equation*}
-    é a potência perdida por unidade de comprimento.
+    Assim, 
+    \begin{equation*}
+        \diff{P_\mathrm{loss}}{z} = \frac{\pi \epsilon^2 \omega^2 R^3 \abs{E_{0,1}}^2}{\sigma \delta j_{0,1}^2} \left[J_0'(j_{0,1})\right]^2.
+    \end{equation*}
+    é a expressão considerando apenas o modo de menor frequência de corte.
 \end{proof}
