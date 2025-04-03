@@ -39,7 +39,7 @@
     \begin{equation*}
         \mean{u_M} = \frac14 \Re\left[\frac{1}{\mu} \vetor{B}_\mathrm{TM} \cdot \conj{\vetor{B}}_\mathrm{TM}\right] = \frac{\mu \epsilon^2 \omega^2}{\gamma^4} \norm{\nabla_t E_z}^2 \cos^2(kz).
     \end{equation*}
-    Recordando que \(\int_A \dln2\x \norm{\nabla_t E_z}^2 = \gamma^2 \int_A \dln2\x \abs{E_z}^2,\) temos
+    Recordando do \cref{ex:ex5} que \(\int_A \dln2\x \norm{\nabla_t E_z}^2 = \gamma^2 \int_A \dln2\x \abs{E_z}^2,\) temos
     \begin{equation*}
         \mean{U_E} = \left(\frac{k^2}{\gamma^2} + 1\right)\frac{L \epsilon}{2} \int_A \dln2\x \abs{E_z}^2 = \frac{\mu \epsilon^2 \omega^2 L}{2\gamma^2} \int_A \dln2\x \abs{E_z}^2 = \mean{U_M},
     \end{equation*}
@@ -47,7 +47,7 @@
     \begin{equation*}
         \mean{U} = \frac{L \mu \epsilon^2 \omega^2}{\gamma^2} \int_A \dln2\x \abs{E_z}^2
     \end{equation*}
-    é a energia armazenada na cavidade. A potência dissipada por perdas Ôhmicas é dada por
+    é a energia armazenada na cavidade. Aproveitando o resultado do \cref{ex:ex4}, a potência dissipada por perdas Ôhmicas é dada por
     \begin{align*}
         P^{\ell,m,n}_\mathrm{loss} &= \frac{L \pi \epsilon^2 \omega_{\ell,m,n}^2 R \abs{E_{\ell,m}}^2}{\sigma \delta \gamma_{\ell,m}^2} \left[J_\ell'(\gamma_{\ell,m} R)\right]^2 + \frac{2}{2 \sigma \delta} \int_A \dln2\x \norm{\vetor{H}_\parallel}_{z = 0}^2\\
                         &= \frac{L \pi \epsilon^2 \omega_{\ell,m,n}^2 R \abs{E_{\ell,m}}^2}{\sigma \delta \gamma_{\ell,m}^2} \left[J_\ell'(\gamma_{\ell,m} R)\right]^2 + \frac{4 \epsilon^2 \omega_{\ell,m,n}^2}{\gamma_{\ell,m}^4 \sigma \delta} \int_A \dln2\x \norm{\nabla_t E_z}^2\\
@@ -65,7 +65,7 @@
     \end{equation*}
     Assim, o fator de qualidade para o modo de menor frequência ressonante é
     \begin{equation*}
-        Q = \omega^\mathrm{TM}_{0,0,1}\frac{\mean{U}}{P_\mathrm{loss}} = \frac{j_{0,1}\sigma \delta \mu L}{\sqrt{\mu\epsilon} (4R + L)},
+        Q = \omega^\mathrm{TM}_{0,0,1}\frac{\mean{U}}{P_\mathrm{loss}} = \omega^\mathrm{TM}_{0,0,1} \frac{\sigma \delta \mu LR}{L + 4R}= \frac{j_{0,1}\sigma \delta \mu L}{\sqrt{\mu\epsilon} (4R + L)},
     \end{equation*}
     e para a cavidade em questão temos \(Q = 4022.\)
 \end{proof}
