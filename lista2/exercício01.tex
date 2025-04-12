@@ -3,5 +3,43 @@
     Obtenha o padrão de difração de Fraunhofer gerado por uma abertura elíptica de semi-eixos \(a\) (na direção \(x'\)) e \(b\) (na direção \(y'\)), assumindo que a onda incidente é gerada por uma fonte pontual que está localizada sobre o eixo \(z\), perpenticular ao plano da abertura e que passa pelo centro da elipse.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Seja \(\Sigma\) a abertura elíptica descrita, e seja \(\psi(\vetor{\x'}) = \psi_0 \frac{\exp(ik\norm{\vetor{\x'} - \vetor{\x}_F})}{\norm{\vetor{\x'} - \vetor{\x}_F}}\) para todo \(\vetor{\x'}\in \Sigma\), então 
+    \begin{align*}
+        \psi(\vetor{\x}) &= - \frac{i k}{2\pi} \int_{\Sigma} \dln2{\x'} \inner*{\vetor{n}'}{\frac{\D}{\norm{\D}}} \psi(\vetor{\x'}) \frac{e^{ik \norm{\D}}}{\norm{\D}}\\
+                         &\simeq -\frac{ik \cos\theta_{\x}}{2\pi \norm{\vetor{\x}}} \int_{\Sigma} \dln2{\x'} \psi(\vetor{\x'}) e^{ik \norm{\D}}\\
+                         &\simeq -\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}} \norm{\vetor{\x}_F}} \int_{\Sigma} \dln2{\x'} e^{ik \norm{\D} + ik \norm{\vetor{\x'} - \vetor{\x}_F}}.
+    \end{align*}
+    Seja \(\vetor{\x'} = x' \vetor{e}_x + y' \vetor{e}_y \in \Sigma\), então para \(\vetor{\x}\) na região de Fraunhofer aproximamos
+    \begin{equation*}
+        \norm{\D} \simeq \norm{\vetor{\x}} - \alpha x' - \beta y',\quad\text{com}\quad \alpha = \inner*{\vetor{e}_x}{\frac{\vetor{\x}}{\norm{\vetor{\x}}}}\quad\text{e}\quad\beta = \inner*{\vetor{e}_y}{\frac{\vetor{\x}}{\norm{\vetor{\x}}}}
+    \end{equation*}
+    e analogamente para a distância à fonte pontual. Assim, em coordenadas polares temos
+    \begin{align*}
+        \norm{\D} + \norm{\vetor{\x'} - \vetor{\x}_F} &\simeq \norm{\vetor{\x}} + \norm{\vetor{\x}_F} - (\alpha + \alpha_F) x' - (\beta + \beta_F)y'\\
+                                                      &= \norm{\vetor{\x}} + \norm{\vetor{\x}_F} - (\alpha + \alpha_F) a \zeta' \cos\varphi' - (\beta + \beta_F) b \zeta' \sin\varphi'\\
+                                                      &= \norm{\vetor{\x}} + \norm{\vetor{\x}_F} - {\sqrt{\hat{a}^2 + \hat{b}^2}}\zeta'\left[\frac{\hat{a}}{\sqrt{\hat{a}^2 + \hat{b}^2}} \cos\varphi' + \frac{\hat{b}}{\sqrt{\hat{a}^2 + \hat{b}^2}} \sin\varphi'\right]\\
+                                                      &= \norm{\vetor{\x}} + \norm{\vetor{\x}_F} - \zeta' \hat{c} \cos(\varphi' - \phi),
+    \end{align*}
+    onde definimos \(\hat{a} = (\alpha + \alpha_F) a,\) \(\hat{b} = (\beta + \beta_F)b,\) \(\hat{c} = \sqrt{\hat{a}^2 + \hat{b}^2}\) e \(\tan\phi = \frac{\hat{b}}{\hat{a}}.\) Com isso,
+    portanto
+    \begin{align*}
+        \psi(\vetor{\x}) &\simeq \overbrace{-\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}} \norm{\vetor{\x}_F}} e^{ik(\norm{\vetor{\x}} + \norm{\vetor{\x}_F})}}^{\Psi_0} ab\int_{0}^1 \dli{\zeta'} \int_{0}^{2\pi} \zeta' \dli{\varphi'} e^{-ik \zeta' \hat{c} \cos(\varphi' - \phi)}\\
+                         &= \Psi_0 ab \int_0^1 \dli{\zeta'} \zeta' \int_{-\phi}^{2\pi - \phi} \dli{\tilde{\varphi}} e^{-ik \zeta' \hat{c} \cos\tilde{\varphi}}\\
+                         &= \Psi_0 \frac{ab}{(k \hat{c})^2} \int_0^{-k \hat{c}} \dli{u} u \int_{-\pi}^\pi \dli{\tilde{\varphi}} e^{i u  \cos \tilde{\varphi}},
+    \end{align*}
+    onde utilizamos a periodicidade do integrando em relação a \(\varphi\) no último passo. Com a representação integral da função de Bessel,
+    \begin{equation*}
+        J_0(\xi) = \int_{-\pi}^\pi \dli{\theta} e^{i\xi \cos\theta}
+    \end{equation*}
+    e das relações de recorrência
+    \begin{equation*}
+        J_{n+1}(\xi) = \frac{2n}{\xi} J_n(\xi) - J_{n-1}(\xi)
+        \quad\text{e}\quad
+        J_{n+1}(\xi) = -2J'_n(\xi) + J_{n-1}(\xi) \implies \diff*{[\xi J_n(\xi)]}{\xi} = \xi J_{n - 1}(\xi)
+    \end{equation*}
+    obtemos
+    \begin{equation*}
+        \psi(\vetor{\x}) = \Psi_0 \frac{2\pi ab}{k^2 \hat{c}^2} \int_0^{-k \hat{c}} \dli{u} u J_0(u) = \Psi_0 \frac{2\pi ab}{k^2 \hat{c}^2} \left[u J_1(u)\right]_{0}^{-k \hat{c}} = 2\pi ab \Psi_0 \frac{J_1(k \hat{c})}{k \hat{c}},
+    \end{equation*}
+    onde utilizamos o fato que funções de Bessel de ordem ímpar são funções ímpares.
 \end{proof}
