@@ -11,5 +11,24 @@
     é igual à \(\difs{U}{z}(z = 0).\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Com as aproximações consideradas, temos
+    \begin{equation*}
+        \psi(\vetor{\x}) = -\frac{ik}{2\pi} \int_{\Sigma} \dln2{\x'} \psi_0 \frac{e^{ik \norm{\D}}}{\norm{\D}},
+    \end{equation*}
+    portanto na superfície \(z = D,\) temos
+    \begin{align*}
+        \abs{\psi(x,y,D)}^2 &= \left(\frac{k}{2\pi}\right)^2 \int_{\Sigma} \dln2{\x'_1} \int_{\Sigma} \dln2{\x'_2} \abs{\psi_0}^2 \frac{e^{ik\norm{\vetor{\x} - \vetor{\x'_1}} - ik\norm{\vetor{\x} - \vetor{\x'_2}}}}{\norm{\vetor{\x} - \vetor{\x'_1}} \norm{\vetor{\x} - \vetor{\x'_2}}}\\
+                            &\simeq \left(\frac{k}{2\pi D}\right)^2 \abs{\psi_0}^2 \int_{\Sigma} \dln2{\x'_1} \int_{\Sigma}\dln2{\x'_2} \exp\left[\frac{(x - x_1')^2 - (x - x_2')^2 + (y - y_1')^2 - (y - y_2')^2}{\frac{2D}{ik}}\right]\\
+                            &\simeq \left(\frac{k}{2\pi D}\right)^2 \abs{\psi_0}^2 \int_{\Sigma} \dln2{\x'_1} \int_{\Sigma}\dln2{\x'_2} \exp\left[\frac{x (x_2' - x_1') + y(x_2' - x_1')}{\frac{D}{ik}}\right],
+    \end{align*}
+    onde descartamos os termos de ordem superior pois estamos assumindo que as intensidades são significativas apenas na vizinhanças do eixo \(z\). Com isso,
+    \begin{align*}
+        \diff{U}{z}(z = D) &= \left(\frac{k}{2\pi D}\right)^2\abs{\psi_0}^2 \int_{\mathbb{R}} \dli{x} \int_{\mathbb{R}}\dli{y}  \int_{\Sigma} \dln2{\x'_1} \int_{\Sigma}\dln2{\x'_2} \exp\left[\frac{x (x_2' - x_1') + y(x_2' - x_1')}{\frac{D}{ik}}\right]\\
+                           &= \left(\frac{k}{2\pi D}\right)^2\abs{\psi_0}^2 \int_{\Sigma} \dln2{\x'_1} \int_{\Sigma}\dln2{\x'_2}\int_{\mathbb{R}} \dli{x} \exp\left[\frac{ik x(x_2' - x_1')}{D}\right] \int_{\mathbb{R}} \dli{x} \exp\left[\frac{ik y(y_2' - y_1')}{D}\right]\\
+                           &=  \abs{\psi_0}^2 \int_{\Sigma} \dln2{\x_1'} \int_{\Sigma} \dln2{\x_2'} \delta(x'_2 - x'_1) \delta(y_2' - y_1')\\
+                           &= \abs{\psi_0}^2 \int_{\Sigma} \dln2{\x_1'} \int_{\Sigma} \dln2{\x_2'} \delta(\vetor{\x_1'} - \vetor{\x_2'})\\
+                           &= \abs{\psi_0}^2 \int_{\Sigma} \dln2{\x'}\\
+                           &= \diff{U}{z} (z = 0),
+    \end{align*}
+    como desejado.
 \end{proof}
