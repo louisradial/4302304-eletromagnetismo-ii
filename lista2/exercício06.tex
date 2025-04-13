@@ -21,8 +21,7 @@
 \fill[lightblue!60] ({\zAperture - (\n + 1.2)*(\barWidth + \spacing)},0) rectangle (\zScreen, \ApertureHeight);
 
 % Background light cone
-\fill[lightblue!30] 
-    (\zAperture,0) -- (\zAperture, \height/2) -- (\zScreen, 0) -- cycle;
+\fill[Sky!5] (\zAperture,0) -- (\zAperture, \height/2) -- (\zScreen, 0) -- cycle;
 
 % Frentes de onda
 \foreach \i in {0,...,\n} {
@@ -51,5 +50,30 @@
     Sabendo que \(F(\xi) = - F(-\xi)\), que \(F(0) = 0,\) e que \(F(\xi) \to \frac{1 + i}{2}\) conforme \(\xi \to \infty\), estude o comportamento de \(I(y)\) para \(y \to \pm \infty\) e \(y = 0\). Expresse suas respostas em termos de \(I_0 = \abs{\psi_0}^2.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Seja \(\Pi\) o plano \(z = 0\) que contém a superfície opaca, e seja \(\Sigma = \setc{(x', y') \in \Pi}{y' > 0}\) a abertura, então
+    \begin{align*}
+        \psi(\vetor{\x}) &= - \frac{i k}{2\pi} \int_{\Sigma} \dln2{\x'} \inner*{\vetor{n}'}{\frac{\D}{\norm{\D}}} \psi(\vetor{\x'}) \frac{e^{ik \norm{\D}}}{\norm{\D}}\\
+                         &\simeq -\frac{ik \cos\theta_{\x}}{2\pi \norm{\vetor{\x}}} \int_{\Sigma} \dln2{\x'} \psi(\vetor{\x'}) e^{ik \norm{\D}}\\
+                         &\simeq -\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}}} \int_{\Sigma} \dln2{\x'} e^{ik \norm{\D}}.
+    \end{align*}
+    Para \(\vetor{\x'} = x' \vetor{e}_x + y' \vetor{e}_y \in \Sigma\) e \(\vetor{\x} = x \vetor{e}_x + y \vetor{e}_y + z \vetor{e}_z\) na região de Fresnel, aproximamos
+    \begin{equation*}
+        \norm{\D} \simeq z + \frac{(x - x')^2 + (y - y')^2}{2z}.
+    \end{equation*}
+    Assim,
+    \begin{align*}
+        \psi(\vetor{\x}) &= -\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}}} e^{ikz} \int_{\mathbb{R}} \dli{x'} \int_{0}^\infty \dli{y'}e^{ik \frac{(x - x')^2 + (y - y')^2}{2z}}\\
+                         &= -\frac{iz \psi_0 e^{ikz} \cos\theta_{\x}}{2\norm{\vetor{\x}}}  \int_{\mathbb{R}} \dli{\xi} \exp\left(i\frac{\pi}{2}\xi^2\right) \int_{-\sqrt{\frac{k}{\pi z}}y}^{\infty} \dli{\eta}\exp\left(i \frac{\pi}{2} \eta^2\right)\\
+                         &= -\frac{i (1 + i)z^2 \psi_0 e^{ikz}}{2 \norm{\vetor{\x}}^2}  \left[\frac{1 + i}{2} + \int_{-\sqrt{\frac{k}{\pi z}}y}^0 \dli\eta \exp\left(i\frac{\pi}{2} \eta^2\right)\right]\\
+                         &= -\frac{i(1 + i)z^2 \psi_0 e^{ikz}}{2(x^2 + y^2 + z^2)}  \left[\frac{1 + i}{2} + F\left(\sqrt{\frac{k}{\pi{z}}}y\right)\right]\\
+                         &= \psi_0 e^{ikz} \frac{z^2}{2 (x^2 + y^2 + z^2)}\left[\frac12 + \frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi z}} y\right)\right]
+    \end{align*}
+    e então a intensidade na tela em \(z = D\) é dada por
+    \begin{align*}
+        I(x,y) &= \abs{\psi(x\vetor{e}_x + y\vetor{e}_y + D \vetor{e}_z)}^2\\
+               &= \abs{\psi_0}^2 \frac{D^4}{4(x^2 + y^2 + D^2)^2} \abs*{\frac12 + \frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi D}} y\right)}^2\\
+               &= I_0 \frac{D^4}{4(x^2 + y^2 + D^2)^2} \left\{\frac14 + \frac12\abs*{F\left(\sqrt{\frac{k}{\pi z}} y\right)}^2 + \Re\left[\frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi z}} y\right)\right]\right\}\\
+               &= I_0 \frac{D^4}{4(x^2 + y^2 + D^2)^2} \left[\frac14 + \frac12\abs*{F\left(\sqrt{\frac{k}{\pi z}} y\right)}^2 + \frac12 C\left(\sqrt{\frac{k}{\pi z}} y\right) + \frac12 S\left(\sqrt{\frac{k}{\pi z}} y\right)\right].
+    \end{align*}
+    Notamos que \(I(x,0) = I_0\frac{D^4}{16(x^2 + D^2)^2}\) e que no limite \(y \to \pm\infty\) temos \(I(x,y) \to 0\).
 \end{proof}
