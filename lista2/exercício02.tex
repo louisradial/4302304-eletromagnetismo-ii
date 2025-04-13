@@ -3,5 +3,66 @@
     Uma onda emanada de uma fonte pontual incide sobre uma superfície contendo três aberturas retangulares iguais, de lados \(A\) e \(B\), contidas no plano \(z = 0\). A separação entre duas aberturas vizinhas é \(d\). Obtenha o padrão de difração no limite de Fraunhofer sobre um anteparo localizado em \(z = D,\) assumindo que a fonte está posicionada no eixo \(z,\) alinhada com o centro da abertura do meio. Em seguida, estude o caso de \(N\) aberturas iguais, ao invés de três. Assuma que \(N\) é um número ímpar e que a disposição das aberturas respeita a mesma simetria em relação ao eixo \(z\). Avalie as intensidades no anteparo em função de \(x\) e \(y\) e utilize uma ferramenta computacional de sua preferência para gerar figuras desses padrões.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Orientemos os eixos de forma que o lado de comprimento \(A\) se situe ao longo do eixo \(x\). Denotemos a abertura cujo centro se dá na posição \(x = (A + d)j\) por \(\Sigma_j.\) Isto é, a abertura do meio é \(\Sigma_0\) e as outras duas são \(\Sigma_1\) e \(\Sigma_{-1}\). Seja \(\Pi\) o plano \(z = 0\) e seja \(\Sigma\) o conjunto dos pontos de \(\Pi\) que estão em aberturas, então \(\Sigma = \bigcup_{j = -1}^1 \Sigma_j\) e 
+    \begin{equation*}
+        t_{\Sigma}(\vetor{\x'}) = \sum_{j = -1}^1 t_{\Sigma_j}(\vetor{\x'}),
+    \end{equation*}
+    onde \(t_{\Omega}\) é a função característica de um conjunto \(\Omega\). A integral de Helmholtz-Kirchhoff pode ser escrita como
+    \begin{align*}
+        \psi(\vetor{\x}) &= - \frac{i k}{2\pi} \int_{\Pi} \dln2{\x'}  \inner*{\vetor{n}'}{\frac{\D}{\norm{\D}}} \psi(\vetor{\x'}) t_\Sigma(\vetor{\x'}) \frac{e^{ik \norm{\D}}}{\norm{\D}}\\
+                         &= -\frac{i k}{2 \pi} \sum_{j = -1}^1 \int_{\Pi}  \dln2{\x'}  \inner*{\vetor{n}'}{\frac{\D}{\norm{\D}}} \psi(\vetor{\x'}) t_{\Sigma_j}(\vetor{\x'}) \frac{e^{ik \norm{\D}}}{\norm{\D}}\\
+                         &= \sum_{j = -1}^1 \left[-\frac{ik}{2\pi} \int_{\Sigma_j} \dln2{\x'}  \inner*{\vetor{n}'}{\frac{\D}{\norm{\D}}} \psi(\vetor{\x'})  \frac{e^{ik \norm{\D}}}{\norm{\D}}\right]\\
+                         &= \sum_{j = -1}^{1} \psi_j(\vetor{\x}),
+    \end{align*}
+    onde \(\psi_j(\vetor{\x})\) é a função de onda de difração apenas pela abertura \(\Sigma_j\). Notemos que esta expressão facilmente se generaliza para o caso de \(N\) fendas, com \(N\) ímpar. Assim, vemos que é conveniente estudar o problema auxiliar que descreve apenas uma das aberturas, \(\Sigma_j,\) com \(j \in \mathbb{Z}.\)
+
+    Escrevamos \(\vetor{\x}_F = -z_F \vetor{e}_z\) e \(\psi(\vetor{\x'}) = \psi_0 \frac{\exp(ik\norm{\vetor{\x'} - \vetor{\x}_F})}{\norm{\vetor{\x'} - \vetor{\x}_F}}\) para todo \(\vetor{\x'} \in \Sigma.\) Com isso, temos
+    \begin{align*}
+        \psi_j(\vetor{\x}) &= - \frac{i k}{2\pi} \int_{\Sigma_j} \dln2{\x'} \inner*{\vetor{n}'}{\frac{\D}{\norm{\D}}} \psi(\vetor{\x'}) \frac{e^{ik \norm{\D}}}{\norm{\D}}\\
+                         &\simeq -\frac{ik \cos\theta_{\x}}{2\pi \norm{\vetor{\x}}} \int_{\Sigma_j} \dln2{\x'} \psi(\vetor{\x'}) e^{ik \norm{\D}}\\
+                         &\simeq -\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}} z_F} \int_{\Sigma_j} \dln2{\x'} e^{ik \norm{\D} + ik \norm{\vetor{\x'} - \vetor{\x}_F}},
+    \end{align*}
+    onde consideramos que \(\frac{1}{\norm{\vetor{\x'} - \vetor{\x}_F}} \simeq \frac{1}{\norm{\vetor{\x}_F}} = \frac{1}{z_F}\) e \(\frac{1}{\norm{\D}} \simeq \frac{1}{\norm{\vetor{\x}}}\) para todo \(\vetor{\x'} \in \Sigma_j.\) Para \(\vetor{\x}\) na região de Fraunhofer e \(\vetor{\x}' = x' \vetor{e}_x + y'\vetor{e}_y\), podemos aproximar
+    \begin{equation*}
+        \norm{\D} = \norm{\vetor{\x}} - \alpha x' - \beta y',\quad\text{com}\quad \alpha = \inner*{\vetor{e}_x}{\frac{\vetor{\x}}{\norm{\vetor{\x}}}}\quad\text{e}\quad\beta = \inner*{\vetor{e}_y}{\frac{\vetor{\x}}{\norm{\vetor{\x}}}},
+    \end{equation*}
+    e analogamente para \(\norm{\vetor{\x'} - \vetor{x}_F}\), isto é, assumimos que \(z_F \gg (A + d)j\). Com isso, 
+    \begin{align*}
+        \psi_j(\vetor{\x}) &= -\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}} z_F} e^{ik (z_F + \norm{\vetor{\x}})} \int_{jd + \frac{2j - 1}{2}A}^{jd + \frac{2j + 1}{2}A} \dli{x'} \int_{-\frac{B}{2}}^{\frac{B}{2}} \dli{y'} e^{-ik (\alpha x' + \beta y')}\\
+                           &= \underbrace{-\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}} z_F} e^{ik(z_F + \norm{\vetor{\x}})}}_{\Psi_0} e^{- ik\alpha(A + d)j} \int_{-\frac{A}{2}}^{\frac{A}{2}} \dli{x'} \int_{-\frac{B}{2}}^{\frac{B}{2}} \dli{y'} e^{-ik (\alpha x' + \beta y')}\\
+                           &= \Psi_0 e^{-ik\alpha(A + d)j} \left[\frac{e^{-ik \alpha x'}}{-ik \alpha}\right]_{-\frac{A}{2}}^{\frac{A}{2}} \left[\frac{e^{-ik \beta y'}}{-ik \beta}\right]_{-\frac{B}{2}}^{\frac{B}{2}}\\
+                           &= e^{-ik\alpha(A + d)j} \Psi_0  \frac{e^{\frac12 ik \alpha A} - e^{-\frac12 ik \alpha A}}{ik \alpha}\frac{e^{\frac12 ik \beta B} - e^{-\frac12 ik \beta B}}{ik \beta}\\
+                           &= e^{-ik \alpha(A + d)j} \underbrace{4AB \Psi_0 \sinc\left(\frac12 k \alpha A\right) \sinc\left(\frac12 k \beta B\right)}_{\psi_0(\vetor{\x})}.
+    \end{align*}
+
+    Com este resultado, para \(N = 3,\) temos
+    \begin{align*}
+        \psi(\vetor{\x}) &= \sum_{j = -1}^1 e^{-ik \alpha(A + d)j} \psi_0(\vetor{\x})\\
+                         &= \left\{1 + 2\cos\left[k\alpha(A + d)\right]\right\} \psi_0(\vetor{\x})\\
+                         &= 4 AB \Psi_0 \sinc\left(\frac12 k \alpha A\right)\sinc\left(\frac12 k \beta B\right) \left\{1 + 2\cos\left[k\alpha(A + d)\right]\right\}.
+    \end{align*}
+    Para \(N = 2M + 1\) com \(M \in \mathbb{N}\), temos
+    \begin{align*}
+        \psi(\vetor{\x}) &= \sum_{j = -M}^M e^{-ik \alpha(A + d)j} \psi_0(\vetor{\x})\\
+                         &= \frac{e^{ik \alpha (A + d)M} - e^{-ik \alpha(A + d)(M+1)}}{1 - e^{-ik \alpha (A + d)}}\psi_0(\vetor{\x})\\
+                         &= \frac{e^{ik \alpha (A + d) (M + \frac12)} - e^{-ik \alpha (A + d) (M + \frac12)}}{2i\sin\left[\frac12 k \alpha(A + d)\right]}\psi_0(\vetor{\x})\\
+                         &= \frac{\sin\left[k \alpha (A + d) (M + \frac12)\right]}{\sin\left[\frac12 k \alpha (A + d)\right]} \psi_0(\vetor{\x})\\
+                         &= \frac{N\sinc\left[\frac12 N k \alpha (A + d)\right]}{\sinc\left[\frac12 k \alpha (A + d)\right]} \psi_0(\vetor{\x})\\
+                         &= 4AB \Psi_0 \sinc\left(\frac12 k \alpha A\right) \sinc\left(\frac12 k \beta B\right)\frac{N\sinc\left[\frac12 N k \alpha (A + d)\right]}{\sinc\left[\frac12 k \alpha (A + d)\right]}.
+    \end{align*}
+    Tomando \(\norm{\vetor{\x}} \simeq D,\) temos \(\alpha = \frac{x}{D}\) e \(\beta = \frac{y}{D},\) portanto a expressão acima se torna
+    \begin{equation*}
+        \psi(\vetor{\x}) = 4NAB \Psi_0 \sinc\left(\frac{k A x}{2 D}\right) \sinc\left(\frac{k B y}{2D}\right)\frac{\sinc\left[\frac{N k (A + d) x}{2D}\right]}{\sinc\left[\frac{k (A + d) x}{2D}\right]}.
+    \end{equation*}
+    Assim,
+    \begin{equation*}
+        I(\vetor{\x}) \propto 16 N^2 A^2B^2 \abs{\Psi_0}^2 \sinc^2\left(\frac{k A x}{2 D}\right) \sinc^2\left(\frac{k B y}{2D}\right)\frac{\sinc^2\left[\frac{N k (A + d) x}{2D}\right]}{\sinc^2\left[\frac{k (A + d) x}{2D}\right]}
+    \end{equation*}
+    é a intensidade no anteparo.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{exercício02.png}
+        \caption{Padrão de difração para a rede de difração com \(\lambda = \SI{633}{\nano\meter}\), \(D = \SI{1.5}{\meter}\), \(A = \SI{1}{\micro\meter}\), \(B = \SI{30}{\micro\meter}\), \(d = \SI{15}{\micro\meter}\) e \(N = 5001.\)}
+    \end{figure}
 \end{proof}
