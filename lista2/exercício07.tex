@@ -3,5 +3,22 @@
     Utilize alguma ferramenta computacional de sua preferência e gere um gráfico da Espiral de Cornu. Baseado no seu gráfico estime os três primeiros máximos de intensidade da curva \(I(y)\) para \(y > 0.\)
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Podemos reescrever a intensidade como
+    \begin{equation*}
+        I(x,y) = \abs{\psi_0}^2 \frac{D^4}{4(x^2 + y^2 + D^2)^2} \abs*{\frac12 + \frac{e^{-\frac14 i\pi}}{\sqrt{2}} F\left(\sqrt{\frac{k}{\pi D}} y\right)}^2,
+    \end{equation*}
+    então estimaremos os primeiros máximos e mínimos de intensidade ao longo do eixo \(y\) como os pontos nos quais \(C\left(\sqrt{\frac{k}{\pi D}} y\right) = S\left(\sqrt{\frac{k}{\pi D}} y\right)\) para \(y > 0\).
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.8]{exercício07.png}
+        \caption{Espiral de Cornu}
+    \end{figure}
+
+    Utilizando a parametrização \(w = F(t)\) para a espiral de Cornu, vemos que os primeiros máximos ocorrem em \(t = 1.2653,\) \(t = 2.3527,\) e \(t = 3.0856.\) Assim, 
+    \begin{equation*}
+        y_1 = 1.2653\sqrt{\frac{\pi D}{k}},\quad
+        y_2 = 2.3527\sqrt{\frac{\pi D}{k}},\quad\text{e}\quad
+        y_3 = 3.0856\sqrt{\frac{\pi D}{k}}
+    \end{equation*}
+    são as estimativas para os primeiros máximos de intensidade.
 \end{proof}
