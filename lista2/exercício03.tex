@@ -1,7 +1,41 @@
 % vim: spl=pt
 \begin{exercício}{Incidência oblíqua de ondas planas em uma abertura circular}{ex3}
-    Escreve a integral de Herlmholtz-Kirchhoff no caso em que a onda incidente é uma onda plana, do tipo \(\psi(\vetor{\x}) = \psi_0 e^{i \vetor{k} \cdot \vetor{\x}},\) com \(\psi_0\) uma constante complexa associada à amplitude da onda. Ao invés da onda plana estar se propagando na direção \(z,\) trate o caso em que o vetor de onda \(\vetor{k}\) é tal que a incidência sobre a parede \(\Pi\) que contém as aberturas seja oblíqua e caracterizada por um certo ângulo de incidência \(\theta_I\). Resolva o problema de difração de Fraunhofer para uma abertura circular de raio \(a\), e estude a posição dos mínimos do padrão de interferência.
+    Escreva a integral de Helmholtz-Kirchhoff no caso em que a onda incidente é uma onda plana, do tipo \(\psi(\vetor{\x}) = \psi_0 e^{i \vetor{k} \cdot \vetor{\x}},\) com \(\psi_0\) uma constante complexa associada à amplitude da onda. Ao invés da onda plana estar se propagando na direção \(z,\) trate o caso em que o vetor de onda \(\vetor{k}\) é tal que a incidência sobre a parede \(\Pi\) que contém as aberturas seja oblíqua e caracterizada por um certo ângulo de incidência \(\theta_I\). Resolva o problema de difração de Fraunhofer para uma abertura circular de raio \(a\), e estude a posição dos mínimos do padrão de interferência.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Definimos os eixos coordenados de forma que \(\vetor{k} = k\left(\sin\theta_I \vetor{e}_x + \cos\theta_I \vetor{e}_z\right)\) e que o plano \(\Pi\) seja o plano \(z = 0.\) Assim, para um ponto \(\vetor{\x'} = x'\vetor{e}_x + y'\vetor{e}_y\) da abertura \(\Sigma \subset \Pi,\) temos
+    \begin{equation*}
+        \psi(\vetor{\x}') = \psi_0 e^{i \vetor{k} \cdot \vetor{\x'}} = \psi_0 e^{i k x'\sin\theta_I},
+    \end{equation*}
+    logo a integral de Helmholtz-Kirchhoff se  dá por
+    \begin{align*}
+        \psi(\vetor{\x}) &= -\frac{ik}{2\pi} \psi_0 \int_{\Sigma} \dln2{\x'} \inner*{\vetor{n'}}{\frac{\D}{\norm{\D}}} \frac{e^{ik\norm{\D} + ik x' \sin\theta_I}}{\norm{\D}}\\
+                         &= -\frac{ik \psi_0 \cos\theta_{\vetor{\x}}}{2\pi \norm{\vetor{\x}}} \int_{\Sigma} \dln2{\x'} e^{ik\norm{\D} + ik x' \sin\theta_I}.
+    \end{align*}
+    Para \(\vetor{\x}\) na região de Fraunhofer, temos
+    \begin{align*}
+        \norm{\D} + x' \sin \theta_I &\simeq \norm{\vetor{\x}} - \alpha x' - \beta y' + x' \sin\theta_I\\
+                                     &= \norm{\vetor{\x}} - \tilde{\alpha} x' - \beta y'\\
+                                     &= \norm{\vetor{\x}} - \tilde{\alpha} s' \cos\varphi' - \beta s' \sin\varphi'\\
+                                     &= \norm{\vetor{\x}} - s' \sqrt{\tilde{\alpha}^2 + \beta^2} \cos(\varphi' - \phi),
+    \end{align*}
+    onde \(\alpha = \inner*{\vetor{e}_x}{\frac{\vetor{\x}}{\norm{\vetor{\x}}}}\), \(\beta = \inner*{\vetor{e}_y}{\frac{\vetor{\x}}{\norm{\vetor{\x}}}}\), \(\tilde{\alpha} = \alpha - \sin\theta_I,\) e \(\tan\phi = \frac{\beta}{\tilde{\alpha}}.\) Assim, se \(\Sigma\) é uma abertura circular de raio \(a,\) temos
+    \begin{equation*}
+        \psi(\vetor{\x}) = \overbrace{-\frac{ik \psi_0 e^{ik \norm{\vetor{\x}}}\cos\theta_{\vetor{\x}}}{2\pi \norm{\vetor{\x}}}}^{\Psi_0} \int_{0}^{a} \dli{s'} \int_0^{2\pi} s'\dli{\varphi'} e^{-ik s' \sqrt{\tilde{\alpha}^2 + \beta^2} \cos(\varphi' - \phi)} = 2\pi a^2 \Psi_0 \frac{J_1(ka\sqrt{\tilde{\alpha}^2 + \beta^2})}{ka\sqrt{\tilde{\alpha}^2 + \beta^2}},
+    \end{equation*}
+    como feito no \cref{ex:ex1}. Para uma incidência quase normal, \(\theta_I \sim 0,\) e um ponto de observação próximo do eixo \(z,\) \(\theta \sim 0\), temos
+    \begin{equation*}
+        \alpha \simeq \theta \cos\varphi - \theta_I
+        \quad\text{e}\quad
+        \beta \simeq \theta \sin\varphi,
+    \end{equation*}
+    logo
+    \begin{equation*}
+        \tilde{\alpha}^2 + \beta^2 \simeq \theta^2 + \theta_I^2 - 2\theta_I \theta \cos\varphi.
+    \end{equation*}
+    Para \(\varphi = 0,\) temos
+    \begin{equation*}
+        I(\theta,\theta_I) = 2\pi a^2 \abs{\Psi_0}^2 \frac{J_1^2(ka\abs{\theta - \theta_I})}{ka(\theta - \theta_I)^2},
+    \end{equation*}
+    e vemos que os mínimos ocorrem em \(\theta = \theta_I + \frac{j_{1,m}}{k a},\) em que \(j_{1,m}\) é o \(m\)-ésimo zero da função \(J_1.\)
 \end{proof}
