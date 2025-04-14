@@ -7,5 +7,13 @@
    ou seja, a Lei de Coulomb se aplica com a densidade de carga calculada no tempo não retardado.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Se \(\vetor{J}\) é constante, então pela equação de continuidade \(\diffp{\rho}{t}\) não depende do tempo, logo devemos ter \(\rho(\vetor{\x}, t) = \rho(\vetor{\x}) + \dot\rho(\vetor{\x}) t\), isto é, \(\dot{\rho}(\vetor{\x}, t) = \dot\rho(\vetor{\x})\) Das equações de Jefimenko, temos
+   \begin{align*}
+      \vetor{E}(\vetor{\x},t) &= \frac{1}{4\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3{\x'} \left[\frac{\rho(\vetor{\x'}, t_r) (\D)}{\norm{\D}^3} + \frac{\dot\rho(\vetor{\x'}, t_r) (\D)}{c\norm{\D}^2}- \frac{\dot{\vetor{J}}(\vetor{\x'}, t_r)}{c^2\norm{\D}}\right]\\
+                              &= \frac{1}{4\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3{\x'} \left\{\frac{(\D) \left[\rho(\vetor{\x'}) + \dot\rho(\vetor{\x'})t_r\right]}{\norm{\D}^3} + \frac{\dot\rho(\vetor{\x'}) (\D)}{c\norm{\D}^2}\right\}\\
+                              &= \frac{1}{4\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3{\x'} \left[\rho(\vetor{\x'}) + \dot\rho(\vetor{\x'}) \left(t_r + \frac{\norm{\D}}{c}\right)\right]\frac{\D}{\norm{\D}^3}\\
+                              &= \frac{1}{4\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3{\x'} \frac{\left[\rho(\vetor{\x'}) + \dot\rho(\vetor{\x'})t\right](\D)}{\norm{\D}^3}\\
+                              &= \frac{1}{4\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3{\x'} \frac{\rho(\vetor{\x'}, t) (\D)}{\norm{\D}^3},
+   \end{align*}
+   como desejado.
 \end{proof}
