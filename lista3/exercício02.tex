@@ -51,9 +51,84 @@
                                &= \frac{q}{4\pi \epsilon_0 c} \int_{\mathbb{R}} \dli{t'} \frac{\vetor{\beta}(t')\delta\left(t' - t + \frac{\norm{\vetor{\x} - \vetor{\x}_q(t')}}{c}\right)}{\norm{\vetor{\x'} - \vetor{\x}_q(t')}}\\
                                &= \frac{q}{4\pi \epsilon_0 c} \left[\frac{R}{R - \vetor{\beta} \cdot \vetor{R}}\right]_\ret \int_{\mathbb{R}} \dli{t'} \frac{\vetor{\beta}(t')\delta(t' - \tr)}{\norm{\vetor{\x'} - \vetor{\x}_q(t')}}\\
                                &= \frac{q}{4\pi \epsilon_0c} \left[\frac{\vetor{\beta}}{R - \vetor{\beta} \cdot \vetor{R}}\right]_\ret,
-   \end{align*}
+\end{align*}
    como desejado.
 \end{proof}
+
+\begin{theorem}{Campos associados aos potenciais de Liénard-Wiechert}{lw2}
+   Os campos associados ao movimento de uma carga \(q\) segundo a trajetória \(\vetor{\x}_q(t)\) são dados por
+   \begin{equation*}
+      \vetor{E}(\vetor{\x}, t) = \frac{q}{4\pi \epsilon_0}\left[\frac{\vetor{n} - \vetor{\beta}}{\gamma^2 (1 - \vetor{\beta} \cdot \vetor{n})^3 R^2} + \frac{\vetor{n} \times [(\vetor{n} - \vetor{\beta}) \times \dot{\vetor{\beta}}]}{(1 - \vetor{\beta}\cdot \vetor{n})^3 R}\right]_\ret
+      \quad\text{e}\quad
+      \vetor{B}(\vetor{\x},t) = \frac1c \vetor{n}(\vetor{\x}, \tr) \times \vetor{E}(\vetor{\x}, t),
+   \end{equation*}
+   onde \(\gamma(t) = \left[1 - \norm{\vetor{\beta}(t)}^2\right]^{-\frac12}\) e \(\vetor{n}(\vetor{\x}, t) = \frac{\vetor{\x} - \vetor{\x}_q(t)}{\norm{\vetor{\x} - \vetor{\x}_q(t)}}\).
+\end{theorem}
+\begin{proof}
+   Derivando a equação implícita que define o tempo de retardo, obtemos
+   \begin{align*}
+      \diffp{\tr}{x^\mu} = \frac{1}{c}\delta^0_\mu - \frac{1}{c} \frac{\left(\delta^j_\mu\vetor{e}_j - c \vetor{\beta}(\tr) \diffp{\tr}{x^\mu}\right)\cdot \vetor{R}(\vetor{\x}, \tr)}{R(\vetor{\x}, \tr)} 
+      % &\implies \diffp{\tr}{x^\mu} = \frac{\frac{1}{c} \delta^0_\mu - \frac1c \delta_{\mu}^j \inner{\vetor{e}_j}{\vetor{n}(\vetor{\x}, \tr)}}{1 - \vetor{\beta}(\tr) \cdot \vetor{n}(\vetor{\x}, \tr)}\\
+      &\implies \diffp{\tr}{x^\mu} = \frac1c \left[\frac{\delta^0_\mu - \delta^j_\mu \inner{\vetor{e}_j}{\vetor{n}}}{1 - \vetor{\beta} \cdot \vetor{n}}\right]_\ret,
+   \end{align*}
+   onde \(\vetor{n}(\vetor{\x}, t) = \frac{\vetor{R}(\vetor{\x}, t)}{{R}(\vetor{\x}, t)}\), isto é,
+   \begin{equation*}
+      \diffp{\tr}{t} = \left[\frac{1}{1 - \vetor{\beta} \cdot \vetor{n}}\right]_\ret
+      \quad\text{e}\quad
+      \diffp{\tr}{x^i} = -\frac1c\inner*{\vetor{e}_i}{\left[\frac{\vetor{n}}{1 - \vetor{\beta} \cdot \vetor{n}}\right]_\ret}.
+   \end{equation*}
+   Como \(c(t - \tr) = R(\vetor{\x}, \tr),\) temos \(\partial_\mu R(\vetor{\x}, \tr) = \delta^0_\mu - c\partial_\mu\tr,\) ou seja,
+   \begin{equation*}
+      \diffp*{R(\vetor{\x}, \tr)}{t} = - \left[\frac{c\vetor{\beta}\cdot \vetor{n}}{1 - \vetor{\beta}\cdot \vetor{n}}\right]_\ret
+      \quad\text{e}\quad
+      \diffp*{R(\vetor{\x},\tr)}{x^i} = \inner*{\vetor{e}_i}{\left[\frac{\vetor{n}}{1 - \vetor{\beta} \cdot \vetor{n}}\right]_\ret}.
+   \end{equation*}
+   Com isso, temos
+   \begin{align*}
+      \diffp*{\left[R - \vetor{\beta} \cdot \vetor{R}\right]_\ret}{x^\mu} &= \delta^0_\mu - c \diffp{\tr}{x^\mu} - \left[\dot{\vetor{\beta}} \cdot \vetor{R} - c \norm{\vetor{\beta}}^2\right]_\ret \diffp{\tr}{x^\mu} - \delta_\mu^j\inner{\vetor{e}_j}{\vetor{\beta}(\tr)}\\
+                                                                          &= \delta^0_\mu - \delta^j_\mu \inner{\vetor{e_j}}{\vetor{\beta}(\tr)} - \left[\dot{\vetor{\beta}} \cdot \vetor{R} + \frac{c}{\gamma^2}\right]_\ret \left\{\frac1c\left[\frac{\delta^0_\mu - \delta^j_\mu \inner{\vetor{e_j}}{\vetor{n}}}{1 - \vetor{\beta}\cdot\vetor{n}}\right]_{\ret}\right\}\\
+                                                                          &= \delta_\mu^0\left[\frac{\norm{\vetor{\beta}}^2 - \vetor{\beta}\cdot \vetor{n} - \dot{\vetor{\beta}}\cdot \frac{\vetor{R}}{c}}{1 - \vetor{\beta}\cdot \vetor{n}}\right]_\ret + \delta^j_\mu \inner*{\vetor{e_j}}{\left[\frac{\left(\dot{\vetor{\beta}} \cdot \frac{\vetor{R}}{c} + \frac{1}{\gamma^2}\right)\vetor{n}-(1 - \vetor{\beta}\cdot \vetor{n})\vetor{\beta}}{1 - \vetor{\beta} \cdot \vetor{n}}\right]_\ret},
+   \end{align*}
+   onde definimos \(\gamma(t) = \left[1 - \norm{\vetor{\beta}(t)}^2\right]^{-\frac12}\).
+
+   Com estes resultados, obtemos
+   \begin{align*}
+      \nabla \phi(\vetor{\x}, t) &= -\frac{q}{4\pi \epsilon_0}\frac{\vetor{e}_i}{\left[(1 - \vetor{\beta} \cdot \vetor{n})^2 R^2\right]_\ret} \diffp*{[R - \vetor{\beta} \cdot \vetor{R}]_\ret}{x^i}\\
+                                 &=-\frac{q}{4\pi \epsilon_0}\frac{\vetor{e}_i}{\left[(1 - \vetor{\beta} \cdot \vetor{n})^2 R^2\right]_\ret} \inner*{\vetor{e_i}}{\left[\frac{\left(\dot{\vetor{\beta}} \cdot \frac{\vetor{R}}{c} + \frac{1}{\gamma^2}\right)\vetor{n}-(1 - \vetor{\beta}\cdot \vetor{n})\vetor{\beta}}{1 - \vetor{\beta} \cdot \vetor{n}}\right]_\ret}\\
+                                 &=-\frac{q}{4\pi \epsilon_0}\left[\frac{\left(\frac1c \dot{\vetor{\beta}} \cdot \vetor{R} + \frac{1}{\gamma^2}\right)\vetor{n}-(1 - \vetor{\beta}\cdot \vetor{n})\vetor{\beta}}{(1 - \vetor{\beta} \cdot \vetor{n})^3 R^2}\right]_\ret,
+   \end{align*}
+   \begin{align*}
+      \diffp{\vetor{A}(\vetor{\x},t)}{t} &= \frac{q }{4\pi \epsilon_0 c}\left[\frac{\dot{\vetor{\beta}}}{(1 - \vetor{\beta}\cdot \vetor{n})R}\right]_\ret \diffp{\tr}{t} - \frac{q}{4\pi \epsilon_0}\left[\frac{\vetor{\beta}}{(1 - \vetor{\beta} \cdot \vetor{n})^2R^2}\right]_\ret \diffp*{[R - \vetor{\beta}\cdot \vetor{R}]_\ret}{x^0}\\
+                                         &= \frac{q}{4\pi \epsilon_0 c} \left[\frac{\dot{\vetor{\beta}}}{(1 - \vetor{\beta} \cdot \vetor{n})^2 R}\right]_\ret - \frac{q}{4\pi \epsilon_0} \left[\frac{\norm{\vetor{\beta}}^2 - \vetor{\beta}\cdot \vetor{n} - \frac1c\dot{\vetor{\beta}}\cdot \vetor{R}}{(1 - \vetor{\beta} \cdot \vetor{n})^3 R^2}\vetor{\beta}\right]_\ret\\
+                                         &=-\frac{q}{4\pi \epsilon_0} \left[\frac{(\norm{\vetor{\beta}}^2 - \vetor{\beta} \cdot \vetor{n} - \frac1c\dot{\vetor{\beta}} \cdot \vetor{R}) \vetor{\beta} - \frac1c(1 - \vetor{\beta}\cdot \vetor{n}) R \dot{\vetor{\beta}}}{(1 - \vetor{\beta}\cdot \vetor{n})^3 R^2}\right]_\ret,
+   \end{align*}
+   logo o campo elétrico é dado por
+   \begin{align*}
+      \vetor{E}(\vetor{\x}, t) &= \frac{q}{4\pi \epsilon_0}\left[\frac{\frac1c \dot{\vetor{\beta}}\cdot \vetor{R} + \frac{1}{\gamma^2}}{(1 - \vetor{\beta}\cdot \vetor{n})^3 R^2}\vetor{n} 
+      + \frac{\norm{\vetor{\beta}}^2 - 1 - \frac1c\dot{\vetor{\beta}} \cdot\vetor{R} }{(1 - \vetor{\beta}\cdot \vetor{n})^3 R^2}\vetor{\beta} 
+   + \frac{\frac1c(\vetor{\beta} \cdot \vetor{n} - 1) R}{(1 - \vetor{\beta}\cdot \vetor{n})^3 R^2} \dot{\vetor{\beta}}\right]_\ret\\
+                               &= \frac{q}{4\pi \epsilon_0} \left[\frac{\vetor{n} - \vetor{\beta}}{\gamma^2 (1 - \vetor{\beta} \cdot \vetor{n})^3 R^2} + \frac{(\dot{\vetor{\beta}}\cdot\vetor{n}) (\vetor{n} - \vetor{\beta}) - (\vetor{n}\cdot\vetor{n} - \vetor{\beta} \cdot \vetor{n}) \dot{\vetor{\beta}}}{c(1 - \vetor{\beta}\cdot \vetor{n})^3 R}\right]_\ret\\
+                               &= \frac{q}{4\pi \epsilon_0} \left[\frac{\vetor{n} - \vetor{\beta}}{\gamma^2 (1 - \vetor{\beta} \cdot \vetor{n})^3 R^2} + \frac{\vetor{n} \times [(\vetor{n} - \vetor{\beta}) \times \dot{\vetor{\beta}}]}{c(1 - \vetor{\beta}\cdot \vetor{n})^3 R}\right]_\ret.
+   \end{align*}
+   Para o campo magnético, temos
+   \begin{align*}
+      \epsilon_{ijk}\diffp{A_k(\vetor{\x}, t)}{x^j} &= \frac{q \epsilon_{ijk}}{4\pi \epsilon_0 c}\left[\frac{\dot{\beta}_k}{(1 - \vetor{\beta}\cdot \vetor{n})R}\right]_\ret \diffp{\tr}{x^j} - \frac{q \epsilon_{ijk}}{4\pi \epsilon_0 c}\left[\frac{\beta_k}{(1 - \vetor{\beta} \cdot \vetor{n})^2R^2}\right]_\ret \diffp*{[R - \vetor{\beta}\cdot \vetor{R}]_\ret}{x^j}\\
+                                                    &= -\frac{q \epsilon_{ijk}}{4\pi \epsilon_0 c^2}\left[\frac{ n_j \dot{\beta}_k}{(1 - \vetor{\beta}\cdot \vetor{n})^2 R} 
+                                                    + \frac{\left(\dot{\vetor{\beta}}\cdot \vetor{R} + \frac{c}{\gamma^2}\right)n_j\beta_k - c(1 - \vetor{\beta} \cdot \vetor{n}) \beta_j \beta_k}{(1 - \vetor{\beta} \cdot \vetor{n})^3 R^2}\right]_\ret\\
+                                                    &= - \frac{q \epsilon_{ijk}}{4\pi \epsilon_0 c^2}\left[\frac{cn_j \beta_k}{\gamma^2 (1 - \vetor{\beta} \cdot \vetor{n})^3 R^2} + \frac{(1 - \vetor{\beta} \cdot \vetor{n}) n_j \dot{\beta}_k + (\dot{\vetor{\beta}} \cdot \vetor{n}) n_j \beta_k}{(1 - \vetor{\beta} \cdot \vetor{n})^3 R}\right]_\ret\\
+                                                    &= \frac{q \epsilon_{ijk} n_j}{4\pi \epsilon_0 c}\left[\frac{n_k - \beta_k}{\gamma^2 (1 - \vetor{\beta} \cdot \vetor{n})^3 R^2} - \frac{(1 - \vetor{\beta} \cdot \vetor{n}) \dot{\beta}_k + (\dot{\vetor{\beta}} \cdot \vetor{n}) \beta_k}{c(1 - \vetor{\beta} \cdot \vetor{n})^3 R}\right]_\ret,
+   \end{align*}
+   portanto como
+   \begin{equation*}
+      \vetor{n} \times \left\{\vetor{n} \times \left[(\vetor{n} - \vetor{\beta}) \times \dot{\vetor{\beta}}\right]\right\} = \vetor{n} \times \left[(\vetor{n} \cdot \dot{\vetor{\beta}})(\vetor{n} - \vetor{\beta}) - (1 - \vetor{\beta} \cdot \vetor{n}) \dot{\vetor{\beta}}\right] = - \left[(\vetor{n} \cdot \dot{\vetor{\beta}}) \vetor{n} \times \vetor{\beta} + (1 - \vetor{\beta} \cdot \vetor{n}) \vetor{n} \times \dot{\vetor{\beta}}\right],
+   \end{equation*}
+   segue que
+   \begin{equation*}
+      \vetor{B}(\vetor{\x}, t) = \frac{\vetor{n}(\vetor{\x}, \tr)}{c} \times \vetor{E}(\vetor{\x},t),
+   \end{equation*}
+   como desejado.
+\end{proof}
+
 \begin{exercício}{Potenciais de Liénard-Wiechert para uma carga em movimento uniforme}{ex2}
    Consideremos uma partícula com carga \(q\) em movimento uniforme, \(\vetor{\x}_q(t) = t\vetor{v},\) com velocidade \(\vetor{v}\) constante.
    \begin{enumerate}[label=(\alph*)]
@@ -75,14 +150,49 @@
       \tr = t \pm \frac{\norm{\vetor{\x}}}{c},
    \end{equation*}
    portanto o sinal negativo corresponde ao tempo de retardo, isto é,
-   \begin{equation*}
-      \tr(\vetor{\x}, t) = \frac{t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta} - \sqrt{\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \left(1 - \norm{\vetor{\beta}}^2\right)\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)}}{1 - \norm{\vetor{\beta}}^2}.
-   \end{equation*}
+   \begin{align*}
+      \tr(\vetor{\x}, t) &= \frac{t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta} - \sqrt{\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \left(1 - \norm{\vetor{\beta}}^2\right)\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)}}{1 - \norm{\vetor{\beta}}^2}\\
+                         &= \gamma^2 \left[t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta} - \sqrt{\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2}\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)}\right].
+   \end{align*}
    Pelo \cref{thm:lw},
    \begin{equation*}
       \phi(\vetor{\x}, t) = \frac{q}{4\pi \epsilon_0}\left[\frac{1}{R - \vetor{\beta} \cdot \vetor{R}}\right]_{\ret}
       \quad\text{e}\quad
       \vetor{A}(\vetor{\x}, t) = \frac{\mu_0 q\vetor{v}}{4\pi}\left[\frac{1}{R - \vetor{\beta}\cdot \vetor{R}}\right]_{\ret}
    \end{equation*}
-   são os potenciais. Pelo \cref{ex:ex3}, as expressões utilizadas realmente satisfazem o gauge de Lorenz.
+   são os potenciais. Pelo \cref{ex:ex3}, as expressões utilizadas realmente satisfazem o gauge de Lorenz. Notemos que
+   \begin{align*}
+      [R - \vetor{\beta} \cdot \vetor{R}]_\ret &= c(t - \tr) - \vetor{\beta} \cdot \vetor{\x} + c \norm{\vetor{\beta}}^2 \tr\\
+                                               &= c \left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right) - \left(1 - \norm{\vetor{\beta}}^2\right)\tr\right]\\
+                                               &= c \sqrt{\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2}\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)},
+   \end{align*}
+   portanto
+   \begin{equation*}
+      \phi(\vetor{\x}, t) = \frac{q}{4\pi \epsilon_0 c \sqrt{\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2}\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)}}
+      \quad\text{e}\quad
+      \vetor{A}(\vetor{\x},t) = \frac{\mu_0 q \vetor{v}}{4\pi c \sqrt{\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2}\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)}}
+   \end{equation*}
+   são as expressões dos potenciais. Como
+   \begin{equation*}
+      [\vetor{R} - R \vetor{\beta}]_\ret = \vetor{\x} - c\vetor{\beta} \tr - c\vetor{\beta}(t - \tr) =  \vetor{\x} - \vetor{v} t,
+   \end{equation*}
+   o campo elétrico é dado por
+   \begin{align*}
+      \vetor{E}(\vetor{\x}, t) &= \frac{q}{4\pi \epsilon_0} \left[\frac{\vetor{R} - \vetor{\beta} R}{\gamma^2 (R - \vetor{\beta} \cdot \vetor{R})^3}\right]_\ret\\
+                               &= \frac{q}{4\pi \epsilon_0} 
+                               \frac{(\vetor{\x} - \vetor{v} t)(1 - \beta^2)}{c^3 \left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2}\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac32}},
+   \end{align*}
+   pelo \cref{thm:lw2}.
+
+   Para \(\vetor{v} = v\vetor{e}_z\), temos \(\vetor{\beta} = \beta \vetor{e}_z,\) com \(\beta = \frac{v}{c}\) e então
+   \begin{equation*}
+      \phi(b \vetor{e}_x, t) = \frac{q}{4\pi \epsilon_0 c \sqrt{\beta^2t^2 + \frac{b^2}{c^2}(1 - \beta^2)}}
+      \quad\text{e}\quad
+      \vetor{A}(b \vetor{e}_x, t) = \frac{\mu_0 q \vetor{v}}{4\pi \epsilon_0 c \sqrt{\beta^2t^2 + \frac{b^2}{c^2}(1 - \beta^2)}}
+   \end{equation*}
+   são os potenciais no ponto \(b\vetor{e}_x\) no instante \(t\). Por fim, 
+   \begin{equation*}
+      \inner{\vetor{e}_x}{\vetor{E}(b\vetor{e}_x, t)} = \frac{q}{4\pi \epsilon_0} \frac{(1 - \beta^2)b}{c^3 \left[\beta^2 t^2 + \frac{b^2}{c^2} (1 - \beta^2)\right]^{\frac32}}
+   \end{equation*}
+   é a componente \(x\) do campo elétrico neste ponto.
 \end{proof}
