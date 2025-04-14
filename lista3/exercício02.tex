@@ -1,12 +1,88 @@
 % vim: spl=pt
+\begin{theorem}{Potenciais de Liénard-Wiechert}{lw}
+   Os potenciais para uma partícula com carga \(q\) em movimento segundo a trajetória \(\vetor{\x}_q(t)\) são dados por
+   \begin{equation*}
+      \phi(\vetor{\x}, t) = \frac{q}{4\pi \epsilon_0}\left[\frac{1}{R - \vetor{\beta} \cdot \vetor{R}}\right]_{\ret}
+      \quad\text{e}\quad
+      \vetor{A}(\vetor{\x}, t) = \frac{q}{4\pi \epsilon_0 c}\left[\frac{\vetor{\beta}}{R - \vetor{\beta}\cdot \vetor{R}}\right]_{\ret},
+   \end{equation*}
+   onde
+   \begin{equation*}
+      \vetor{\beta}(t) = \frac1c \diff{\vetor{\x}_q}{t},\quad
+      \vetor{R}(\vetor{\x},t) = \vetor{\x} - \vetor{\x}_q(t),\quad
+      R(\vetor{\x}, t) = \norm{\vetor{R}(\vetor{\x}, t)},
+   \end{equation*}
+   e \([f(\vetor{\x}, t)]_\ret = f(\vetor{\x}, \tr(\vetor{\x}, t)),\) em que 
+   \begin{equation*}
+      \tr = t - \frac{\norm{\vetor{\x} - \vetor{\x}_q(\tr)}}{c}
+   \end{equation*}
+   é a equação que define unicamente o tempo de retardo \(\tr(\vetor{\x}, t).\)
+\end{theorem}
+\begin{proof}
+   Notemos que 
+   \begin{align*}
+      \diff*{\left(t' - t + \frac{\norm{\vetor{\x} - \vetor{\x}_q(t')}}{c}\right)}{t'} 
+      &= 1 - \frac{\diff{\vetor{\x}_q}{t'}\cdot\left[\vetor{\x} - \vetor{\x}_q(t')\right]}{c \norm{\vetor{\x} - \vetor{\x}_q(t')}}\\
+      &= 1 - \frac{\vetor{\beta}(t') \cdot \vetor{R}(\vetor{\x}, t')}{R(\vetor{\x}, t')} > 0
+   \end{align*}
+   pois temos \(\norm{\vetor{\beta(t')}} < 1\) para todo \(t'.\) Assim, podemos inferir que a aplicação \(t' \mapsto t' - t + \frac{\norm{\vetor{\x} - \vetor{\x}_q(t')}}{c}\) é injetora, portanto a equação \(t' = t - \frac{\norm{\vetor{\x} - \vetor{\x}_q(t')}}{c}\) admite no máximo uma solução, que definimos como \(\tr(\vetor{\x}, t).\) Ainda, concluímos que
+   \begin{equation*}
+      \delta\left[t' - t + \frac{\norm{\vetor{\x} - \vetor{\x}_q(t')}}{c}\right] = \left[\frac{R}{R - \vetor{\beta} \cdot \vetor{R}}\right]_{\ret} \delta\left[t' - \tr(\vetor{\x}, t)\right],
+   \end{equation*}
+   pela identidade
+   \begin{equation*}
+      \delta(g(x)) = \sum_n \frac{1}{\abs{g'(x_n)}} \delta(x - x_n),
+   \end{equation*}
+   para \(g(x_n) = 0\) e \(g'(x_n) \neq 0.\)
+
+   No gauge de Lorenz temos
+   \begin{align*}
+      \phi(\vetor{\x}, t) &= \frac{1}{4\pi \epsilon_0}\int_{\mathbb{R}^3} \dln3{\x'} \frac{q\delta\left[\vetor{\x'} - \vetor{\x}_q\left(t - \frac{\norm{\D}}{c}\right)\right]}{\norm{\D}}\\
+                          &= \frac{q}{4\pi \epsilon_0}\int_{\mathbb{R}^3} \dln3{\x'} \int_{\mathbb{R}} \dli{t'} \frac{\delta\left[\vetor{\x'} - \vetor{\x}_q(t')\right]}{\norm{\D}} \delta\left(t' - t + \frac{\norm{\D}}{c}\right)\\
+                          &= \frac{q}{4\pi \epsilon_0} \int_{\mathbb{R}} \dli{t'} \delta\left(t' - t + \frac{\norm{\D}}{c}\right) \int_{\mathbb{R}^3} \dln3{\x'} \frac{\delta\left[\vetor{\x'} - \vetor{\x}_q(t')\right]}{\norm{\D}}\\
+                          &= \frac{q}{4\pi \epsilon_0} \int_{\mathbb{R}} \dli{t'} \frac{\delta\left(t' - t + \frac{\norm{\vetor{\x} - \vetor{\x}_q(t')}}{c}\right)}{\norm{\vetor{\x'} - \vetor{\x}_q(t')}}\\
+                          &= \frac{q}{4\pi \epsilon_0} \left[\frac{R}{R - \vetor{\beta} \cdot \vetor{R}}\right]_\ret \int_{\mathbb{R}} \dli{t'} \frac{\delta(t' - \tr)}{\norm{\vetor{\x'} - \vetor{\x}_q(t')}}\\
+                          &= \frac{q}{4\pi \epsilon_0} \left[\frac{1}{R - \vetor{\beta} \cdot \vetor{R}}\right]_\ret
+   \end{align*}
+   e
+   \begin{align*}
+      \vetor{A}(\vetor{\x}, t) &= \frac{\mu_0}{4\pi}\int_{\mathbb{R}^3} \dln3{\x'} \frac{qc\vetor{\beta}\left(t - \frac{\norm{\D}}{c}\right)\delta\left[\vetor{\x'} - \vetor{\x}_q\left(t - \frac{\norm{\D}}{c}\right)\right]}{\norm{\D}}\\
+                               &= \frac{q}{4\pi \epsilon_0 c} \int_{\mathbb{R}} \dli{t'} \vetor{\beta}(t')\delta\left(t' - t + \frac{\norm{\D}}{c}\right) \int_{\mathbb{R}^3} \dln3{\x'} \frac{\delta\left[\vetor{\x'} - \vetor{\x}_q(t')\right]}{\norm{\D}}\\
+                               &= \frac{q}{4\pi \epsilon_0 c} \int_{\mathbb{R}} \dli{t'} \frac{\vetor{\beta}(t')\delta\left(t' - t + \frac{\norm{\vetor{\x} - \vetor{\x}_q(t')}}{c}\right)}{\norm{\vetor{\x'} - \vetor{\x}_q(t')}}\\
+                               &= \frac{q}{4\pi \epsilon_0 c} \left[\frac{R}{R - \vetor{\beta} \cdot \vetor{R}}\right]_\ret \int_{\mathbb{R}} \dli{t'} \frac{\vetor{\beta}(t')\delta(t' - \tr)}{\norm{\vetor{\x'} - \vetor{\x}_q(t')}}\\
+                               &= \frac{q}{4\pi \epsilon_0c} \left[\frac{\vetor{\beta}}{R - \vetor{\beta} \cdot \vetor{R}}\right]_\ret,
+   \end{align*}
+   como desejado.
+\end{proof}
 \begin{exercício}{Potenciais de Liénard-Wiechert para uma carga em movimento uniforme}{ex2}
    Consideremos uma partícula com carga \(q\) em movimento uniforme, \(\vetor{\x}_q(t) = t\vetor{v},\) com velocidade \(\vetor{v}\) constante.
    \begin{enumerate}[label=(\alph*)]
-      \item Obtenha o tempo de retardo \(t_r\) associado a uma posição \(\vetor{\x}\) e instante \(t\) de observação. A partir disso, escreva explicitamente os potenciais de Liénard-Wiechert \(\phi(\vetor{\x}, t)\) e \(\vetor{A}(\vetor{\x}, t).\)
+      \item Obtenha o tempo de retardo \(\tr\) associado a uma posição \(\vetor{\x}\) e instante \(t\) de observação. A partir disso, escreva explicitamente os potenciais de Liénard-Wiechert \(\phi(\vetor{\x}, t)\) e \(\vetor{A}(\vetor{\x}, t).\)
       \item Verifique que os potenciais encontrados no item anterior satisfazem o gauge de Lorenz.
       \item Considere que o movimento da carga é tal que \(\vetor{v} = v \vetor{e}_z.\) Encontre os potenciais e a componente \(x\) do campo elétrico no ponto \(b\vetor{e}_x\) no instante \(t\).
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Escrevamos \(\vetor{\beta} = \frac1c \vetor{v}\) então
+   \begin{align*}
+      \tr = t - \frac{\norm{\vetor{\x} - \vetor{\x}_q(\tr)}}{c} &\implies \norm*{\frac{\vetor{\x}}{c} - \vetor{\beta}  \tr}^2 = (\tr - t)^2\\
+                                                                % &\implies \frac{\norm{\vetor{\x}}^2}{c^2} - 2 \frac{\vetor{\x}}{c}\cdot\vetor{\beta} \tr+ \norm{\vetor{\beta}}^2 \tr^2 = \tr^2 - 2 t \tr + t^2\\
+                                                                &\implies (1 - \norm{\vetor{\beta}}^2) \tr^2 - 2 \left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right) \tr + t^2 - \frac{\norm{\vetor{\x}}^2}{c^2} = 0\\
+                                                                &\implies \tr = \frac{t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta} \pm \sqrt{\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \left(1 - \norm{\vetor{\beta}}^2\right)\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)}}{1 - \norm{\vetor{\beta}}^2}.
+   \end{align*}
+   Para decidir o sinal que acompanha a raiz, notemos que no limite \(\norm{\vetor{\beta}} \ll 1\) temos
+   \begin{equation*}
+      \tr = t \pm \frac{\norm{\vetor{\x}}}{c},
+   \end{equation*}
+   portanto o sinal negativo corresponde ao tempo de retardo, isto é,
+   \begin{equation*}
+      \tr(\vetor{\x}, t) = \frac{t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta} - \sqrt{\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \left(1 - \norm{\vetor{\beta}}^2\right)\left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)}}{1 - \norm{\vetor{\beta}}^2}.
+   \end{equation*}
+   Pelo \cref{thm:lw},
+   \begin{equation*}
+      \phi(\vetor{\x}, t) = \frac{q}{4\pi \epsilon_0}\left[\frac{1}{R - \vetor{\beta} \cdot \vetor{R}}\right]_{\ret}
+      \quad\text{e}\quad
+      \vetor{A}(\vetor{\x}, t) = \frac{\mu_0 q\vetor{v}}{4\pi}\left[\frac{1}{R - \vetor{\beta}\cdot \vetor{R}}\right]_{\ret}
+   \end{equation*}
+   são os potenciais. Pelo \cref{ex:ex3}, as expressões utilizadas realmente satisfazem o gauge de Lorenz.
 \end{proof}
