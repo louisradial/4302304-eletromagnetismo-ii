@@ -1,6 +1,6 @@
 % vim: spl=pt
 \begin{exercício}{Potenciais retardados satisfazem o gauge de Lorenz}{ex3}
-   Mostre que os potenciais retardados, 
+   Verifique que os potenciais retardados, 
    \begin{equation*}
       \phi(\vetor{\x}, t) = \frac{1}{4\pi \epsilon_0}\int_{\mathbb{R}^3} \dln3{\x'} \frac{\rho(\vetor{\x'}, t_r)}{\norm{\D}}
       \quad\text{e}\quad
@@ -9,5 +9,30 @@
    sempre satisfazem a condição do gauge de Lorenz.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Notemos que
+    \begin{align*}
+       \nabla\cdot\left[\frac{\vetor{J}(\vetor{\x'},t_r)}{\norm{\D}}\right] - \frac{\nabla\cdot\vetor{J}(\vetor{\x'}, t_r)}{\norm{\D}} 
+       &= \vetor{J}(\vetor{\x'}, t_r)\cdot\nabla\left(\frac{1}{\norm{\D}}\right)\\
+       &= - \vetor{J}(\vetor{\x'}, t_r)\cdot\nabla'\left(\frac{1}{\norm{\D}}\right)\\
+       &= \frac{\nabla'\cdot\vetor{J}(\vetor{\x'}, t_r)}{\norm{\D}} - \nabla'\cdot\left[\frac{\vetor{J}(\vetor{\x'},t_r)}{\norm{\D}}\right],
+    \end{align*}
+    % que
+    % \begin{align*}
+    %    \nabla \cdot \vetor{J}(\vetor{\x'}, t_r) = \vetor{J}(\vetor{\x'}, t_r) \cdot \nabla t_r = - \frac{\dot{\vetor{J}}(\vetor{\x'}, t_r) \cdot (\D)}{\norm{\D}}
+    % \end{align*}
+    e que, usando a equação de continuidade, 
+    \begin{align*}
+       \nabla' \cdot \vetor{J}(\vetor{\x'}, t_r) = - \dot\rho(\vetor{\x'}, t_r) + \dot{\vetor{J}}(\vetor{\x'}, t_r) \cdot \nabla' t_r = - \dot\rho(\vetor{\x'}, t_r) - \dot{\vetor{J}}(\vetor{\x'}, t_r) \cdot \nabla t_r = - \dot{\rho}(\vetor{\x'}, t_r) - \nabla \cdot \vetor{J}(\vetor{\x'}, t_r).
+    \end{align*}
+    Assim,
+    \begin{align*}
+       \nabla \cdot \vetor{A}(\vetor{\x}, t) &= \frac{\mu_0}{4\pi} \int_{\mathbb{R}^3} \dln3{\x'} \nabla\cdot\left[\frac{\vetor{J}(\vetor{\x'}, t_r)}{\norm{\D}}\right]\\
+                                             &= \frac{\mu_0}{4\pi} \int_{\mathbb{R}^3} \dln3{\x'} \left[\frac{\nabla\cdot \vetor{J}(\vetor{x'}, t_r) + \nabla'\cdot \vetor{J}(\vetor{x'}, t_r)}{\norm{\D}}\right] + \frac{\mu_0}{4\pi} \int_{\mathbb{R}^3} \dln3{\x'} \nabla'\cdot\left[\frac{\vetor{J}(\vetor{\x'}, t_r)}{\norm{\D}}\right]\\
+                                             &= -\frac{\mu_0}{4\pi} \int_{\mathbb{R}^3} \dln3{\x'} \frac{\dot\rho(\vetor{\x'}, t_r)}{\norm{\D}},
+    \end{align*}
+    pois assumimos que as distribuições de cargas e de corrente são localizadas. Como
+    \begin{equation*}
+       \mu_0 \epsilon_0 \diffp{\phi}{t} = \frac{\mu_0}{4\pi} \int_{\mathbb{R}^3} \dln3{\x'} \frac{\dot\rho(\vetor{\x'}, t_r)}{\norm{\D}} \diffp{t_r}{t} = \frac{\mu_0}{4\pi}\int_{\mathbb{R}^3} \dln3{\x'} \frac{\dot\rho(\vetor{\x'}, t_r)}{\norm{\D}} = - \nabla\cdot \vetor{A}(\vetor{\x'}, t),
+    \end{equation*}
+    concluímos que os potenciais satisfazem a condição do gauge de Lorenz.
 \end{proof}
