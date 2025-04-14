@@ -1,7 +1,33 @@
 % vim: spl=pt
 \begin{exercício}{Gauge de Coulomb na ausência de fontes}{ex1}
-   Mostre que no gauge de Coulomb e na ausência de fontes em todo o espaço o potencial escalar \(\phi\) satisfaz uma equação de Laplace e o potencial vetor \(\vetor{A}\) satisfaz uma equação de ondas homogênea. Encontre uma solução para \(\phi\) que satisfaça a condição de contorno \(\phi(\vetor{\x}) \to 0\) para \(\norm{\vetor{\x}} \to \infty\). Para o potencial vetor, encontre uma solução de onda plana monocromática. Determine os campos \(\vetor{E}\) e \(\vetor{B}\) associados aos potenciais encontrados.
+   Mostre que no gauge de Coulomb e na ausência de fontes em todo o espaço o potencial escalar \(\phi\) satisfaz uma equação de Laplace e o potencial vetor \(\vetor{A}\) satisfaz uma equação de ondas homogênea. Encontre uma solução para \(\phi\) que satisfaça a condição de contorno \(\phi(\vetor{\x},t) \to 0\) para \(\norm{\vetor{\x}} \to \infty\). Para o potencial vetor, encontre uma solução de onda plana monocromática. Determine os campos \(\vetor{E}\) e \(\vetor{B}\) associados aos potenciais encontrados.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Para \(\vetor{E} = - \nabla \phi - \diffp{\vetor{A}}{t}\) e \(\vetor{B} = \nabla \times \vetor{A}\), temos
+   \begin{equation*}
+      \nabla \cdot \vetor{E} = 0 \implies - \nabla^2 \phi - \diffp*{(\nabla \cdot \vetor{A})}{t} = 0
+   \end{equation*}
+   e
+   \begin{equation*}
+      \nabla \times \vetor{B} - \frac{1}{c^2} \diffp{\vetor{E}}{t} = 0 \implies \nabla (\nabla \cdot \vetor{A}) - \nabla^2 \vetor{A} + \frac{1}{c^2} \nabla\left(\diffp{\phi}{t}\right) + \frac{1}{c^2} \diffp[2]{\vetor{A}}{t} = 0,
+   \end{equation*}
+   portanto no gauge de Coulomb, temos as equações
+   \begin{equation*}
+      \nabla^2\phi = 0\quad\text{e}\quad \Box^2 \vetor{A} = \frac{1}{c^2} \nabla \left(\diffp{\phi}{t}\right),
+   \end{equation*}
+   isto é, \(\phi\) satisfaz a equação de Laplace. Pela isotropia e homogeneidade do espaço na ausência de fontes, \(\phi(\vetor{\x}, t)\) pode no máximo depender de \(\norm{\vetor{\x}},\) logo deve ser da forma \(\phi(\vetor{\x},t) = \phi_0(t) - \frac{C(t)}{\norm{\vetor{\x}}}\) sempre que \(\norm{\vetor{\x}} > 0.\) Com a condição de contorno \(\phi(\vetor{\x}, t) \to 0\) para \(\norm{\vetor{\x}}\to \infty\), segue que \(\phi_0(t) = 0.\) Ainda, 
+   \begin{equation*}
+      \nabla^2 \phi(\vetor{\x},t) = 4\pi C(t) \delta(\vetor{\x}) \implies C(t) = 0,
+   \end{equation*}
+   isto é, \(\phi(\vetor{\x}, t) = 0\) e concluímos que o potencial vetor satisfaz a equação de ondas homogênea \(\Box^2 \vetor{A} = \vetor{0}.\) Notemos que para qualquer vetor constante \(\vetor{A}_0,\) o potencial vetor \(\vetor{A} = \vetor{A}_0 e^{i(\vetor{k}\cdot \vetor{\x} - \omega t)}\) satisfaz a equação de onda desde que \(\omega = c\norm{\vetor{k}}.\) De fato, temos
+   \begin{equation*}
+      \nabla^2 \vetor{A} = \vetor{A}_0 \nabla^2 e^{i(\vetor{k}\cdot \vetor{\x} - \omega t)} = - \norm{\vetor{k}}^2 \vetor{A} = - \frac{\omega^2}{c^2} \vetor{A} = \frac{1}{c^2} \diffp[2]{\vetor{A}}{t} \implies \Box^2 \vetor{A} = 0.
+   \end{equation*}
+   Para os potenciais determinados, temos
+   \begin{equation*}
+      \vetor{E}(\vetor{\x},t) = i \omega \vetor{A}_0 e^{i(\vetor{k}\cdot\vetor{\x} - \omega t)}
+      \quad\text{e}\quad
+      \vetor{B}(\vetor{\x},t) = i \vetor{k} \times \vetor{A}_0 e^{i(\vetor{k}\cdot\vetor{\x} - \omega t)}
+   \end{equation*}
+   como as expressões dos campos.
 \end{proof}
