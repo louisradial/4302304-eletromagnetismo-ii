@@ -1,7 +1,53 @@
 % vim: spl=pt
+% \begin{lemma}{Integral do valor absoluto de funções trigonométricas}{ex6}
+%     Para \(x \in \mathbb{R}\) vale
+%     \begin{equation*}
+%        \int_0^x \dli{\xi} \abs{\sin\xi} = 1 - \cos\left(x - \pi \floor*{\frac{x}{\pi}}\right) + 2\floor*{\frac{x}{\pi}},
+%     \end{equation*}
+%     onde \(\floor{x}\) é a parte inteira de \(x,\) isto é, \(\floor{x}\) é o maior inteiro menor ou igual a \(x\).
+% \end{lemma}
+% \begin{proof}
+%    É fácil ver que \(\abs{\sin\xi}\) é \(\pi\)-periódica e que \(\int_0^\pi \dli{\xi} \abs{\sin\xi}= 2,\) portanto concluímos que \(\int_0^{m\pi} \dli{\xi} \abs{\sin\xi} = 2m\) para todo \(m \in \mathbb{Z}\). Dado \(x \in \mathbb{R},\) consideramos \(n_x = \floor*{\frac{x}{\pi}},\) de forma que \(x \in [n_x \pi, (n_x + 1)\pi]\). Assim,
+%    \begin{equation*}
+%       \int_{n_x \pi}^x \dli{\xi} \abs{\sin\xi} = \int_{0}^{x - n_x\pi} \dli\xi \abs{\sin\xi} = \int_0^{x - n_x \pi} \dli{\xi} \sin{\xi} = 1 - \cos\left(x - n_x \pi\right),
+%    \end{equation*}
+%    ou seja,
+%    \begin{equation*}
+%       \int_0^x \dli{\xi} \abs{\sin\xi} = \int_0^{n_x\pi} \dli{\xi} \abs{\sin\xi} + \int_{n_x\pi}^x \dli{\xi}\abs{\sin\xi} = 2n_x + 1 - \cos\left(x - n_x\pi\right),
+%    \end{equation*}
+%    como desejado.
+% \end{proof}
 \begin{exercício}{Potenciais no centro de um anel carregado girando}{ex6}
    Suponha que você tome um anel de plástico de raio \(a\) e cole nele uma carga, de forma que a densidade de carga seja \(\lambda(\varphi) = \lambda_0 \abs{\sin(\frac12 \varphi)},\) com \(\lambda_0\) constante. Em seguida, você põe a espira a girar em torno de seu próprio eixo de simetria com velocidade angular \(\omega\) constante. Encontre os potenciais escalar e vetorial no centro do anel.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   A densidade de carga em coordenadas cilíndricas é dada por 
+   \begin{equation*}
+      \rho(s, \varphi, z, t) = \lambda_0 \abs*{\sin\left(\frac{\varphi + \omega t}{2}\right)} \delta(s - a) \delta(z),
+   \end{equation*}
+   portanto a densidade de corrente é
+   \begin{equation*}
+      \vetor{J}(s, \varphi, z, t) = \rho(s, \varphi, z,t) \vetor{\omega} \times s \vetor{e}_s = \lambda_0 \omega a \abs*{\sin\left(\frac{\varphi + \omega t}{2}\right)} \delta(s - a) \delta(z) \vetor{e}_\varphi.
+   \end{equation*}
+   Assim, no centro do anel, temos
+   \begin{align*}
+      \phi(\vetor{0}, t) &= \frac{1}{4\pi \epsilon_0} \int_{\mathbb{R}^3} \dln3{\x'} \frac{\rho\left(\vetor{\x'}, t - \frac{\norm{\vetor{\x'}}}{c}\right)}{\norm{\vetor{\x'}}}\\
+                         &= \frac{\lambda_0}{4\pi \epsilon_0} \int_{0}^{2\pi}\dli{\varphi'} \abs*{\sin\left(\frac{\varphi' + \omega (t - \frac{a}{c})}{2}\right)}\\
+                         &= \frac{\lambda_0}{2\pi \epsilon_0} \int_{\frac12 \omega (t - \frac{a}{c})}^{\pi + \frac12 \omega (t - \frac{a}{c})} \dli{\xi} \underbrace{\abs{\sin\xi}}_{\pi\text{-periódico}}\\
+                         % &= \frac{\lambda_0}{2\pi \epsilon_0} \left[\int_{\frac12 \omega(t - \frac{a}{c})}^{\pi} \dli{\xi} \abs{\sin{\xi}} + \int_{\pi}^{\pi + \frac12 \omega(t - \frac{a}{c})} \dli{\xi} \abs{\sin\xi}\right]\\
+                         % &= \frac{\lambda_0}{2\pi \epsilon_0} \left[\int_{\frac12 \omega(t - \frac{a}{c})}^{\pi} \dli{\xi} \abs{\sin{\xi}} + \int_{0}^{\frac12 \omega(t - \frac{a}{c})} \dli{\xi} \abs*{\sin(\xi+\pi)}\right]\\
+                         % &= \frac{\lambda_0}{2\pi \epsilon_0} \left[\int_{\frac12 \omega(t - \frac{a}{c})}^{\pi} \dli{\xi} \abs{\sin{\xi}} + \int_{0}^{\frac12 \omega(t - \frac{a}{c})} \dli{\xi} \abs*{\sin\xi}\right]\\
+                         &= \frac{\lambda_0}{2\pi \epsilon_0} \int_0^{\pi} \dli{\xi} \abs{\sin\xi}\\
+                         &= \frac{\lambda_0}{\pi \epsilon_0}
+   \end{align*}
+   e
+   \begin{align*}
+      \vetor{A}(\vetor{0}, t) &= \frac{\mu_0}{4\pi}\int_{\mathbb{R}^3} \dln3{\x'} \frac{\vetor{J}\left(\vetor{\x}, t - \frac{\norm{\vetor{\x'}}}{c}\right)}{\norm{\vetor{\x'}}}\\
+                              &= \frac{\lambda_0 \omega a \mu_0}{4\pi} \int_0^{2\pi} \dli{\varphi'}\abs*{\sin\left(\frac{\varphi' + \omega(t - \frac{a}{c})}{2}\right)} \left[\cos\varphi'\vetor{e}_x + \sin\varphi' \vetor{e}_y\right]\\
+                              &= \frac{\lambda_0 \omega a \mu_0}{2\pi} \int_{\frac12 \omega(t - \frac{a}{c})}^{\pi + \frac12 \omega(t - \frac{a}{c})} \dli{\xi}\underbrace{\abs*{\sin\xi}}_{\pi\text{-periódico}} \left\{\underbrace{\cos\left[2 \xi - \omega\left(t - \frac{a}{c}\right)\right]}_{\pi\text{-periódico}}\vetor{e}_x + \underbrace{\sin\left[2 \xi - \omega\left(t - \frac{a}{c}\right)\right]}_{\pi\text{-periódico}}\vetor{e}_y\right\}\\
+                              &= \frac{\lambda_0 \omega a \mu_0}{2\pi} \int_{0}^{\pi} \dli{\xi}\abs*{\sin\xi} \left\{\cos\left[2 \xi - \omega\left(t - \frac{a}{c}\right)\right]\vetor{e}_x + \sin\left[2 \xi - \omega\left(t - \frac{a}{c}\right)\right]\vetor{e}_y\right\}\\
+                              &= \frac{\lambda_0 \omega a \mu_0}{2\pi}  \int_{0}^{\pi} \dli{\xi} \sin\xi \left\{\cos(\omega t_r)\left[\cos(2 \xi) \vetor{e}_x + \sin(2\xi) \vetor{e}_y \right] + \sin(\omega t_r)\left[\sin(2 \xi) \vetor{e}_x - \cos(2\xi) \vetor{e}_y \right]\right\}\\
+                              &= \frac{\lambda_0 \omega a \mu_0}{3\pi} \left[- \cos\left(\omega t - \frac{\omega a}{c}\right)\vetor{e}_x + \sin\left(\omega t - \frac{\omega a}{c}\right) \vetor{e}_y\right]
+   \end{align*}
+   como as expressões dos potenciais no gauge de Lorenz.
 \end{proof}
