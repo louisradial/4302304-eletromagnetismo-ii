@@ -3,5 +3,23 @@
    Considere um fio infinito de espessura desprezível por onde passa uma corrente elétrica que aumenta linearmente com o tempo após \(t > 0\), \(I(t) = kt\theta(t)\). Encontre os potenciais escalar e vetor em um ponto do espaço \(\vetor{\x}\) no instante \(t\). A partir dos potenciais, encontre os campos elétrico e magnético gerados, assim como a direção do vetor de Poynting.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Podemos tomar \(\vetor{\x} = s \vetor{e}_s\), por simetria de translação. Com isso, temos
+   \begin{align*}
+      \vetor{A}(\vetor{\x}, t) &= \frac{\mu_0}{4\pi} \int_{\mathbb{R}} \dli{z'} \frac{k \left(t - \frac1c\sqrt{s^2 + {z'}^2}\right) \theta\left(t - \frac1c\sqrt{s^2 + {z'}^2}\right)}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
+                               &= \frac{\mu_0 k}{4\pi} \int_{-\sqrt{(ct)^2 - s^2}}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{t - \frac1c \sqrt{s^2 + {z'}^2}}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
+                               &= -\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}\vetor{e}_z + \frac{\mu_0 kt}{2\pi} \int_{0}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{1}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
+                               &= -\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}\vetor{e}_z+ \frac{\mu_0 kt}{2\pi} \int_{0}^{\tan^{-1}\sqrt{\frac{(ct)^2}{s^2} - 1}} \dli{\xi} \sec\xi\vetor{e}_z\\
+                               &= -\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}\vetor{e}_z + \frac{\mu_0 kt}{2\pi} \ln\left[\sqrt{\frac{(ct)^2}{s^2} - 1} + \frac{c\abs{t}}{s}\right] \vetor{e}_z\\
+                               &= \frac{\mu_0 k}{2\pi c} \left[ct \ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right) - \sqrt{c^2 t^2 - s^2}\right] \vetor{e}_z,
+   \end{align*}
+   desde que \(s^2 < c^2 t^2.\) Dessa forma, como não há densidade de cargas, o potencial escalar é nulo e temos
+   \begin{equation*}
+      \vetor{E}(\vetor{\x}, t) = -\diffp{\vetor{A}(\vetor{\x}, t)}{t} = -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right)  + \frac{c^2 t^2}{c^2 t^2 - s^2 + c \abs{t}{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z
+   \end{equation*}
+   e
+   \begin{equation*}
+      \vetor{B}(\vetor{\x}, t) = -\diffp{\inner{\vetor{e}_z}{\vetor{A}(\vetor{\x}, t)}}{s}\vetor{e}_\varphi =  
+      -\frac{\mu_0 k}{2\pi c} \left[\frac{s}{\sqrt{c^2 t^2 - s^2}} - \frac{ct}{s} - \frac{s ct}{c^2 t^2  - s^2 + c \abs{t} \sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_\varphi
+   \end{equation*}
+   como as expressões para os campos. Assim, o vetor de Poynting tem sua direção dada por \(- \vetor{e}_s.\)
 \end{proof}
