@@ -16,5 +16,86 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-    
+   Aproveitando os resultados obtidos no \cref{ex:ex2}, os campos devido à partícula 1 são dados por
+   \begin{equation*}
+      \vetor{E}_1(\vetor{\x}, t) = \frac{q_1 \vetor{\x}}{4\pi \epsilon_0 \norm{\vetor{\x}^3}} 
+      \quad\text{e}\quad
+      \vetor{B}_1(\vetor{\x}, t) = \vetor{0}
+   \end{equation*}
+   e os campos devido à partícula 2, por
+   \begin{equation*}
+      \vetor{E}_2(\vetor{\x},t) = \frac{q_2 (\vetor{\x} - \vetor{v}t)}{4\pi \epsilon_0\gamma^2c^3 \left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac1{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac32}}
+   \end{equation*}
+   e
+   \begin{equation*}
+      \vetor{B}_2(\vetor{\x}, t) = \frac{q_2 \vetor{\beta} \times \vetor{\x}}{4\pi \epsilon_0 c^4 \gamma^2 \left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac32}}.
+   \end{equation*}
+   Assim, a força sobre a partícula 2, devido à partícula 1 é
+   \begin{equation*}
+      \vetor{F}_{2(1)} = q_2 \left[\vetor{E}_1(\vetor{\x}_2(t), t) + \dot{\vetor{\x}}_2(t) \times \vetor{B}_1(\vetor{\x}_2(t), t)\right] = \frac{q_1 q_2 \sgn(v t)}{4\pi \epsilon_0 (vt)^2}\vetor{e}_z
+   \end{equation*}
+   e a força sobre a partícula 1, devido à partícula 2 é
+   \begin{equation*}
+      \vetor{F}_{1(2)} = q_1 \left[\vetor{E}_2(\vetor{\x}_1(t), t) + \dot{\vetor{\x}}_1(t) \times \vetor{B}_2(\vetor{\x}_1(t), t)\right] = -\frac{q_1 q_2\sgn(vt)}{4\pi \epsilon_0 \gamma^2 (v t)^2} \vetor{e}_z.
+   \end{equation*}
+   Como
+   \begin{equation*}
+      \vetor{F}_{1(2)} + \vetor{F}_{2(1)} = \frac{q_1 q_2 \beta^2\sgn(vt)}{4 \pi \epsilon_0 (vt)^2}\vetor{e}_z
+   \end{equation*}
+   só se anula quando \(v = 0,\) a terceira Lei de Newton não se aplica.
+
+   Os campos totais são dados por \(\vetor{B}(\vetor{\x}, t) = \vetor{B}_2(\vetor{\x}, t)\) e por \(\vetor{E}(\vetor{\x},t) = \vetor{E}_1(\vetor{\x}, t) + \vetor{E}_2(\vetor{\x}, t)\) portanto o vetor de Poynting é dado por
+   \begin{equation*}
+      \vetor{S}(\vetor{\x}, t) 
+      = \frac{q_2\left[\frac{q_1\vetor{\x} }{\norm{\vetor{\x}}^3} + \frac{q_2(\vetor{\x} - \vetor{v}t) }{\gamma^2 c^3 \left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac32}}\right]\times (\vetor{\beta} \times \vetor{\x})}{(4\pi \epsilon_0)^2 \mu_0 c^4 \gamma^2 \left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac32}}.
+   \end{equation*}
+
+   Assim, temos
+   \begin{align*}
+      \diffp{\vetor{S}(\vetor{\x}, t)}{t} 
+      &=  \diffp*{ \left\{
+            \frac{q_1 \frac{\vetor{\x}}{\norm{\vetor{\x}}^3}}{\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac32}} +
+         \frac{q_2 (\vetor{\x} - \vetor{v} t)}{\gamma^2 c^3\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{3}} 
+   \right\}}{t}\times \frac{q_2 (\vetor{\beta} \times \vetor{\x})}{(4\pi c \gamma)^2 \epsilon_0}\\
+      &= \frac{q_2 (\vetor{\beta} \times \vetor{\x})}{(4\pi c \gamma)^2 \epsilon_0} \times \left\{
+         \frac{3q_1 \frac{\vetor{\x}}{\norm{\vetor{\x}}^3} \left(\beta^2 t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)}{\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac52}} +
+         \frac{q_2 \vetor{\beta}}{\gamma^2 c^2\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{3}}\right.\\
+      &{} \phantom{ = \frac{q_2 (\vetor{\beta} \times \vetor{\x})}{(4\pi c \gamma)^2 \epsilon_0} \times \, \frac{3q_1 \frac{\vetor{\x}}{\norm{\x}} \left(\beta^2 t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)}{\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac52}} +} + 
+      \left.\frac{6q_2 (\vetor{\x} - \vetor{v} t)\left(\beta^2 t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)}{\gamma^2 c^3\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{4}} \right\}\\
+      &= \frac{q_2}{(4\pi c \gamma)^2 \epsilon_0} \left\{
+         \frac{3q_1 \frac{(\vetor{\x} \cdot \vetor{\beta})\vetor{\x} - \norm{\vetor{\x}^2}\vetor{\beta}}{\norm{\vetor{\x}}^3} \left(\beta^2 t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)}{\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{\frac52}} +
+      \frac{q_2 \left[\beta^2 \vetor{\x} - (\vetor{\x} \cdot \vetor{\beta})\vetor{\beta}\right]}{\gamma^2 c^2\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{3}}\right.\\
+      &{} \phantom{=\frac{q_2}{(4\pi c \gamma)^2 \epsilon_0}\frac{q_2}{(4\pi c \gamma)^2 \epsilon_0}\frac{q_2}{(4\pi c \gamma)^2 \epsilon_0}}
+      -\left.\frac{6q_2 \left[(\beta^2 t - \vetor{\beta} \cdot\frac{\vetor{\x}}{c})\vetor{\x} + \left(\frac{\norm{\vetor{\x}}^2}{c} - \vetor{\x} \cdot \vetor{\beta} t\right)\vetor{\beta}\right]\left(\beta^2 t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)}{\gamma^2 c^2\left[\left(t - \frac{\vetor{\x}}{c} \cdot \vetor{\beta}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{\norm{\vetor{\x}}^2}{c^2}\right)\right]^{4}} \right\}
+   \end{align*}
+   portanto em coordenadas cilíndricas \(\vetor{\x} = s \vetor{e}_s + z \vetor{e}_z,\) obtemos
+   \begin{align*}
+      \diffp{\vetor{S}(\vetor{\x},t)}{t} 
+      &= \frac{q_2}{(4\pi c \gamma)^2 \epsilon_0} \left\{
+         \frac{3q_1 \frac{z \beta(s \vetor{e}_s +z\vetor{e}_z) - (s^2 + z^2)\beta \vetor{e}_z}{(z^2 + s^2)^{\frac32}} \left(\beta^2 t - \frac{z \beta}{c}\right)}{\left[\left(t - \frac{z \beta}{c}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{s^2 + z^2}{c^2}\right)\right]^{\frac52}} +
+      \frac{q_2 \left[\beta^2 (s \vetor{e}_s + z \vetor{e}_z) - \beta^2 z \vetor{e}_z\right]}{\gamma^2 c^2\left[\left(t - \frac{z \beta}{c}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{s^2 + z^2}{c^2}\right)\right]^{3}}\right.\\
+      &{} \phantom{=\frac{q_2}{(4\pi c \gamma)^2 \epsilon_0}\frac{q_2}{(4\pi c \gamma)^2 \epsilon_0}}
+      -\left.\frac{6q_2 \left[(\beta^2 t - \frac{z \beta}{c})(s \vetor{e}_s + z \vetor{e}_z) + \left(\frac{z^2 + s^2}{c}\beta - z \beta^2 t \right)\vetor{e}_z\right]\left(\beta^2 t - \frac{z \beta}{c}\right)}{\gamma^2 c^2\left[\left(t - \frac{z \beta}{c}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{s^2 + z^2}{c^2}\right)\right]^{4}} \right\}\\
+      &= \frac{q_2}{(4\pi c \gamma)^2 \epsilon_0} \left\{
+         \frac{3q_1 \frac{z \beta s \vetor{e}_s - \beta s^2 \vetor{e}_z}{(z^2 + s^2)^{\frac32}} \left(\beta^2 t - \frac{z \beta}{c}\right)}{\left[\left(t - \frac{z \beta}{c}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{s^2 + z^2}{c^2}\right)\right]^{\frac52}} +
+      \frac{q_2 \beta^2 s \vetor{e}_s}{\gamma^2 c^2\left[\left(t - \frac{z \beta}{c}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{s^2 + z^2}{c^2}\right)\right]^{3}}\right.\\
+      &{} \phantom{=\frac{q_2}{(4\pi c \gamma)^2 \epsilon_0}\frac{q_2}{(4\pi c \gamma)^2 \epsilon_0}}
+      -\left.\frac{6q_2 \left[\left(\beta^2 t - \frac{z \beta}{c}\right)s \vetor{e}_s + \frac{s^2}{c}\beta\vetor{e}_z \right]\left(\beta^2 t - \frac{z \beta}{c}\right)}{\gamma^2 c^2\left[\left(t - \frac{z \beta}{c}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{s^2 + z^2}{c^2}\right)\right]^{4}} \right\}.
+   \end{align*}
+   Notemos que os únicos termos com dependência no ângulo azimutal são os termos com \(\vetor{e}_s,\) e que, quando integrados em \([0,2\pi]\), se anulam, restando apenas os termos de componente \(\vetor{e}_z\) com um fator \(2\pi\). Além deste comentário, temos
+   \begin{equation*}
+      \left(t - \frac{z \beta}{c}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{s^2 + z^2}{c^2}\right) = \beta^2 t^2 + \frac{z^2}{c^2} - \frac{2 \beta z t}{c} - \frac{s^2}{\gamma^2 c^2} = \left(\beta t - \frac{z}{c}\right)^2 + \frac{s^2}{\gamma^2 c^2},
+   \end{equation*}
+   logo
+   \begin{align*}
+      \diff{\vetor{p}_\mathrm{EM}}{t} 
+      &= \mu_0 \epsilon_0 \int_{\mathbb{R}^3} \dln3\x \diffp{\vetor{S}(\vetor{\x}, t)}{t}\\
+      &= \frac{q_2 \mu_0 \vetor{e}_z}{8\pi (c \gamma)^2} \int_{0}^{\infty} s \dli{s} \int_{\mathbb{R}} \dli{z} \left\{
+      \frac{-3q_1 \frac{\beta^2 s^2}{(z^2 + s^2)^{\frac32}} \left(\beta t - \frac{z}{c}\right)}{\left[\left(\beta t - \frac{z}{c}\right)^2+ \frac{s^2}{\gamma^2c^2}\right]^{\frac52}}
+         -\frac{6q_2 \frac{s^2}{c} \beta^2\left(\beta t - \frac{z}{c}\right)}{\gamma^2 c^2\left[\left(\beta t - \frac{z}{c}\right)^2+ \frac{s^2}{\gamma^2c^2}\right]^{4}} \right\}\\
+      &= \frac{q_2 \mu_0 \vetor{e}_z}{8\pi c\gamma^2} \int_{0}^{\infty} s \dli{s} \int_{\mathbb{R}} \dli{\zeta} \left\{
+      \frac{3q_1 \frac{\beta^2 \zeta s^2}{[(c\zeta + \beta c t)^2 + s^2]^{\frac32}}}{\left(\zeta^2+ \frac{s^2}{\gamma^2c^2}\right)^{\frac52}}
+         +\frac{6q_2 \frac{s^2}{c} \beta^2 \zeta }{\gamma^2 c^2\left[\zeta^2+ \frac{s^2}{\gamma^2c^2}\right]^{4}} \right\}\\
+      &= \frac{3 q_1 q_2 \vetor{e}_z}{4\pi \epsilon_0 c^3\gamma^2} \int_{0}^{\infty} s \dli{s} \int_{0}^{\infty} \dli{\zeta} \frac{\beta^2 \zeta s^2}{\left[c^2(\zeta + \beta t)^2 + s^2\right]^{\frac32} \left(\zeta^2 + \frac{s^2}{\gamma^2 c^2}\right)^{\frac52}}
+   \end{align*}
 \end{proof}
