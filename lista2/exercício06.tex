@@ -65,15 +65,20 @@
         \psi(\vetor{\x}) &= -\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}}} e^{ikz} \int_{\mathbb{R}} \dli{x'} \int_{0}^\infty \dli{y'}e^{ik \frac{(x - x')^2 + (y - y')^2}{2z}}\\
                          &= -\frac{iz \psi_0 e^{ikz} \cos\theta_{\x}}{2\norm{\vetor{\x}}}  \int_{\mathbb{R}} \dli{\xi} \exp\left(i\frac{\pi}{2}\xi^2\right) \int_{-\sqrt{\frac{k}{\pi z}}y}^{\infty} \dli{\eta}\exp\left(i \frac{\pi}{2} \eta^2\right)\\
                          &= -\frac{i (1 + i)z^2 \psi_0 e^{ikz}}{2 \norm{\vetor{\x}}^2}  \left[\frac{1 + i}{2} + \int_{-\sqrt{\frac{k}{\pi z}}y}^0 \dli\eta \exp\left(i\frac{\pi}{2} \eta^2\right)\right]\\
-                         &= -\frac{i(1 + i)z^2 \psi_0 e^{ikz}}{2(x^2 + y^2 + z^2)}  \left[\frac{1 + i}{2} + F\left(\sqrt{\frac{k}{\pi{z}}}y\right)\right]\\
-                         &= \psi_0 e^{ikz} \frac{z^2}{2 (x^2 + y^2 + z^2)}\left[\frac12 + \frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi z}} y\right)\right]
+                         &= \frac{z^2 \psi_0 e^{ikz}}{\norm{\vetor{\x}}^2} \left[\frac{1}{2} + \frac{1-i}{2}F\left(\sqrt{\frac{k}{\pi{z}}}y\right)\right]\\
+                         % &= \psi_0 e^{ikz} \frac{z^2}{2 (x^2 + y^2 + z^2)}\left[\frac12 + \frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi z}} y\right)\right]\\
+                         % &= \Psi_0\left[\frac12 + \frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi z}} y\right)\right]
     \end{align*}
     e então a intensidade na tela em \(z = D\) é dada por
     \begin{align*}
         I(x,y) &= \abs{\psi(x\vetor{e}_x + y\vetor{e}_y + D \vetor{e}_z)}^2\\
-               &= \abs{\psi_0}^2 \frac{D^4}{4(x^2 + y^2 + D^2)^2} \abs*{\frac12 + \frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi D}} y\right)}^2\\
-               &= I_0 \frac{D^4}{4(x^2 + y^2 + D^2)^2} \left\{\frac14 + \frac12\abs*{F\left(\sqrt{\frac{k}{\pi z}} y\right)}^2 + \Re\left[\frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi z}} y\right)\right]\right\}\\
-               &= I_0 \frac{D^4}{4(x^2 + y^2 + D^2)^2} \left[\frac14 + \frac12\abs*{F\left(\sqrt{\frac{k}{\pi z}} y\right)}^2 + \frac12 C\left(\sqrt{\frac{k}{\pi z}} y\right) + \frac12 S\left(\sqrt{\frac{k}{\pi z}} y\right)\right].
+               &= \abs{\psi_0}^2 \frac{D^4}{(x^2 + y^2 + D^2)^2} \abs*{\frac12 + \frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi D}} y\right)}^2\\
+               &= I_0 \frac{D^4}{(x^2 + y^2 + D^2)^2} \left\{\frac14 + \frac12\abs*{F\left(\sqrt{\frac{k}{\pi z}} y\right)}^2 + \Re\left[\frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi z}} y\right)\right]\right\}\\
+               &= I_0 \frac{D^4}{(x^2 + y^2 + D^2)^2} \left[\frac14 + \frac12\abs*{F\left(\sqrt{\frac{k}{\pi z}} y\right)}^2 + \frac12 C\left(\sqrt{\frac{k}{\pi z}} y\right) + \frac12 S\left(\sqrt{\frac{k}{\pi z}} y\right)\right].
     \end{align*}
-    Notamos que \(I(x,0) = I_0\frac{D^4}{16(x^2 + D^2)^2}\) e que no limite \(y \to \pm\infty\) temos \(I(x,y) \to 0\).
+    Notamos que \(I(x,0) = I_0\frac{D^4}{4(x^2 + D^2)^2}\) e, portanto, \(I(0,0) = \frac14 I_0\). Consideramos os limites em que \(y \to \pm \infty\), mantendo constante o prefator \(c = \frac{D^4}{(x^2 + y^2 + D^2)^2}\), então
+    \begin{equation*}
+        \lim_{\substack{y \to \pm \infty\\c \text{ constante}}} I(x,y) = c I_0 \abs*{\frac12 + \frac{1 - i}{2} \left(\pm \frac{1 + i}{2}\right)}^2 = c I_0 \abs*{\frac12 \pm \frac12}^2 = \frac{(1 \pm 1)^2 c}{4}I_0,
+    \end{equation*}
+    isto é, \(I(y) \to 0\) quando \(y \to -\infty\) e \(I(y) \to I_0\) quando \(y \to \infty.\)
 \end{proof}
