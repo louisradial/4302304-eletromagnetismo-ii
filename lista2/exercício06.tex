@@ -76,9 +76,13 @@
                &= I_0 \frac{D^4}{(x^2 + y^2 + D^2)^2} \left\{\frac14 + \frac12\abs*{F\left(\sqrt{\frac{k}{\pi z}} y\right)}^2 + \Re\left[\frac{1 - i}{2} F\left(\sqrt{\frac{k}{\pi z}} y\right)\right]\right\}\\
                &= I_0 \frac{D^4}{(x^2 + y^2 + D^2)^2} \left[\frac14 + \frac12\abs*{F\left(\sqrt{\frac{k}{\pi z}} y\right)}^2 + \frac12 C\left(\sqrt{\frac{k}{\pi z}} y\right) + \frac12 S\left(\sqrt{\frac{k}{\pi z}} y\right)\right].
     \end{align*}
-    Notamos que \(I(x,0) = I_0\frac{D^4}{4(x^2 + D^2)^2}\) e, portanto, \(I(0,0) = \frac14 I_0\). Consideramos os limites em que \(y \to \pm \infty\), mantendo constante o prefator \(c = \frac{D^4}{(x^2 + y^2 + D^2)^2}\), então
+    A seguir, consideramos limites em que \(y \to \pm \infty\) e em que \(y \to 0\), mantendo constante o prefator \(c = \frac{D^4}{(x^2 + y^2 + D^2)^2}\), então 
+    \begin{equation*}
+        \lim_{\substack{y \to 0\\c\text{ constante}}}{I(x,y)} = c I_0 \abs*{\frac12 + \frac{1 - i}{2} F(0)}^2 = \frac14 cI_0
+    \end{equation*}
+    e
     \begin{equation*}
         \lim_{\substack{y \to \pm \infty\\c \text{ constante}}} I(x,y) = c I_0 \abs*{\frac12 + \frac{1 - i}{2} \left(\pm \frac{1 + i}{2}\right)}^2 = c I_0 \abs*{\frac12 \pm \frac12}^2 = \frac{(1 \pm 1)^2 c}{4}I_0,
     \end{equation*}
-    isto é, \(I(y) \to 0\) quando \(y \to -\infty\) e \(I(y) \to I_0\) quando \(y \to \infty.\)
+    isto é, \(I(y) \to 0\) quando \(y \to -\infty\) e \(I(y) \to c I_0\) quando \(y \to \infty.\)
 \end{proof}
