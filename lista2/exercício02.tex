@@ -32,14 +32,14 @@
                            &= \underbrace{-\frac{ik \psi_0 \cos\theta_{\x}}{2\pi \norm{\vetor{\x}} z_F} e^{ik(z_F + \norm{\vetor{\x}})}}_{\Psi_0} e^{- ik\alpha(A + d)j} \int_{-\frac{A}{2}}^{\frac{A}{2}} \dli{x'} \int_{-\frac{B}{2}}^{\frac{B}{2}} \dli{y'} e^{-ik (\alpha x' + \beta y')}\\
                            &= \Psi_0 e^{-ik\alpha(A + d)j} \left[\frac{e^{-ik \alpha x'}}{-ik \alpha}\right]_{-\frac{A}{2}}^{\frac{A}{2}} \left[\frac{e^{-ik \beta y'}}{-ik \beta}\right]_{-\frac{B}{2}}^{\frac{B}{2}}\\
                            &= e^{-ik\alpha(A + d)j} \Psi_0  \frac{e^{\frac12 ik \alpha A} - e^{-\frac12 ik \alpha A}}{ik \alpha}\frac{e^{\frac12 ik \beta B} - e^{-\frac12 ik \beta B}}{ik \beta}\\
-                           &= e^{-ik \alpha(A + d)j} \underbrace{4AB \Psi_0 \sinc\left(\frac12 k \alpha A\right) \sinc\left(\frac12 k \beta B\right)}_{\psi_0(\vetor{\x})}.
+                           &= e^{-ik \alpha(A + d)j} \underbrace{AB \Psi_0 \sinc\left(\frac12 k \alpha A\right) \sinc\left(\frac12 k \beta B\right)}_{\psi_0(\vetor{\x})}.
     \end{align*}
 
     Com este resultado, para \(N = 3,\) temos
     \begin{align*}
         \psi(\vetor{\x}) &= \sum_{j = -1}^1 e^{-ik \alpha(A + d)j} \psi_0(\vetor{\x})\\
                          &= \left\{1 + 2\cos\left[k\alpha(A + d)\right]\right\} \psi_0(\vetor{\x})\\
-                         &= 4 AB \Psi_0 \sinc\left(\frac12 k \alpha A\right)\sinc\left(\frac12 k \beta B\right) \left\{1 + 2\cos\left[k\alpha(A + d)\right]\right\}.
+                         &= AB \Psi_0 \sinc\left(\frac12 k \alpha A\right)\sinc\left(\frac12 k \beta B\right) \left\{1 + 2\cos\left[k\alpha(A + d)\right]\right\}.
     \end{align*}
     Para \(N = 2M + 1\) com \(M \in \mathbb{N}\), temos
     \begin{align*}
@@ -48,15 +48,15 @@
                          &= \frac{e^{ik \alpha (A + d) (M + \frac12)} - e^{-ik \alpha (A + d) (M + \frac12)}}{2i\sin\left[\frac12 k \alpha(A + d)\right]}\psi_0(\vetor{\x})\\
                          &= \frac{\sin\left[k \alpha (A + d) (M + \frac12)\right]}{\sin\left[\frac12 k \alpha (A + d)\right]} \psi_0(\vetor{\x})\\
                          &= \frac{N\sinc\left[\frac12 N k \alpha (A + d)\right]}{\sinc\left[\frac12 k \alpha (A + d)\right]} \psi_0(\vetor{\x})\\
-                         &= 4AB \Psi_0 \sinc\left(\frac12 k \alpha A\right) \sinc\left(\frac12 k \beta B\right)\frac{N\sinc\left[\frac12 N k \alpha (A + d)\right]}{\sinc\left[\frac12 k \alpha (A + d)\right]}.
+                         &= AB \Psi_0 \sinc\left(\frac12 k \alpha A\right) \sinc\left(\frac12 k \beta B\right)\frac{N\sinc\left[\frac12 N k \alpha (A + d)\right]}{\sinc\left[\frac12 k \alpha (A + d)\right]}.
     \end{align*}
     Tomando \(\norm{\vetor{\x}} \simeq D,\) temos \(\alpha = \frac{x}{D}\) e \(\beta = \frac{y}{D},\) portanto a expressão acima se torna
     \begin{equation*}
-        \psi(\vetor{\x}) = 4NAB \Psi_0 \sinc\left(\frac{k A x}{2 D}\right) \sinc\left(\frac{k B y}{2D}\right)\frac{\sinc\left[\frac{N k (A + d) x}{2D}\right]}{\sinc\left[\frac{k (A + d) x}{2D}\right]}.
+        \psi(\vetor{\x}) = NAB \Psi_0 \sinc\left(\frac{k A x}{2 D}\right) \sinc\left(\frac{k B y}{2D}\right)\frac{\sinc\left[\frac{N k (A + d) x}{2D}\right]}{\sinc\left[\frac{k (A + d) x}{2D}\right]}.
     \end{equation*}
     Assim,
     \begin{equation*}
-        I(\vetor{\x}) \propto 16 N^2 A^2B^2 \abs{\Psi_0}^2 \sinc^2\left(\frac{k A x}{2 D}\right) \sinc^2\left(\frac{k B y}{2D}\right)\frac{\sinc^2\left[\frac{N k (A + d) x}{2D}\right]}{\sinc^2\left[\frac{k (A + d) x}{2D}\right]}
+        I(\vetor{\x}) \propto N^2 A^2B^2 \abs{\Psi_0}^2 \sinc^2\left(\frac{k A x}{2 D}\right) \sinc^2\left(\frac{k B y}{2D}\right)\frac{\sinc^2\left[\frac{N k (A + d) x}{2D}\right]}{\sinc^2\left[\frac{k (A + d) x}{2D}\right]}
     \end{equation*}
     é a intensidade no anteparo.
 \end{proof}
