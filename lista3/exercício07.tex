@@ -16,9 +16,9 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-   Aproveitando os resultados obtidos no \cref{ex:ex2}, os campos devido à partícula 1 são dados por
+   Assumimos que \(v \neq 0\). Aproveitando os resultados obtidos no \cref{ex:ex2}, os campos devido à partícula 1 são dados por
    \begin{equation*}
-      \vetor{E}_1(\vetor{\x}, t) = \frac{q_1 \vetor{\x}}{4\pi \epsilon_0 \norm{\vetor{\x}^3}} 
+      \vetor{E}_1(\vetor{\x}, t) = \frac{q_1 \vetor{\x}}{4\pi \epsilon_0 \norm{\vetor{\x}}^3} 
       \quad\text{e}\quad
       \vetor{B}_1(\vetor{\x}, t) = \vetor{0}
    \end{equation*}
@@ -40,7 +40,7 @@
    \end{equation*}
    Como
    \begin{equation*}
-      \vetor{F}_{1(2)} + \vetor{F}_{2(1)} = \frac{q_1 q_2 \beta^2\sgn(vt)}{4 \pi \epsilon_0 (vt)^2}\vetor{e}_z
+      \vetor{F}_{1(2)} + \vetor{F}_{2(1)} = \frac{q_1 q_2 \beta^2\sgn(vt)}{4 \pi \epsilon_0 (vt)^2}\vetor{e}_z = \frac{q_1 q_2 \sgn(\beta t)}{4\pi \epsilon_0 (ct)^2} \vetor{e}_z
    \end{equation*}
    só se anula quando \(v = 0,\) a terceira Lei de Newton não se aplica.
 
@@ -86,7 +86,7 @@
    \begin{equation*}
       \left(t - \frac{z \beta}{c}\right)^2 - \frac{1}{\gamma^2} \left(t^2 - \frac{s^2 + z^2}{c^2}\right) = \beta^2 t^2 + \frac{z^2}{c^2} - \frac{2 \beta z t}{c} - \frac{s^2}{\gamma^2 c^2} = \left(\beta t - \frac{z}{c}\right)^2 + \frac{s^2}{\gamma^2 c^2},
    \end{equation*}
-   logo
+   logo, com a substituição \(z = c( \zeta + \beta t)\) vemos que
    \begin{align*}
       \diff{\vetor{p}_\mathrm{EM}}{t} 
       &= \mu_0 \epsilon_0 \int_{\mathbb{R}^3} \dln3\x \diffp{\vetor{S}(\vetor{\x}, t)}{t}\\
@@ -96,6 +96,15 @@
       &= \frac{q_2 \mu_0 \vetor{e}_z}{8\pi c\gamma^2} \int_{0}^{\infty} s \dli{s} \int_{\mathbb{R}} \dli{\zeta} \left\{
       \frac{3q_1 \frac{\beta^2 \zeta s^2}{[(c\zeta + \beta c t)^2 + s^2]^{\frac32}}}{\left(\zeta^2+ \frac{s^2}{\gamma^2c^2}\right)^{\frac52}}
          +\frac{6q_2 \frac{s^2}{c} \beta^2 \zeta }{\gamma^2 c^2\left[\zeta^2+ \frac{s^2}{\gamma^2c^2}\right]^{4}} \right\}\\
-      &= \frac{3 q_1 q_2 \vetor{e}_z}{4\pi \epsilon_0 c^3\gamma^2} \int_{0}^{\infty} s \dli{s} \int_{0}^{\infty} \dli{\zeta} \frac{\beta^2 \zeta s^2}{\left[c^2(\zeta + \beta t)^2 + s^2\right]^{\frac32} \left(\zeta^2 + \frac{s^2}{\gamma^2 c^2}\right)^{\frac52}}
+      &= \frac{3 q_1 q_2 \vetor{e}_z}{8\pi \epsilon_0 c^3\gamma^2} \int_{0}^{\infty} s \dli{s} \int_{\mathbb{R}} \dli{\zeta} \frac{\beta^2 \zeta s^2}{\left[c^2(\zeta + \beta t)^2 + s^2\right]^{\frac32} \left(\zeta^2 + \frac{s^2}{\gamma^2 c^2}\right)^{\frac52}},
    \end{align*}
+   onde o outro termo se anula por ser uma função ímpar em \(\zeta.\) Com o Mathematica, obtemos
+   \begin{equation*}
+      \int_{0}^{\infty} s \dli{s} \int_{\mathbb{R}} \dli{\zeta} \frac{\beta^2 \zeta s^2}{\left[c^2(\zeta + \beta t)^2 + s^2\right]^{\frac32} \left(\zeta^2 + \frac{s^2}{\gamma^2 c^2}\right)^{\frac52}} = -\frac{2 c \gamma^2 \sgn(\beta t)}{3 t^2},
+   \end{equation*}
+   portanto
+   \begin{equation*}
+      \diff{\vetor{p}_\mathrm{EM}}{t} = -\frac{q_1 q_2 \sgn(\beta t)}{4\pi \epsilon_0 c^2 t^2} \vetor{e}_z,
+   \end{equation*}
+   isto é, temos \(\diff{\vetor{p}_\mathrm{EM}}{t} + \vetor{F}_{1(2)}(t) + \vetor{F}_{2(1)}(t) = \vetor{0}.\)
 \end{proof}
