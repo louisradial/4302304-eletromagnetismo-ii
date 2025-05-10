@@ -13,9 +13,11 @@
                                &= \frac{\mu_0 k}{2\pi c} \left[ct \ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right) - \sqrt{c^2 t^2 - s^2}\right] \vetor{e}_z,
    \end{align*}
    desde que \(s^2 < c^2 t^2.\) Dessa forma, como não há densidade de cargas, o potencial escalar é nulo e temos
-   \begin{equation*}
-      \vetor{E}(\vetor{\x}, t) = -\diffp{\vetor{A}(\vetor{\x}, t)}{t} = -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right)  + \frac{c^2 t^2}{c^2 t^2 - s^2 + c \abs{t}{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z
-   \end{equation*}
+   \begin{align*}
+      \vetor{E}(\vetor{\x}, t) = -\diffp{\vetor{A}(\vetor{\x}, t)}{t} 
+      &= -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right)  + \frac{c^2 t^2 + c \abs{t} \sqrt{c^2 t^2 - s^2}}{c^2 t^2 - s^2 + c \abs{t}{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z\\
+      &= -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right) + 1 + \frac{s^2}{c^2 t^2 - s^2 + c \abs{t}{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z
+   \end{align*}
    e
    \begin{equation*}
       \vetor{B}(\vetor{\x}, t) = -\diffp{\inner{\vetor{e}_z}{\vetor{A}(\vetor{\x}, t)}}{s}\vetor{e}_\varphi =  
