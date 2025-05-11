@@ -16,7 +16,7 @@
    \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
-   Assumimos que \(v \neq 0\). Aproveitando os resultados obtidos no \cref{ex:ex2}, os campos devido à partícula 1 são dados por
+   Assumimos que \(vt \neq 0\). Aproveitando os resultados obtidos no \cref{ex:ex2}, os campos devido à partícula 1 são dados por
    \begin{equation*}
       \vetor{E}_1(\vetor{\x}, t) = \frac{q_1 \vetor{\x}}{4\pi \epsilon_0 \norm{\vetor{\x}}^3} 
       \quad\text{e}\quad
@@ -98,13 +98,57 @@
          +\frac{6q_2 \frac{s^2}{c} \beta^2 \zeta }{\gamma^2 c^2\left[\zeta^2+ \frac{s^2}{\gamma^2c^2}\right]^{4}} \right\}\\
       &= \frac{3 q_1 q_2 \vetor{e}_z}{8\pi \epsilon_0 c^3\gamma^2} \int_{0}^{\infty} s \dli{s} \int_{\mathbb{R}} \dli{\zeta} \frac{\beta^2 \zeta s^2}{\left[c^2(\zeta + \beta t)^2 + s^2\right]^{\frac32} \left(\zeta^2 + \frac{s^2}{\gamma^2 c^2}\right)^{\frac52}},
    \end{align*}
-   onde o outro termo se anula por ser uma função ímpar em \(\zeta.\) Com o Mathematica, obtemos
+   onde o outro termo se anula por ser uma função ímpar em \(\zeta.\) Fazendo \(\tau = c t\) e \(\zeta \to \frac1c \zeta\) para limpar a notação, temos
    \begin{equation*}
-      \int_{0}^{\infty} s \dli{s} \int_{\mathbb{R}} \dli{\zeta} \frac{\beta^2 \zeta s^2}{\left[c^2(\zeta + \beta t)^2 + s^2\right]^{\frac32} \left(\zeta^2 + \frac{s^2}{\gamma^2 c^2}\right)^{\frac52}} = -\frac{2 c \gamma^2 \sgn(\beta t)}{3 t^2},
+      \diff{\vetor{p}_{\mathrm{EM}}}{t} = \frac{3 q_1 q_2 \vetor{e}_z}{8\pi \epsilon_0 \gamma^2} \int_{0}^{\infty} \dli{s} \int_{\mathbb{R}} \dli{\zeta} \frac{\beta^2 \zeta s^3}{\left[(\zeta + \beta \tau)^2 + s^2\right]^{\frac32} \left(\zeta^2 + \frac{s^2}{\gamma^2}\right)^{\frac52}}.
+   \end{equation*}
+   Consideramos agora coordenadas polares, \(\zeta + \beta \tau = r \cos \theta\) e \(s = r \sin\theta,\) então notando que obtemos este integrando a partir de uma derivada temporal, temos
+   \begin{align*}
+      \diff{\vetor{p}_\mathrm{EM}}{t} &= \frac{3q_1 q_2 \beta^2\vetor{e}_z}{8\pi \epsilon_0 \gamma^2} \int_0^\infty \dli{r} \int_0^\pi r\dli{\theta} \frac{(r\cos\theta - \beta \tau) \sin^3\theta}{\left[(r\cos\theta - \beta \tau)^2 + (1 - \beta^2) r^2 \sin^2\theta \right]^{\frac52}}\\
+                                      &= \frac{q_1 q_2 \beta \vetor{e}_z}{8\pi \epsilon_0 \gamma^2} \diff*{\int_0^\infty \dli{r} \int_0^\pi\dli{\theta} \frac{r \sin^3\theta}{\left[(r \cos\theta - \beta \tau)^2 + (1 - \beta^2) r^2 \sin^2\theta\right]^{\frac32}}}{\tau}\\
+                                      &= \frac{q_1 q_2 \beta \vetor{e}_z}{8\pi \epsilon_0 \gamma^2} \diff*{\int_0^\infty \dli{r} \int_0^\pi\dli{\theta} \frac{r \sin^3\theta}{\left[(1 - \beta^2 \sin^2\theta) r^2 - 2 \beta \tau r \cos\theta + (\beta \tau)^2\right]^{\frac32}}}{\tau}.
+   \end{align*}
+   Notemos que \(f = (\beta \tau)^2,\) \(g = - \beta \tau \cos\theta\) e \(h = 1 - \beta^2 \sin^2\theta\) satisfazem as hipóteses do \cref{lem:integral}, portanto a integral sobre \(r\) se resolve segundo aquele resultado. Assim, continuamos a integral sobre \(\theta\) manipulando a expressão encontrada e substituindo \(u = \cos\theta,\)
+   \begin{align*}
+      \diff{\vetor{p}_\mathrm{EM}}{t} &= \frac{q_1 q_2 \beta \vetor{e}_z}{8\pi \epsilon_0 \gamma^2} \diff*{\int_0^\pi\dli{\theta} \sin^3\theta \frac{\beta \tau \cos\theta + \abs{ \beta \tau} \sqrt{1 - \beta^2 \sin^2 \theta}}{(\beta \tau)^2 (1 - \beta^2) \sin^2\theta\sqrt{1 - \beta^2 \sin^2 \theta}}}{\tau}\\
+                                      &=\frac{q_1 q_2 \beta \vetor{e}_z}{8\pi \epsilon_0 \gamma^2} \diff*{\int_0^\pi\dli{\theta} \frac{\gamma^2\sin^3\theta}{\beta \tau \sin^2\theta}\left[\sgn(\beta \tau) + \frac{\cos\theta}{\sqrt{1 - \beta^2 \sin^2\theta}}\right]}{\tau}\\
+                                      &= \frac{q_1 q_2 \beta \vetor{e}_z}{8\pi \epsilon_0} \diff*{\left\{\frac{1}{\beta \tau}\int_{-1}^1 \dli{u} \left[\sgn(\beta \tau)+ \frac{u}{\sqrt{1 - \beta^2 ( 1 - u^2)}}\right]\right\}}{\tau}\\
+                                      &= \frac{q_1 q_2 \beta \vetor{e}_z}{4\pi \epsilon_0} \diff*{\frac{\sgn(\beta \tau)}{\beta \tau}}{\tau},
+   \end{align*}
+   onde a integral do outro termo se anula por ter um integrando ímpar. Por fim, para \(\beta \tau \neq 0\), a derivada de \(\sgn(\beta \tau)\) é nula, portanto
+   \begin{equation*}
+      \diff{\vetor{p}_\mathrm{EM}}{t} = -\frac{q_1 q_2 \sgn(\beta \tau)\vetor{e}_z}{4\pi \epsilon_0 \tau^2} = - \frac{q_1q_2 \sgn(\beta t)}{4\pi \epsilon_0 c^2 t^2} \vetor{e}_z
    \end{equation*}
    portanto
    \begin{equation*}
       \diff{\vetor{p}_\mathrm{EM}}{t} = -\frac{q_1 q_2 \sgn(\beta t)}{4\pi \epsilon_0 c^2 t^2} \vetor{e}_z,
    \end{equation*}
    isto é, temos \(\diff{\vetor{p}_\mathrm{EM}}{t} + \vetor{F}_{1(2)}(t) + \vetor{F}_{2(1)}(t) = \vetor{0}.\)
+\end{proof}
+
+\begin{lemma}{Integral racional quadrática}{integral}
+    Para \(f > 0, h > 0\) e \(g^2 < fh,\) com \(g \in \mathbb{R}\), temos
+    \begin{equation*}
+       \int_0^\infty \dli{x} \frac{x}{(f + 2gx + hx^2)^{\frac32}} = \frac{\sqrt{fh} - g}{ f\sqrt{h} \left(h - \frac{g^2}{f}\right)}.
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+   Observemos que
+   \begin{equation*}
+      a + 2gx + hx^2 = h \left(x^2 + 2\frac{g}{h} x + \frac{f}{h}\right) = h \left[\left(x + \frac{g}{h}\right)^2 + \frac{fh - g^2}{h^2}\right],
+   \end{equation*}
+   portanto
+   \begin{align*}
+      \int_0^\infty \dli{x} \frac{x}{(f + 2gx + hx^2)^{\frac32}} 
+      &= \frac{1}{h^{\frac32}} \int_{\frac{g}{h}}^\infty \dli{x}\frac{x - \frac{g}{h}}{\left(x^2 + \frac{fh - g^2}{h^2}\right)^{\frac32}}\\
+      &= \frac{1}{2h^{\frac32}} \int_{\frac{f}{h}}^{\infty} \dli{u} u^{-\frac32} - \frac{g}{h^{\frac52}} \int_{\frac{g}{h}}^\infty \dli{x}\frac{1}{\left(x^2 + \frac{fh - g^2}{h^2}\right)^{\frac32}}\\
+      &= \frac{1}{h \sqrt{f}} - \frac{g}{h^{\frac52}}\int_{\tan^{-1}\left(\frac{g}{\sqrt{fh - g^2}}\right)}^{\frac\pi2} \dli{\psi} \frac{\frac{\sqrt{fh - g^2}}{h}\sec^2\psi}{\left(\frac{fh - g^2}{h^2}\right)^{\frac32} \sec^3 \psi}\\
+      &= \frac{1}{h\sqrt{f}} - \frac{g}{\sqrt{h} (fh - g^2)} \left[\sin\frac{\pi}{2} - \sin \tan^{-1} \left(\frac{g}{\sqrt{fh - g^2}}\right)\right]\\
+      &= \frac{1}{h\sqrt{f}} - \frac{g}{\sqrt{h} (fh - g^2)} \left(1 - \frac{g}{\sqrt{fh}}\right)\\
+      &= \frac{1}{h\sqrt{f}} - \frac{g}{\sqrt{h} (fh - g^2)} \frac{\sqrt{fh} - g}{\sqrt{fh}}\\
+      &= \frac{1}{f \sqrt{h}}\frac{\sqrt{f}}{\sqrt{h}} \left[1 - \frac{g (\sqrt{fh} - g)}{fh - g^2}\right]\\
+      &= \frac{1}{\sqrt{h}} \left[\frac{\sqrt{fh} - g}{fh - g^2}\right]\\
+      &=\frac{\sqrt{fh} - g}{ f\sqrt{h} \left(h - \frac{g^2}{f}\right)},
+   \end{align*}
+   como desejado.
 \end{proof}
