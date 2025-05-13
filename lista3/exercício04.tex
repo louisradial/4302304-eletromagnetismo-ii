@@ -6,22 +6,27 @@
    Podemos tomar \(\vetor{\x} = s \vetor{e}_s\), por simetria de translação. Com isso, temos
    \begin{align*}
       \vetor{A}(\vetor{\x}, t) &= \frac{\mu_0}{4\pi} \int_{\mathbb{R}} \dli{z'} \frac{k \left(t - \frac1c\sqrt{s^2 + {z'}^2}\right) \theta\left(t - \frac1c\sqrt{s^2 + {z'}^2}\right)}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
-                               &= \frac{\mu_0 k}{4\pi} \int_{-\sqrt{(ct)^2 - s^2}}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{t - \frac1c \sqrt{s^2 + {z'}^2}}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
-                               &= -\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}\vetor{e}_z + \frac{\mu_0 kt}{2\pi} \int_{0}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{1}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
-                               &= -\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}\vetor{e}_z+ \frac{\mu_0 kt}{2\pi} \int_{0}^{\tan^{-1}\sqrt{\frac{(ct)^2}{s^2} - 1}} \dli{\xi} \sec\xi\vetor{e}_z\\
-                               &= -\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}\vetor{e}_z + \frac{\mu_0 kt}{2\pi} \ln\left[\sqrt{\frac{(ct)^2}{s^2} - 1} + \frac{c\abs{t}}{s}\right] \vetor{e}_z\\
-                               &= \frac{\mu_0 k}{2\pi c} \left[ct \ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right) - \sqrt{c^2 t^2 - s^2}\right] \vetor{e}_z,
+                               &= \frac{\mu_0 k}{4\pi} \theta(t) \theta(ct - s)\int_{-\sqrt{(ct)^2 - s^2}}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{t - \frac1c \sqrt{s^2 + {z'}^2}}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
+                               &= \left[-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c} + \frac{\mu_0 kt}{2\pi} \int_{0}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{1}{\sqrt{s^2 + {z'}^2}}\right]\theta(ct - s)\vetor{e}_z\\
+                               &= \left[-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}+ \frac{\mu_0 kt}{2\pi} \int_{0}^{\tan^{-1}\sqrt{\frac{(ct)^2}{s^2} - 1}} \dli{\xi} \sec\xi\right]\theta(ct - s)\vetor{e}_z\\
+                               &= \left\{-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}+ \frac{\mu_0 kt}{2\pi} \ln\left[\sqrt{\frac{(ct)^2}{s^2} - 1} + \frac{c\abs{t}}{s}\right]\right\} \theta(ct - s)\vetor{e}_z\\
+                               &= \frac{\mu_0 k}{2\pi c} \left[ct \ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c t}{s}\right) - \sqrt{c^2 t^2 - s^2}\right]\theta(ct - s)\vetor{e}_z.
    \end{align*}
-   desde que \(s^2 < c^2 t^2.\) Dessa forma, como não há densidade de cargas, o potencial escalar é nulo e temos
+   Notemos que como \(\vetor{A}\) se anula para \(ct = s,\) o termo com \(\delta(ct - s),\) que aparece nas derivadas de \(\vetor{A},\) se anula, portanto podemos apenas assumir \(ct > s\) e não denotar \(\theta(ct - s)\) nas expressões que seguem e apenas assumir que \(ct > s\). Como não há densidade de cargas, o potencial escalar é nulo e, portanto, temos
    \begin{align*}
-      \vetor{E}(\vetor{\x}, t) = -\diffp{\vetor{A}(\vetor{\x}, t)}{t} 
-      &= -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right)  + \frac{c^2 t^2 + c \abs{t} \sqrt{c^2 t^2 - s^2}}{c^2 t^2 - s^2 + c \abs{t}{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z\\
-      &= -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c \abs{t}}{s}\right) + 1 + \frac{s^2}{c^2 t^2 - s^2 + c \abs{t}{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z
+      \vetor{E}(\vetor{\x}, t) &= -\diffp{\vetor{A}(\vetor{\x}, t)}{t}\\
+      &= -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c t}{s}\right)  + \frac{c^2 t^2 + c t \sqrt{c^2 t^2 - s^2}}{c^2 t^2 - s^2 + c t{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z\\
+      &= -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c t}{s}\right) + 1 + \frac{s^2}{c^2 t^2 - s^2 + c t{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z\\
+      &= - \frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c t}{s}\right) + 1 - \frac{c^2 t^2 - s^2 - ct \sqrt{c^2 t^2 - s^2}}{c^2 t^2 - s^2} - \frac{ct\sqrt{c^2 t^2 - s^2}}{c^2 t^2 - s^2}\right]\vetor{e}_z\\
+      &= - \frac{\mu_0 k}{2\pi} \ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c t}{s}\right)\vetor{e}_z
    \end{align*}
    e
-   \begin{equation*}
-      \vetor{B}(\vetor{\x}, t) = -\diffp{\inner{\vetor{e}_z}{\vetor{A}(\vetor{\x}, t)}}{s}\vetor{e}_\varphi =  
-      -\frac{\mu_0 k}{2\pi c} \left[\frac{s}{\sqrt{c^2 t^2 - s^2}} - \frac{ct}{s} - \frac{s ct}{c^2 t^2  - s^2 + c \abs{t} \sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_\varphi
-   \end{equation*}
-   como as expressões para os campos. Assim, o vetor de Poynting tem sua direção dada por \(- \vetor{e}_s.\)
+   \begin{align*}
+      \vetor{B}(\vetor{\x}, t) &= -\diffp{\inner{\vetor{e}_z}{\vetor{A}(\vetor{\x}, t)}}{s}\vetor{e}_\varphi\\
+      &=  -\frac{\mu_0 k}{2\pi c} \left[\frac{s}{\sqrt{c^2 t^2 - s^2}} - \frac{ct}{s} - \frac{s ct}{c^2 t^2  - s^2 + c t \sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_\varphi\\
+      &=-\frac{\mu_0 k}{2\pi c} \left[\frac{s\sqrt{c^2 t^2 - s^2}}{c^2 t^2 - s^2} - \frac{ct}{s} + \frac{s ct(c^2 t^2 - s^2 - ct \sqrt{c^2 t^2 - s^2})}{(c^2 t^2  - s^2)s^2}\right] \vetor{e}_\varphi\\
+      &=-\frac{\mu_0 k}{2\pi c} \left[\frac{s\sqrt{c^2 t^2 - s^2}}{c^2 t^2 - s^2} - \frac{c^2 t^2\sqrt{c^2 t^2 - s^2})}{(c^2 t^2  - s^2)s}\right] \vetor{e}_\varphi\\
+      &= \frac{\mu_0 k}{2\pi c} \left(\frac{\sqrt{c^2 t^2 - s^2}}{s}\right)\vetor{e}_\varphi
+   \end{align*}
+   como as expressões para os campos. Assim, o vetor de Poynting tem sua direção dada por \(\vetor{e}_s.\)
 \end{proof}
