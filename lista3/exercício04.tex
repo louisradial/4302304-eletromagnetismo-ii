@@ -3,16 +3,22 @@
    Considere um fio infinito de espessura desprezível por onde passa uma corrente elétrica que aumenta linearmente com o tempo após \(t > 0\), \(I(t) = kt\theta(t)\). Encontre os potenciais escalar e vetor em um ponto do espaço \(\vetor{\x}\) no instante \(t\). A partir dos potenciais, encontre os campos elétrico e magnético gerados, assim como a direção do vetor de Poynting.
 \end{exercício}
 \begin{proof}[Resolução]
-   Podemos tomar \(\vetor{\x} = s \vetor{e}_s\), por simetria de translação. Com isso, temos
+   Podemos tomar \(\vetor{\x} = s \vetor{e}_s\), por simetria de translação. Notemos que
+   \begin{align*}
+      t - \frac1c\sqrt{s^2 + {z'}^2} > 0 &\iff t > 0 \land c^2 t^2 > s^2 + {z'}^2\\
+      &\iff \abs{z'} < \sqrt{(ct)^2 - s^2} \land t > 0 \land (ct)^2 - s^2 > 0\\
+                                         &\iff \abs{z'} < \sqrt{(ct)^2 - s^2} \land ct > s.
+   \end{align*}
+   Com isso, temos
    \begin{align*}
       \vetor{A}(\vetor{\x}, t) &= \frac{\mu_0}{4\pi} \int_{\mathbb{R}} \dli{z'} \frac{k \left(t - \frac1c\sqrt{s^2 + {z'}^2}\right) \theta\left(t - \frac1c\sqrt{s^2 + {z'}^2}\right)}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
-                               &= \frac{\mu_0 k}{4\pi} \theta(t) \theta(ct - s)\int_{-\sqrt{(ct)^2 - s^2}}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{t - \frac1c \sqrt{s^2 + {z'}^2}}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
-                               &= \left[-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c} + \frac{\mu_0 kt}{2\pi} \int_{0}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{1}{\sqrt{s^2 + {z'}^2}}\right]\theta(ct - s)\vetor{e}_z\\
-                               &= \left[-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}+ \frac{\mu_0 kt}{2\pi} \int_{0}^{\tan^{-1}\sqrt{\frac{(ct)^2}{s^2} - 1}} \dli{\xi} \sec\xi\right]\theta(ct - s)\vetor{e}_z\\
-                               &= \left\{-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}+ \frac{\mu_0 kt}{2\pi} \ln\left[\sqrt{\frac{(ct)^2}{s^2} - 1} + \frac{c\abs{t}}{s}\right]\right\} \theta(ct - s)\vetor{e}_z\\
-                               &= \frac{\mu_0 k}{2\pi c} \left[ct \ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c t}{s}\right) - \sqrt{c^2 t^2 - s^2}\right]\theta(ct - s)\vetor{e}_z.
+                               &= \frac{\mu_0 k}{4\pi} \theta\left(t - \frac{s}c\right)\int_{-\sqrt{(ct)^2 - s^2}}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{t - \frac1c \sqrt{s^2 + {z'}^2}}{\sqrt{s^2 + {z'}^2}}\vetor{e}_z\\
+                               &= \left[-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c} + \frac{\mu_0 kt}{2\pi} \int_{0}^{\sqrt{(ct)^2 - s^2}} \dli{z'} \frac{1}{\sqrt{s^2 + {z'}^2}}\right]\theta\left(t - \frac{s}{c}\right)\vetor{e}_z\\
+                               &= \left[-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}+ \frac{\mu_0 kt}{2\pi} \int_{0}^{\tan^{-1}\sqrt{\frac{(ct)^2}{s^2} - 1}} \dli{\xi} \sec\xi\right]\theta\left(t - \frac{s}{c}\right)\vetor{e}_z\\
+                               &= \left\{-\frac{\mu_0 k\sqrt{(ct)^2 - s^2}}{2\pi c}+ \frac{\mu_0 kt}{2\pi} \ln\left[\sqrt{\frac{(ct)^2}{s^2} - 1} + \frac{c\abs{t}}{s}\right]\right\} \theta\left(t - \frac{s}{c}\right)\vetor{e}_z\\
+                               &= \frac{\mu_0 k}{2\pi c} \left[ct \ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c t}{s}\right) - \sqrt{c^2 t^2 - s^2}\right]\theta\left(t - \frac{s}{c}\right)\vetor{e}_z.
    \end{align*}
-   Notemos que como \(\vetor{A}\) se anula para \(ct = s,\) o termo com \(\delta(ct - s),\) que aparece nas derivadas de \(\vetor{A},\) se anula, portanto podemos apenas assumir \(ct > s\) e não denotar \(\theta(ct - s)\) nas expressões que seguem e apenas assumir que \(ct > s\). Como não há densidade de cargas, o potencial escalar é nulo e, portanto, temos
+   Notemos que como \(\vetor{A}\) se anula para \(ct = s,\) o termo com \(\delta(ct - s),\) que aparece nas derivadas de \(\vetor{A},\) se anula, portanto podemos apenas assumir \(ct > s\) e não denotar \(\theta(ct - s)\) nas expressões que seguem e apenas assumir que \(ct > s,\) entendendo que os campos se anulam para \(ct < s\). Como não há densidade de cargas, o potencial escalar é nulo e, portanto, temos
    \begin{align*}
       \vetor{E}(\vetor{\x}, t) &= -\diffp{\vetor{A}(\vetor{\x}, t)}{t}\\
       &= -\frac{\mu_0 k}{2\pi} \left[\ln\left(\frac{\sqrt{c^2 t^2 - s^2} + c t}{s}\right)  + \frac{c^2 t^2 + c t \sqrt{c^2 t^2 - s^2}}{c^2 t^2 - s^2 + c t{\sqrt{c^2 t^2 - s^2}}} - \frac{c t}{\sqrt{c^2 t^2 - s^2}}\right] \vetor{e}_z\\
