@@ -1,0 +1,14 @@
+% vim: spl=pt
+\begin{exercício}{Distribuição de fótons emitidos por radiação Cherenkov}{ex8}
+    No contexto da radiação Cherenkov, a perda de energia por unidade de comprimento percorrido é dada por
+    \begin{equation*}
+        \diff{E_\mathrm{rad}}{x_q} = \frac{q^2}{4\pi \epsilon_0 c^2} \int_{\beta^2 \epsilon(\omega) > 1} \dli{\omega}\omega\left(1 - \frac{1}{\beta^2 \epsilon(\omega)}\right),
+    \end{equation*}
+    expressão conhecida como fórmula de Frank-Tamm. Quanticamente, a energia perdida por radiação eletromagnética em uma faixa de frequência entre \(\omega\) e \(\omega + \dl{\omega}\) é dada por \(\hbar \omega \dl{N},\) em que \(\dl{N}\) é o número de fótons emitidos. Deduza, a partir de uma análise da expressão de Frank-Tamm, uma expressão para o número total de fótons emitidos com comprimentos de onda entre \(\lambda_1\) e \(\lambda_2,\) com \(\lambda_2 > \lambda_1,\) por unidade de comprimento percorrido.
+\end{exercício}
+\begin{proof}[Resolução]
+    Escrevendo \(q = Ze,\) e usando a constante de estrutura fina \(\alpha = \frac{e^2}{4\pi \epsilon_0 \hbar c},\) a fórmula de Frank-Tamm pode ser reescrita como
+    \begin{equation*}
+        \diff{E_\mathrm{rad}}{x_q} = \frac{\hbar \alpha Z^2}{c} \int_{\beta^2 \epsilon(\omega) > 1} \dli{\omega}\omega\left(1 - \frac{1}{\beta^2 \epsilon(\omega)}\right).
+    \end{equation*}
+\end{proof}
