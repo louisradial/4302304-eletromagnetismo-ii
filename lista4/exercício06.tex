@@ -7,5 +7,36 @@
     para velocidades ultra-relativísticas.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Para \(\vetor{a} \times \vetor{\beta} = \vetor{0},\) temos
+    \begin{equation*}
+        \diff{P_{\mathrm{rad}}(\tr)}{\Omega} = \frac{\mu_0 q^2 c a^2}{16 \pi^2}\left[\frac{\sin^2\theta}{(1 - \beta \cos\theta)^5}\right].
+    \end{equation*}
+    Assim, como
+    \begin{equation*}
+        \diff*{\left[\frac{1 - u^2}{(1 - \beta u)^5}\right]}{u} = \frac{-2u (1 - \beta u)^5 + 5 \beta(1 - u^2) (1 - \beta u)^4}{(1 - \beta u)^{10}} = -\frac{3 \beta u^2 + 2u - 5 \beta}{(1 - \beta u)^6},
+    \end{equation*}
+    obtemos
+    % \begin{equation*}
+    %     \diffp*{\diff{P_\mathrm{rad}(\tr)}{\Omega}}{\theta} = \frac{\mu_0 q^2 c a^2}{16 \pi^2}\left[\frac{3 \beta \cos^2\theta + 2\cos\theta - 5 \beta}{(1 - \beta \cos\theta)^6}\right]\sin\theta.
+    % \end{equation*}
+    \begin{equation*}
+        \diffp*{\diff{P_\mathrm{rad}(\tr)}{\Omega}}{\theta}[\theta = \theta_{\mathrm{max}}] = 0 \implies \theta_{\mathrm{max}} \in \set{0,\pi} \lor 3 \beta \cos^2\theta_{\mathrm{max}} + 2\cos\theta_{\mathrm{max}} - 5 \beta = 0,
+    \end{equation*}
+    e descartamos \(\theta_{\mathrm{max}} \in \set{0, \pi}\) uma vez que para estes valores a potência irradiada por unidade de ângulo sólido se anula. Notemos que para \(\beta = 0\) teríamos \(\theta_{\mathrm{max}} = \frac{\pi}{2},\) portanto, mesmo que esta solução não tenha sentido físico, devemos buscar a solução da equação que recupera esta resposta no limite \(\beta \to 0,\) por continuidade. A solução para \(\beta \neq 0\) se dá por
+    \begin{equation*}
+        \cos\theta_{\mathrm{max}} = \frac{-1 \pm \sqrt{1 + 15 \beta^2}}{3\beta},
+    \end{equation*}
+    portanto como o sinal negativo diverge no limite \(\beta \to 0,\) obtemos
+    \begin{equation*}
+        \cos \theta_{\mathrm{max}} = \frac{\sqrt{1 + 15 \beta^2} - 1}{3\beta} = \frac{5 \beta}{1 + \sqrt{1 + 15 \beta^2}},
+    \end{equation*}
+    que concorda continuamente com a solução para \(\beta = 0.\) Da última expressão, vemos que o sinal de \(\cos\theta_{\mathrm{max}}\) concorda com o sinal de \(\beta,\) portanto podemos assumir \(\beta > 0\) sem perda de generalidade. Escrevendo \(1 - \gamma^{-2} = \beta^2,\) temos no limite \(\abs{\beta} \to 1\) que \(\gamma \to \infty\) e então
+    \begin{equation*}
+        \cos\theta_{\mathrm{max}} = \frac{4\sqrt{1 - \frac{15}{16 \gamma^2}} - 1}{3\sqrt{1 - \gamma^{-2}}} \simeq \frac{1 - \frac{5}{8 \gamma^2}}{1 - \frac{1}{2 \gamma^2}} \simeq \left(1 - \frac{5}{8 \gamma^2}\right)\left(1 + \frac{1}{2 \gamma^2}\right) = 1 - \frac{1}{8 \gamma^2} + O(\gamma^{-4}).
+    \end{equation*}
+    Disso, vemos que \(\cos\theta_{\mathrm{max}} \sim 1,\) logo podemos expandir \(\cos\theta_{\mathrm{max}} = 1 - \frac12 \theta_{\mathrm{max}}^2 + O(\theta_{\mathrm{max}}^4),\) concluindo que 
+    \begin{equation*}
+        \theta_{\mathrm{max}}^2 = \frac{1}{4 \gamma^2} = \frac{1 - \beta^2}{4} = \frac{(1 + \beta)(1 - \beta)}{4} \simeq \frac{1 - \beta}{2} \implies \theta_{\mathrm{max}} = \sqrt{\frac{1 - \beta}{2}}
+    \end{equation*}
+    é o ângulo de emissão máxima.
 \end{proof}
