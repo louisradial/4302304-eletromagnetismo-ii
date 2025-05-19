@@ -3,5 +3,27 @@
     Um anel circular de raio \(b\) feito de material isolante encontra-se no plano \(xy\), centrado na origem. O anel possui densidade linear de carga \(\lambda(\varphi) = \lambda_0 \sin \varphi,\) onde \(\lambda_0\) é uma constante real e \(\varphi\) é o ângulo azimutal. O anel é posto a girar com velocidade angular constante \(\omega\) em torno do eixo \(z.\) Calcule a potência irradiada.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Utilizando notação complexa, temos \(\lambda(\varphi, t) = \lambda_0 e^{i(\varphi - \omega t)},\) com a parte imaginária correspondendo à densidade linear de carga real. A dependência temporal das funções de interesse são da forma \(f(\vetor{\x}, t) = f(\vetor{\x}) e^{-i\omega t},\) portanto determinaremos apenas as dependências espaciais. O momento de dipolo elétrico é dado por
+    \begin{equation*}
+        \vetor{p} = \int_{0}^{2\pi} b \dli{\varphi} (b \vetor{e}_\varphi) \lambda(\varphi) = b^2 \lambda_0 \int_0^{2\pi} \dli{\varphi} \left(\frac{1 - e^{2i \varphi}}{2i}\vetor{e}_x + \frac{e^{2i\varphi} + 1}{2}\right) = \sqrt{2}b^2 \pi \lambda_0 \frac{-i\vetor{e}_x + \vetor{e}_y}{\sqrt{2}}
+    \end{equation*}
+    e o momento de dipolo magnético é dado por
+    \begin{equation*}
+        \vetor{m} = \frac12 \int_0^{2\pi} \dli{\varphi} (b\vetor{e}_\varphi) \times (\vetor{\omega} \times b \vetor{e}_\varphi) \lambda(\varphi) = \frac12 b^2\lambda_0\vetor{\omega} \int_0^{2\pi} \dli{\varphi}e^{i\varphi} = \vetor{0}.
+    \end{equation*}
+    Escrevendo \(\vetor{n} = \frac{\vetor{\x}}{\norm{\vetor{\x}}},\) temos
+    \begin{align*}
+        \norm*{\frac{\vetor{\x}}{\norm{\vetor{\x}}} \times \vetor{p}}^2 
+        &= (\epsilon_{ijk} n_i \conj{p}_j \vetor{e}_k) \cdot (\epsilon_{abc} n_a p_b \vetor{e}_c)\\
+        &= \epsilon_{ijk}\epsilon_{kab} n_i \conj{p}_j n_a p_b\\
+        &= \norm{\vetor{n}}^2 \norm{\vetor{p}}^2 - (\vetor{n} \cdot \conj{\vetor{p}}) (\vetor{n} \cdot \vetor{p})\\
+        &= \norm{\vetor{p}}^2 - \abs{\vetor{n} \cdot \vetor{p}}^2\\
+        &= \norm{\vetor{p}}^2\left(1 - n_1^2 - n_2^2\right)\\
+        &= \norm{\vetor{p}}^2 \cos^2\theta,
+    \end{align*}
+    portanto
+    \begin{equation*}
+        P_{\mathrm{rad}} = \int\dln2\x \frac{\mu_0 \omega^4}{32 \pi^2 c} \norm*{\frac{\vetor{\x}}{\norm{\vetor{\x}}} \times \vetor{p}}^2 = \frac{\mu_0 \omega^4(\sqrt{2}b^2 \pi \lambda_0)^2}{16\pi c} \int_{-1}^{1} \dli{(\cos\theta)} \cos^2\theta = \frac{\mu_0 \pi \omega^4 b^4 \lambda_0^2}{12 c}
+    \end{equation*}
+    é a potência irradiada.
 \end{proof}
