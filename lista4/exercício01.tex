@@ -18,12 +18,12 @@
         &= \epsilon_{ijk}\epsilon_{kab} n_i \conj{p}_j n_a p_b\\
         &= \norm{\vetor{n}}^2 \norm{\vetor{p}}^2 - (\vetor{n} \cdot \conj{\vetor{p}}) (\vetor{n} \cdot \vetor{p})\\
         &= \norm{\vetor{p}}^2 - \abs{\vetor{n} \cdot \vetor{p}}^2\\
-        &= \norm{\vetor{p}}^2\left(1 - n_1^2 - n_2^2\right)\\
-        &= \norm{\vetor{p}}^2 \cos^2\theta,
+        &= \norm{\vetor{p}}^2\left[1 - \frac12(n_1^2 + n_2^2)\right]\\
+        &= \frac12\norm{\vetor{p}}^2 (1 + \cos^2\theta),
     \end{align*}
     portanto
     \begin{equation*}
-        P_{\mathrm{rad}} = \int\dln2\x \frac{\mu_0 \omega^4}{32 \pi^2 c} \norm*{\frac{\vetor{\x}}{\norm{\vetor{\x}}} \times \vetor{p}}^2 = \frac{\mu_0 \omega^4(\sqrt{2}b^2 \pi \lambda_0)^2}{16\pi c} \int_{-1}^{1} \dli{(\cos\theta)} \cos^2\theta = \frac{\mu_0 \pi \omega^4 b^4 \lambda_0^2}{12 c}
+        P_{\mathrm{rad}} = \int\dln2\x \frac{\mu_0 \omega^4}{32 \pi^2 c} \norm*{\frac{\vetor{\x}}{\norm{\vetor{\x}}} \times \vetor{p}}^2 = \frac{\mu_0 \omega^4(b^2 \pi \lambda_0)^2}{16\pi c} \int_{-1}^{1} \dli{(\cos\theta)} (1+\cos^2\theta) = \frac{\mu_0 \pi \omega^4 b^4 \lambda_0^2}{6 c}
     \end{equation*}
     é a potência irradiada.
 \end{proof}
