@@ -3,63 +3,61 @@
    Considere a incidência de feixe não polarizado de luz monocromática de frequência \(\omega\)  sobre uma pequena esfera perfeitamente condutora (isto é, assumindo o limite de condutividade infinita) de raio \(a,\) com \(a \ll \lambda.\) Obtenha a seção de choque diferencial integrada sobre todas as polarizações espalhadas e em seguida calcule a seção de choque integral. Obtenha a função de polarização \(\Pi(\theta)\) para o problema e determine o ângulo para o qual esta função assume seu valor máximo.
 \end{exercício}
 \begin{proof}[Resolução]
-   Vamos considerar o problema auxiliar da esfera perfeitamente condutora na presença dos campos constantes \(\vetor{E}_0 = E_0\vetor{e}_x\) e \(\vetor{B}_0 = B_0\vetor{e}_y.\) No interior do condutor temos \(\vetor{E} = 0,\) portanto \(\diffp{\vetor{B}}{t} = 0\) e então obtemos \(\diffp{\vetor{J}}{t} = 0\) ao tomar a derivada temporal da equação de Ampère-Maxwell. \todo[Podemos então escrever \(H = - \nabla\psi\) e \(\vetor{E} = - \nabla \phi\) com \(\psi\) e \(\phi\) satisfazendo a equação de Laplace dentro e fora da esfera.] Como estes potenciais escalares são bem definidos na origem e são simétricos em relação aos eixos \(\vetor{e}_x\) e \(\vetor{e}_y,\) respectivamente, temos
+   Vamos considerar o problema auxiliar da esfera perfeitamente condutora na presença dos campos constantes \(\vetor{E}_0 = E_0\vetor{e}_x\) e \(\vetor{B}_0 = B_0\vetor{e}_y.\) No interior do condutor temos \(\vetor{E} = 0\) e, por ser um condutor perfeito, temos \(\vetor{B} = 0\) pois o campo magnético não penetra o condutor no limite \(\sigma \to \infty\). Como os campos são estáticos e como não há correntes livres, temos \(\nabla \times \vetor{E} = 0\) e \(\nabla \times \vetor{H} = 0\) em todo espaço, exceto na superfície esférica. Podemos, então, escrever \(\vetor{E} = -\nabla \phi\) e \(\vetor{H} = -\nabla\psi,\) já que as regiões interior e exterior à superfície esférica são simplesmente conexas. Como não há cargas nessas regiões, o potencial \(\phi\) satisfaz a equação de Laplace em todo espaço, exceto na superfície condutora. Como o condutor é uma equipotencial para o potencial \(\phi\) e como o campo elétrico externo impõe simetria azimutal em relação ao seu eixo, podemos escrever
    \begin{equation*}
       \phi(r,\theta_x) = \begin{cases}
          \phi_0,&\text{se }r \leq a\\
-         \sum_{\ell = 0}^\infty \left(A_\ell r^\ell + \frac{B_\ell}{r^{\ell + 1}}\right)P_\ell(\cos\theta_x),&\text{se }r > a
+         \sum_{\ell = 0}^\infty \left(A_\ell r^\ell + \frac{B_\ell}{r^{\ell + 1}}\right)P_\ell(\cos\theta_x),&\text{se }r > a,
       \end{cases}
    \end{equation*}
-   e
+   onde \(r\cos\theta_x = x.\) Como não há magnetização no exterior da esfera, o potencial escalar \(\psi\) satisfaz a equação de Laplace para \(r > a\) e é simétrico em relação ao eixo definido pelo campo magnético externo, portanto nessa região podemos escrever
    \begin{equation*}
-      \psi(r,\theta_y) = \begin{cases}
-         \sum_{\ell = 0}^\infty \alpha_\ell r^\ell P_\ell(\cos\theta_y),&\text{se }r \leq a\\
-         \sum_{\ell = 0}^\infty \left(\beta_\ell r^\ell + \frac{\gamma_\ell}{r^{\ell + 1}}\right)P_\ell(\cos\theta_y),&\text{se }r > a.
-      \end{cases}
-   \end{equation*}
-   Os potenciais escalares são contínuos em \(r = a,\) portanto
-   \begin{equation*}
-      A_\ell a^{2\ell + 1} + B_\ell = a\phi_0 \delta_{\ell 0}
-      \quad\text{e}\quad
-      (\alpha_\ell - \beta_\ell )a^{2\ell + 1} = \gamma_\ell.
+      \psi(r,\theta_y) = \sum_{\ell = 0}^\infty \left(\alpha_\ell r^\ell + \frac{\beta_\ell}{r^{\ell + 1}}\right)P_\ell(\cos\theta_y)
    \end{equation*}
    No limite \(r \gg a,\) devemos ter \(\phi(r, \theta_x) = -E_0r\cos\theta_x\) e \(\psi(r,\theta_y) = - \frac{B_0}{\mu_0} r\cos\theta_y,\) portanto 
    \begin{equation*}
       A_\ell = -E_0\delta_{\ell 1}
       \quad\text{e}\quad
-      \beta_\ell = - \frac{B_0}{\mu_0} \delta_{\ell 1}.
+      \alpha_\ell = - \frac{B_0}{\mu_0} \delta_{\ell 1}.
    \end{equation*}
-   Por enquanto determinamos que
+   O potencial \(\phi\) é contínuo em \(r = a,\) então
+   \begin{equation*}
+      A_\ell a^{2\ell + 1} + B_\ell = a\phi_0 \delta_{\ell 0},
+   \end{equation*}
+   isto é,
    \begin{equation*}
       \phi(r,\theta_x) = \begin{cases}
          \phi_0,&\text{se }r \leq a\\
-         \frac{a\phi_0}{r} + E_0\left(\frac{a^3}{r^2} - r\right)\cos\theta_x,&\text{se }r > a,
+         \frac{a\phi_0}{r} + E_0\left(\frac{a^3}{r^2} - r\right)\cos\theta_x,&\text{se }r > a.
       \end{cases}
    \end{equation*}
-   e notamos que os termos com \(\phi_0\) seriam determinados com a carga total da esfera, portanto podemos considerar apenas o termo com dependência em \(E_0,\) identificando o momento de dipolo elétrico
+   Como \(\vetor{B} = 0\) no interior do condutor, temos da condição de contorno 
+   \begin{equation*}
+      \inner{\vetor{n}}{\vetor{H}_\mathrm{fora} - \vetor{H}_\mathrm{dentro}} = \inner{\vetor{n}}{\vetor{M}_\mathrm{dentro} - \vetor{M}_\mathrm{fora}}
+   \end{equation*}
+   que \(\diffp{\psi}{r}[r = a^+] = 0,\) uma vez que \(\vetor{M}_\mathrm{dentro} = - \vetor{H}_\mathrm{dentro}\) e \(\vetor{M}_\mathrm{fora} = 0,\) portanto
+   \begin{equation*}
+      -\frac{B_0}{\mu_0} \delta_{\ell 1} = \frac{(\ell + 1) \beta_\ell}{a^{\ell + 2}} \implies \beta_\ell = -\frac{B_0a^3}{2\mu_0} \delta_{\ell 1},
+   \end{equation*}
+   e concluímos que
+   \begin{equation*}
+      \psi(r,\theta_y) = -\frac{B_0}{\mu_0} \left(r + \frac{a^3}{2r^2}\right) \cos\theta_y,
+   \end{equation*}
+   sempre que \(r \geq a.\)
+   Como o campo de um dipolo elétrico é dado por \(\frac{\vetor{p} \cdot \vetor{\x}}{4\pi \epsilon_0 \norm{\vetor{\x}}^3}\), identificando o momento de dipolo elétrico
    \begin{equation*}
       \vetor{p} = 4\pi \epsilon_0 E_0 a^3 \vetor{e}_x
    \end{equation*}
-   a partir do termo \(\frac{B_1}{r^2}.\) Como \(\vetor{B} = 0\) dentro do condutor, temos \(\vetor{H} = -\vetor{M}\) nesta região, portanto
-   \begin{align*}
-      \diffp{\psi}{n}[r =  a^+] - \diffp{\psi}{n}[r = a^-] = \vetor{M}_\mathrm{in} \cdot \vetor{n} 
-      &\implies -\frac{B_0}{\mu_0}\cos\theta_y - \sum_{\ell = 0}^\infty \frac{(\ell + 1) \gamma_\ell}{a^{\ell + 2}}P_\ell(\cos\theta_y) = 0\\
-      &\implies \gamma_\ell = -\frac{a^3 B_0}{2\mu_0} \delta_{\ell 1}.
-   \end{align*}
-   Disso, concluímos que \(\alpha_\ell = \gamma_\ell a^{-(2\ell + 1)}+ \beta_\ell = -\frac{3B_0}{2\mu_0}\delta_{\ell 1},\) logo
+   a partir do termo \(\frac{B_1}{r^2}.\) Podemos escrever o potencial escalar para \(\vetor{H}\) como \(\psi(\vetor{\x}) = -\frac{B_0}{\mu_0}\left(\vetor{\x}\cdot\vetor{e}_y + \frac{a^3 \vetor{e}_y \cdot \vetor{\x}}{2\norm{\vetor{\x}}^3}\right)\), portanto o campo \(\vetor{H}\) é dado por
    \begin{equation*}
-       \psi(r, \theta_y) = \begin{cases}
-          -\frac{3 B_0}{2 \mu_0} r\cos\theta_y,&\text{se }r \leq a\\
-          -\frac{B_0}{\mu_0}\left(r + \frac{a^3}{2 r^2}\right)\cos\theta_y,&\text{se }r > a
-       \end{cases}
+   \vetor{H}(\vetor{\x}) = \frac{B_0}{\mu_0}\vetor{e}_y - \frac{a^3 B_0}{2\mu_0}\frac{3\left(\vetor{e}_y \cdot \frac{\vetor{\x}}{\norm{\vetor{\x}}}\right)\frac{\vetor{\x}}{\norm{\vetor{\x}}}-\vetor{e}_y}{\norm{\vetor{\x}}^3} 
    \end{equation*}
    e identificamos o dipolo magnético
    \begin{equation*}
-      \vetor{m} = - 2\pi a^3 B_0 \vetor{e}_y
+      \vetor{m} = - \frac{2\pi a^3 B_0}{\mu_0}\vetor{e}_y = - 2\pi a^3 \epsilon_0 c^2 a^3 B_0 \vetor{e}_y.
    \end{equation*}
-   a partir do termo \(\frac{\gamma_1}{r^2}.\)
 
-   Para os campos incidentes \(\vetor{E} = E_0 e^{i(kz - \omega t)} \vetor{\epsilon}_\mathrm{in}\) e \(\vetor{B} = \frac{1}{c} E_0 e^{i(k z - \omega t)} \vetor{e}_3 \times \vetor{\epsilon}_{\mathrm{in}},\) temos os dipolos elétrico e magnético
+   Para os campos incidentes \(\vetor{E} = E_0 e^{i(kz - \omega t)} \vetor{\epsilon}_\mathrm{in}\) e \(\vetor{B} = \frac{1}{c} E_0 e^{i(k z - \omega t)} \vetor{e}_3 \times \vetor{\epsilon}_{\mathrm{in}},\) podemos considerar no limite \(\lambda \gg a\) que esses campos são uniformes na região da esfera condutora e que o a resposta no regime estacionária será oscilatória de tal sorte que a dependência temporal seja da forma \(e^{-i \omega t}.\) Podemos então utilizar os resultados do problema auxiliar, portando consideramos os dipolos elétrico e magnético
    \begin{equation*}
       \vetor{p} = 4\pi \epsilon_0 a^3 E_0 \vetor{\epsilon}_{\mathrm{in}}\quad\text{e}\quad
       \vetor{m} = - 2\pi \epsilon_0 ca^3 E_0 \vetor{e}_3 \times \vetor{\epsilon}_\mathrm{in}.
