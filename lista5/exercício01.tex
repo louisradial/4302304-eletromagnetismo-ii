@@ -1,0 +1,44 @@
+% vim: spl=pt
+\begin{exercício}{O raio clássico do elétron}{ex1}
+   Uma maneira de se estimar teoricamente o raio clássico do elétron é considerar o problema do espalhamento de uma onda plana monocromática por um elétron, que por sua vez pode ser modelado como uma pequena partícula esférica carregada, de carga \(-e\) e raio \(r_e,\) problema conhecido como \emph{espalhamento Thomson.} Supondo que \(r_e\) é muitíssimo menor que \(\lambda,\) de forma que o elétron pode, para fins práticos, ser considerado aproximadamente pontual num \emph{primeiro momento}, obtenha a seção de choque diferencial e integral do espalhamento, e mostre que \(\sigma\) não depende de \(\omega.\) Em seguida, compare \(\sigma\) com \(\pi r_e^2\) e obtenha uma expressão para o raio clássico do elétron, apresentando também um valor numérico para essa quantidade.
+\end{exercício}
+\begin{proof}[Resolução]
+   Para campos \(\vetor{E} = E_0 e^{i(kz - \omega t)}\vetor{e}_x\) e \(\vetor{B} = \frac{1}{c}E_0 e^{i(kz - \omega t)}\vetor{e}_y\), temos a equação de movimento
+   \begin{equation*}
+      m \ddot{\vetor{x}} = -e\left(\vetor{E} + \dot{\vetor{x}}\times \vetor{B}\right) = -e E_0\left(\vetor{e}_x + \frac{\dot{\vetor{x}}}{c} \times \vetor{e}_y\right)e^{i(kz - \omega t)},
+   \end{equation*}
+   desprezando efeitos de reação de radiação. Considerando velocidades não relativísticas, \(\norm{\dot{\vetor{x}}} \ll c,\) desconsideramos a interação com o campo magnético frente à interação de Coulomb, então \(\ddot{y} = \ddot{z} = 0.\) Assumimos que o elétron está em repouso em \(t = 0\) e na origem do sistemas de coordenadas nesse instante, então podemos considerar os fatores \(e^{ikz} = 0,\) nesta aproximação. Integrando a equação de movimento duas vezes obtemos
+   \begin{equation*}
+      \dot{\vetor{x}}(t) = -\frac{e E_0}{m}\vetor{e}_x \int_0^t \dli{t'} e^{-i \omega t'} = \frac{e E_0}{i \omega m} \left(e^{-i \omega t} - 1\right)\vetor{e}_x
+   \end{equation*}
+   e
+   \begin{equation*}
+      \vetor{x}(t) = \int_0^t \dli{t'} \dot{\vetor{x}}(t') =  \frac{e E_0}{m \omega^2}\left[e^{-i\omega t} +  \left(i \omega t - 1\right)\right]\vetor{e}_x.
+   \end{equation*}
+
+   Vamos tratar então o espalhamento Thomson como o espalhamento do dipolo oscilante da forma \(\sim -e \vetor{x}(t)\) dado por
+   \begin{equation*}
+      \vetor{p}(t) = \vetor{p} e^{-i \omega t} =  -\frac{e^2 E_0}{m \omega^2} e^{-i \omega t}\vetor{\epsilon}_\mathrm{in}
+   \end{equation*}
+   para uma onda incidente na direção \(\vetor{\epsilon}_\mathrm{in}.\) Vamos escrever \(\vetor{\epsilon}_{\mathrm{in}} = \cos \alpha \vetor{e}_1 + \sin \alpha \vetor{e}_2,\) com \(\vetor{k}_{\mathrm{in}} = k \vetor{e}_3,\) e consideramos uma onda espalhada na direção de observação \(\vetor{n} = \cos\theta \vetor{e}_3 + \sin\theta \vetor{e}_2\). Para a polarização perpendicular ao plano de espalhamento, \(\vetor{\epsilon}_{\perp} = \vetor{e}_1,\) temos
+   \begin{equation*}
+      \diff{\sigma_{\perp}}{\Omega} = \frac{\mu_0^2 c^4 k^4}{16 \pi^2 E_0^2}\mean{\abs{\vetor{\epsilon}_{\perp}^* \cdot \vetor{p}}^2}_{\alpha} = \frac{\mu_0^2 e^4}{16 \pi^2 m^2} \mean{\cos^2 \alpha}_\alpha = \frac12\left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2
+   \end{equation*}
+   e para a polarização paralela ao plano de espalhamento, \(\vetor{\epsilon}_\parallel = \vetor{e}_1 \times \vetor{n},\) temos
+   \begin{equation*}
+      \diff{\sigma_{\parallel}}{\Omega} = \frac{\mu_0^2 c^4 k^4}{16 \pi^2 E_0^2}\mean{\abs{\vetor{\epsilon}_{\parallel}^* \cdot \vetor{p}}^2}_{\alpha} = \left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2 \cos^2\theta \mean{\sin^2 \alpha}_\alpha = \frac12\left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2 \cos^2\theta.
+   \end{equation*}
+   Assim, a seção de choque diferencial é dada por
+   \begin{equation*}
+      \diff{\sigma}{\Omega} = \left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2 \frac{1 + \cos^2\theta}{2},
+   \end{equation*}
+   que não depende da frequência da onda incidente. Integrando, obtemos a seção de choque total
+   \begin{equation*}
+      \sigma = \int_{-1}^1 \dli{(\cos\theta)} \int_0^{2\pi} \dli{\varphi} \left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2 \frac{1 + \cos^2\theta}{2} = \frac{8\pi}{3} \left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2.
+   \end{equation*}
+   Comparando a seção de choque total, com dimensão de área, com \(\pi r_e^2,\) encontramos
+   \begin{equation*}
+      r_e = \sqrt{\frac{8}{3}} \left(\frac{e^2}{4\pi \epsilon_0 mc^2}\right) = \SI{7.515}{\femto\meter}
+   \end{equation*}
+   como o raio clássico do elétron\footnote{Na literatura, entretanto, chamam a constante \(\frac{e^2}{4\pi \epsilon_0 mc^2}\) de raio clássico do elétron.}.
+\end{proof}
