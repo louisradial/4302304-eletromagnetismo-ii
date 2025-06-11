@@ -1,0 +1,105 @@
+% vim: spl=pt
+\begin{exercício}{Espalhamento por esfera perfeitamente condutora}{ex3}
+   Considere a incidência de feixe não polarizado de luz monocromática de frequência \(\omega\)  sobre uma pequena esfera perfeitamente condutora (isto é, assumindo o limite de condutividade infinita) de raio \(a,\) com \(a \ll \lambda.\) Obtenha a seção de choque diferencial integrada sobre todas as polarizações espalhadas e em seguida calcule a seção de choque integral. Obtenha a função de polarização \(\Pi(\theta)\) para o problema e determine o ângulo para o qual esta função assume seu valor máximo.
+\end{exercício}
+\begin{proof}[Resolução]
+   Vamos considerar o problema auxiliar da esfera perfeitamente condutora na presença dos campos constantes \(\vetor{E}_0 = E_0\vetor{e}_x\) e \(\vetor{B}_0 = B_0\vetor{e}_y.\) No interior do condutor temos \(\vetor{E} = 0,\) portanto \(\diffp{\vetor{B}}{t} = 0\) e então obtemos \(\diffp{\vetor{J}}{t} = 0\) ao tomar a derivada temporal da equação de Ampère-Maxwell. \todo[Podemos então escrever \(H = - \nabla\psi\) e \(\vetor{E} = - \nabla \phi\) com \(\psi\) e \(\phi\) satisfazendo a equação de Laplace dentro e fora da esfera.] Como estes potenciais escalares são bem definidos na origem e são simétricos em relação aos eixos \(\vetor{e}_x\) e \(\vetor{e}_y,\) respectivamente, temos
+   \begin{equation*}
+      \phi(r,\theta_x) = \begin{cases}
+         \phi_0,&\text{se }r \leq a\\
+         \sum_{\ell = 0}^\infty \left(A_\ell r^\ell + \frac{B_\ell}{r^{\ell + 1}}\right)P_\ell(\cos\theta_x),&\text{se }r > a
+      \end{cases}
+   \end{equation*}
+   e
+   \begin{equation*}
+      \psi(r,\theta_y) = \begin{cases}
+         \sum_{\ell = 0}^\infty \alpha_\ell r^\ell P_\ell(\cos\theta_y),&\text{se }r \leq a\\
+         \sum_{\ell = 0}^\infty \left(\beta_\ell r^\ell + \frac{\gamma_\ell}{r^{\ell + 1}}\right)P_\ell(\cos\theta_y),&\text{se }r > a.
+      \end{cases}
+   \end{equation*}
+   Os potenciais escalares são contínuos em \(r = a,\) portanto
+   \begin{equation*}
+      A_\ell a^{2\ell + 1} + B_\ell = a\phi_0 \delta_{\ell 0}
+      \quad\text{e}\quad
+      (\alpha_\ell - \beta_\ell )a^{2\ell + 1} = \gamma_\ell.
+   \end{equation*}
+   No limite \(r \gg a,\) devemos ter \(\phi(r, \theta_x) = -E_0r\cos\theta_x\) e \(\psi(r,\theta_y) = - \frac{B_0}{\mu_0} r\cos\theta_y,\) portanto 
+   \begin{equation*}
+      A_\ell = -E_0\delta_{\ell 1}
+      \quad\text{e}\quad
+      \beta_\ell = - \frac{B_0}{\mu_0} \delta_{\ell 1}.
+   \end{equation*}
+   Por enquanto determinamos que
+   \begin{equation*}
+      \phi(r,\theta_x) = \begin{cases}
+         \phi_0,&\text{se }r \leq a\\
+         \frac{a\phi_0}{r} + E_0\left(\frac{a^3}{r^2} - r\right)\cos\theta_x,&\text{se }r > a,
+      \end{cases}
+   \end{equation*}
+   e notamos que os termos com \(\phi_0\) seriam determinados com a carga total da esfera, portanto podemos considerar apenas o termo com dependência em \(E_0,\) identificando o momento de dipolo elétrico
+   \begin{equation*}
+      \vetor{p} = 4\pi \epsilon_0 E_0 a^3 \vetor{e}_x
+   \end{equation*}
+   a partir do termo \(\frac{B_1}{r^2}.\) Como \(\vetor{B} = 0\) dentro do condutor, temos \(\vetor{H} = -\vetor{M}\) nesta região, portanto
+   \begin{align*}
+      \diffp{\psi}{n}[r =  a^+] - \diffp{\psi}{n}[r = a^-] = \vetor{M}_\mathrm{in} \cdot \vetor{n} 
+      &\implies -\frac{B_0}{\mu_0}\cos\theta_y - \sum_{\ell = 0}^\infty \frac{(\ell + 1) \gamma_\ell}{a^{\ell + 2}}P_\ell(\cos\theta_y) = 0\\
+      &\implies \gamma_\ell = -\frac{a^3 B_0}{2\mu_0} \delta_{\ell 1}.
+   \end{align*}
+   Disso, concluímos que \(\alpha_\ell = \gamma_\ell a^{-(2\ell + 1)}+ \beta_\ell = -\frac{3B_0}{2\mu_0}\delta_{\ell 1},\) logo
+   \begin{equation*}
+       \psi(r, \theta_y) = \begin{cases}
+          -\frac{3 B_0}{2 \mu_0} r\cos\theta_y,&\text{se }r \leq a\\
+          -\frac{B_0}{\mu_0}\left(r + \frac{a^3}{2 r^2}\right)\cos\theta_y,&\text{se }r > a
+       \end{cases}
+   \end{equation*}
+   e identificamos o dipolo magnético
+   \begin{equation*}
+      \vetor{m} = - 2\pi a^3 B_0 \vetor{e}_y
+   \end{equation*}
+   a partir do termo \(\frac{\gamma_1}{r^2}.\)
+
+   Para os campos incidentes \(\vetor{E} = E_0 e^{i(kz - \omega t)} \vetor{\epsilon}_\mathrm{in}\) e \(\vetor{B} = \frac{1}{c} E_0 e^{i(k z - \omega t)} \vetor{e}_3 \times \vetor{\epsilon}_{\mathrm{in}},\) temos os dipolos elétrico e magnético
+   \begin{equation*}
+      \vetor{p} = 4\pi \epsilon_0 a^3 E_0 \vetor{\epsilon}_{\mathrm{in}}\quad\text{e}\quad
+      \vetor{m} = - 2\pi \epsilon_0 ca^3 E_0 \vetor{e}_3 \times \vetor{\epsilon}_\mathrm{in}.
+   \end{equation*}
+   Vamos escrever \(\vetor{\epsilon}_{\mathrm{in}} = \cos \alpha \vetor{e}_1 + \sin \alpha \vetor{e}_2,\) com \(\vetor{k}_{\mathrm{in}} = k \vetor{e}_3,\) e consideramos uma onda espalhada na direção de observação \(\vetor{n} = \cos\theta \vetor{e}_3 + \sin\theta \vetor{e}_2\). Para a polarização perpendicular ao plano de espalhamento, \(\vetor{\epsilon}_{\perp} = \vetor{e}_1,\) temos
+   \begin{align*}
+      \diff{\sigma_{\perp}}{\Omega} &= \frac{\mu_0^2 c^4 k^4}{16 \pi^2 E_0^2}\mean*{\abs*{\vetor{\epsilon}_{\perp}^* \cdot \vetor{p} + \frac1c (\vetor{n} \times \vetor{\epsilon}_{\perp}^*)\cdot \vetor{m}}^2}_{\alpha}\\
+                                    &= k^4 a^6 \mean*{\abs*{\cos \alpha - \frac12 \left(\cos\theta \vetor{e}_2 - \sin\theta \vetor{e}_3\right)\cdot\left(\cos \alpha \vetor{e}_2 - \sin\alpha \vetor{e}_1\right)}^2}_\alpha\\
+                                    &= k^4 a^6 \mean*{\abs*{\cos \alpha - \frac12 \cos \alpha \cos\theta}^2}_\alpha\\
+                                    &= \frac12 k^4 a^6 \left(1 - \frac12 \cos\theta\right)^2
+                                    % &= \frac12 k^4 a^6 \left(1 + \cos\theta + \frac14 \cos^2\theta\right)
+   \end{align*}
+   enquanto que para a polarização paralela ao plano de espalhamento, \(\epsilon_{\parallel} = \vetor{e}_1 \times \vetor{n},\) temos
+   \begin{align*}
+      \diff{\sigma_{\parallel}}{\Omega} &= \frac{\mu_0^2 c^4 k^4}{16 \pi^2 E_0^2}\mean*{\abs*{\vetor{\epsilon}_{\parallel}^* \cdot \vetor{p} + \frac1c (\vetor{n} \times \vetor{\epsilon}_{\parallel}^*)\cdot \vetor{m}}^2}_{\alpha}\\
+                                        &= k^4 a^6 \mean*{\abs*{(-\cos\theta \vetor{e}_2 + \sin\theta\vetor{e}_3) \cdot (\cos \alpha \vetor{e}_1 + \sin\alpha \vetor{e}_2) - \frac12 \vetor{e}_1\cdot (\cos \alpha \vetor{e}_2 - \sin\alpha \vetor{e}_1)}^2}_{\alpha}\\
+                                    &= k^4 a^6 \mean*{\abs*{-\sin \alpha \cos\theta + \frac12 \sin \alpha}^2}_\alpha\\
+                                    &= \frac12 k^4 a^6 \left(\frac12 - \cos\theta\right)^2.
+   \end{align*}
+   Assim, a seção de choque diferencial é dada por
+   \begin{equation*}
+      \diff{\sigma}{\Omega} = \frac12 k^4 a^6\left(\frac54 - 2\cos\theta + \frac54\cos^2\theta\right) = \frac18 k^4 a^6 (5 - 8 \cos\theta + 5\cos^2\theta)
+   \end{equation*}
+   e então
+   \begin{equation*}
+      \sigma = \int_{-1}^1\dli{(\cos\theta)}\int_0^{2\pi} \dli{\varphi} \diff{\sigma}{\Omega} = \frac52\pi k^4 a^6\int_0^1 \dli{u} (1 + \cos^2\theta) = \frac{10}3\pi k^4 a^6 
+   \end{equation*}
+   é a seção de choque total.
+
+   A função de polarização é dada por
+   \begin{equation*}
+      \Pi(\theta) = \frac{\diff{\sigma_\perp}{\Omega} - \diff{\sigma_\parallel}{\Omega}}{\diff{\sigma}{\Omega}} = \frac{3\left(1 - \cos\theta\right)\left(1 + \cos\theta\right)}{5 - 8 \cos\theta + 5\cos^2\theta} = \frac{3 \sin^2\theta}{5 - 8 \cos\theta + 5\cos^2\theta}.
+   \end{equation*}
+   Assim, 
+   \begin{align*}
+      \diff{\Pi}{\theta} &= \frac{6 \sin\theta \cos\theta (5 - 8 \cos\theta + 5 \cos^2\theta) - 3\sin^2\theta (8 \sin\theta - 10 \cos\theta\sin\theta)}{(5 - 8 \cos\theta + 5 \cos^2\theta)^2}\\
+                         &= 6\sin\theta\frac{(5\cos\theta - 8 \cos^2\theta + 5 \cos^3\theta) - (4 \sin^2\theta - 5 \cos\theta\sin^2\theta)}{(5 - 8 \cos\theta + 5 \cos^2\theta)^2}\\
+                         &= 6\sin\theta\frac{(5\cos\theta - 8 \cos^2\theta + 5 \cos^3\theta) - (4 - 4\cos^2\theta - 5 \cos\theta + 5 \cos^3\theta)}{(5 - 8 \cos\theta + 5 \cos^2\theta)^2}\\
+                         &= 12 \sin\theta\frac{5 \cos\theta - 2\cos^2\theta - 2}{(5 - 8 \cos\theta + 5 \cos^2\theta)^2}\\
+                         &= -\frac{24 \sin\theta \left(\cos\theta - 2\right)\left(\cos\theta - \frac12\right)}{(5 - 8 \cos\theta + 5 \cos^2\theta)^2}
+   \end{align*}
+   e vemos que \(\Pi(\theta)\) tem seus pontos críticos dados por \(\theta_* \in \set{0, \frac\pi3,\pi},\) e \(\theta_* = \frac\pi3\) é seu ponto de máximo, assumindo o valor \(\Pi(\theta_*) = 1.\)
+\end{proof}
