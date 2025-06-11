@@ -1,0 +1,46 @@
+% vim: spl=pt
+\begin{exercício}{Espalhamento por uma esfera dielétrica}{ex4}
+   Revisite o espalhamento por uma esfera dielétrica de raio \(a,\) discutido em aula, mas considerando agora que o material possui uma susceptibilidade magnética uniforme além da susceptibilidade elétrica.
+\end{exercício}
+\begin{proof}[Resolução]
+   O campo \(\vetor{D}\) é dado por 
+   \begin{equation*}
+      \vetor{D}(\vetor{\x}) = \vetor{D}^{(0)}(\vetor{\x}) + \frac{e^{ik\norm{\vetor{\x}}}}{\norm{\vetor{\x}}}\vetor{D}^{(1)}(\vetor{\x}),
+   \end{equation*}
+   onde \(\vetor{D}^{(0)} = D_0 e^{i\vetor{k}_{\mathrm{in}}\cdot \vetor{\x}}\) e \(\vetor{D}^{(1)}(\vetor{\x})\) é dado pela aproximação de Born para a série de Dyson,
+   \begin{equation*}
+      \vetor{D}^{(1)}(\vetor{\x}) = \frac{k^2 D_0}{4\pi} \int_{\mathbb{R}^3}\dln3{\x'} e^{i(\vetor{k}_\mathrm{in} - k\vetor{n})\cdot\vetor{\x'}}\left[\frac{\delta \epsilon}{\epsilon_0} \left(\vetor{n} \times \vetor{\epsilon}_{\mathrm{in}}\right)\times\vetor{n} - \frac{\delta \mu}{\mu_0} \vetor{n} \times \left(\frac{\vetor{k}_\mathrm{in}}{k} \times \vetor{\epsilon}_{\mathrm{in}}\right)\right],
+   \end{equation*}
+   com \(\vetor{\x} = \norm{\vetor{\x}} \vetor{n}.\) Assim, a seção de choque diferencial para um espalhamento específico é dada por
+   \begin{equation*}
+      \diff{\sigma}{\Omega}(\vetor{n}, \vetor{\epsilon}_{\mathrm{esp}}, \vetor{k}_{\mathrm{in}}, \vetor{\epsilon}_\mathrm{in}) = \frac{k^4}{16\pi^2} \abs*{\int_{\mathbb{R}^3}\dln3{\x'} e^{i(\vetor{k}_\mathrm{in} - k\vetor{n})\cdot\vetor{\x'}}\left[\frac{\delta \epsilon}{\epsilon_0} \left(\vetor{\epsilon}_{\mathrm{esp}}^* \cdot \vetor{\epsilon}_{\mathrm{in}}\right) - \frac{\delta \mu}{\mu_0} \left(\frac{\vetor{k}_\mathrm{in}}{k} \times \vetor{\epsilon}_{\mathrm{in}}\right)\cdot\left(\vetor{\epsilon}_{\mathrm{esp}}^*\times \vetor{n}\right)\right]}^2.
+   \end{equation*}
+   Vamos escrever agora \(\vetor{\epsilon}_\mathrm{in} = \cos\alpha \vetor{e}_1 + \sin\alpha \vetor{e}_2,\) \(\vetor{k}_\mathrm{in} = k \vetor{e}_3,\) \(\vetor{n} = \cos\theta\vetor{e}_3 + \sin\theta\vetor{e}_2\) e \(\vetor{q} = \vetor{k}_{\mathrm{in}} - k\vetor{n},\) então como \(\delta \epsilon = \delta\mu = 0\) fora da esfera, temos
+   \begin{align*}
+      \diff{\sigma}{\Omega}(\vetor{n}, \vetor{\epsilon}_{\mathrm{esp}}, \vetor{k}_{\mathrm{in}}, \vetor{\epsilon}_\mathrm{in}) &= \frac{k^4}{16\pi^2} \abs*{\frac{\delta \epsilon}{\epsilon_0} \left(\vetor{\epsilon}_{\mathrm{esp}}^* \cdot \vetor{\epsilon}_{\mathrm{in}}\right) - \frac{\delta \mu}{\mu_0} \left(\frac{\vetor{k}_\mathrm{in}}{k} \times \vetor{\epsilon}_{\mathrm{in}}\right)\cdot\left(\vetor{\epsilon}_{\mathrm{esp}}^*\times\vetor{n}\right)}^2 \abs{I(\vetor{q})}^2
+   \end{align*}
+   onde 
+   \begin{align*}
+      I(\vetor{q}) &= \int_0^a \dli{r'}\int_{-1}^{1} r'\dli{(\cos\theta')}\int_0^{2\pi} r'\dli{\varphi'} e^{i \norm{\vetor{q}} r' \cos\theta'}\\
+                   &= 2\pi \int_0^a \dli{r'} {r'}^2\frac{e^{i\norm{\vetor{q}} r'} - e^{-i\norm{\vetor{q}} r'}}{ir'\norm{\vetor{q}}}\\
+                   &= \frac{4\pi}{\norm{\vetor{q}}^3} \int_0^{a\norm{\vetor{q}}} \dli{\xi} \xi\sin\xi\\
+                   &= 4\pi\frac{\sin(a\norm{\vetor{q}}) - a \norm{\vetor{q}} \cos(a \norm{\vetor{q}})}{\norm{\vetor{q}}^3}\\
+                   &\simeq 4\pi \frac{a\norm{\vetor{q}} - \frac{(a\norm{\vetor{q}})^3}{6} - a \norm{\vetor{q}}\left[1 - \frac{(a\norm{\vetor{q}})^2}{2}\right]}{\norm{\vetor{q}}^3}\\
+                   &= \frac{4\pi a^3}{3}.
+   \end{align*}
+   Para um espalhamento com polarização perpendicular, \(\vetor{\epsilon}_{\mathrm{esp}} = \vetor{e}_1\), temos
+   \begin{align*}
+      \diff{\sigma_\perp}{\Omega} &= \frac{k^4a^6}{9}\mean*{\abs*{\frac{\delta \epsilon}{\epsilon_0} \cos\alpha - \frac{\delta \mu}{\mu_0} (\cos \alpha \vetor{e}_2 - \sin\alpha \vetor{e}_1) \cdot \left(-\cos\theta \vetor{e}_2 + \sin\theta \vetor{e}_3\right)}^2}_{\alpha} 
+                                  &= \frac{k^4 a^6}{18}\abs*{\frac{\delta \epsilon}{\epsilon_0} + \frac{\delta \mu}{\mu_0}\cos\theta}^2,
+   \end{align*}
+   enquanto que para um espalhamento com polarização paralela, \(\vetor{\epsilon}_\mathrm{esp} =\vetor{e}_1 \times \vetor{n},\), temos
+   \begin{align*}
+      \diff{\sigma_\parallel}{\Omega} &= \frac{k^4a^6}{9}\mean*{\abs*{-\frac{\delta \epsilon}{\epsilon_0}\sin \alpha \cos\theta + \frac{\delta \mu}{\mu_0} (\cos \alpha \vetor{e}_2 - \sin\alpha \vetor{e}_1) \cdot \vetor{e}_1}^2}_{\alpha}\\
+                                      &= \frac{k^4 a^6}{18} \abs*{\frac{\delta \epsilon}{\epsilon_0} \cos\theta + \frac{\delta \mu}{\mu_0}}^2,
+   \end{align*}
+   portanto
+   \begin{equation*}
+      \diff{\sigma}{\Omega} = \frac{k^4 a^6}{18}\left[\abs*{\frac{\delta \epsilon}{\epsilon_0}}^2 + \abs*{\frac{\delta \mu}{\mu_0}}^2 + 4c^2\Re(\delta \epsilon^* \delta \mu)\cos\theta + \left(\abs*{\frac{\delta \epsilon}{\epsilon_0}}^2 + \abs*{\frac{\delta \mu}{\mu_0}}^2\right)\cos^2\theta\right]
+   \end{equation*}
+   é a seção de choque diferencial.
+\end{proof}
