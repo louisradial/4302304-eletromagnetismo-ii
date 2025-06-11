@@ -1,0 +1,36 @@
+% vim: spl=pt
+\begin{exercício}{Espalhamento por um elétron ligado}{ex2}
+   O espalhamento Thomson é dado pelo espalhamento de uma onda plana monocromática por um elétron livre na aproximação de dipolo elétrico. Estude agora, ainda na aproximação de dipolo elétrico, o espalhamento de uma onda plana monocromática de frequência \(\omega\) por um elétron ligado a um sistema que pode ser descrito por um oscilador harmônico amortecido (um átomo, por exemplo). Assuma uma frequência natural de oscilação \(\omega_0\) e uma constante de amortecimento \(\Gamma\) para o oscilador. Calcule a seção de choque diferencial e integral no caso da onda incidente não polarizada, e compare-a com as obtidas para o espalhamento Thomson.
+\end{exercício}
+\begin{proof}[Resolução]
+   Como no \cref{ex:ex1}, vamos considerar a equação diferencial para o elétron apenas na direção do campo, com a justificativa de que para baixas velocidades a interação de Coulomb domina a interação com o campo magnético, e de que trataremos a resposta do oscilador harmônico apenas no regime estacionário. Com isso, a equação diferencial a ser considerada para um campo elétrico incidente \(\vetor{E} = E_0 e^{i (kz - \omega t)}\vetor{e}_x\) é
+   \begin{equation*}
+      \ddot{x} + \Gamma \dot{x} + \omega_0^2 x = -\frac{e E_0}{m} e^{-i \omega t}.
+   \end{equation*}
+   No regime estacionário, consideramos a solução da forma \(x(t) = A e^{-i \omega t},\) então
+   \begin{equation*}
+      (\omega_0^2 - \omega^2 - i \Gamma \omega) A = -\frac{e E_0}{m} \implies A = -\frac{\frac{e E_0}{m}}{\omega_0^2 - \omega^2 - i \Gamma \omega} \implies \abs{A} = \frac{e E_0}{m\sqrt{(\omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2}}.
+   \end{equation*}
+   
+   Consideramos então o espalhamento com o momento de dipolo \(\vetor{p}e^{-i \omega t} \sim -e \vetor{x}(t),\) com
+   \begin{equation*}
+      \vetor{p} = -\frac{e^2 E_0}{m \sqrt{(\omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2}}\vetor{\epsilon}_{\mathrm{in}},
+   \end{equation*}
+   onde \(\vetor{E} = E_0 e^{-i \omega t} \vetor{\epsilon}_\mathrm{in}\) é o campo incidente. Vamos escrever \(\vetor{\epsilon}_{\mathrm{in}} = \cos \alpha \vetor{e}_1 + \sin \alpha \vetor{e}_2,\) com \(\vetor{k}_{\mathrm{in}} = k \vetor{e}_3,\) e consideramos uma onda espalhada na direção de observação \(\vetor{n} = \cos\theta \vetor{e}_3 + \sin\theta \vetor{e}_2\). Para a polarização perpendicular ao plano de espalhamento, \(\vetor{\epsilon}_{\perp} = \vetor{e}_1,\) temos
+   \begin{equation*}
+      \diff{\sigma_{\perp}}{\Omega} = \frac{\mu_0^2 c^4 k^4}{16 \pi^2 E_0^2}\mean{\abs{\vetor{\epsilon}_{\perp}^* \cdot \vetor{p}}^2}_{\alpha} = \frac{\mu_0^2 \omega^4 e^4}{16 \pi^2 m^2 \left[(\omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2\right]} \mean{\cos^2 \alpha}_\alpha = \frac{\left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2}{2\left[\left(\frac{\omega_0^2}{\omega^2} - 1\right)^2 + \left(\frac{\Gamma}{\omega}\right)^2\right]}
+   \end{equation*}
+   e para a polarização paralela ao plano de espalhamento, \(\vetor{\epsilon}_\parallel = \vetor{e}_1 \times \vetor{n},\) temos
+   \begin{equation*}
+      \diff{\sigma_{\parallel}}{\Omega} = \frac{\mu_0^2 c^4 k^4}{16 \pi^2 E_0^2}\mean{\abs{\vetor{\epsilon}_{\parallel}^* \cdot \vetor{p}}^2}_{\alpha} = \frac{\mu_0^2 \omega^4 e^4\cos^2\theta}{16 \pi^2 m^2 \left[(\omega_0^2 - \omega^2)^2 + \Gamma^2 \omega^2\right]} \mean{\sin^2 \alpha}_\alpha = \frac{\left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2\cos^2\theta}{2\left[\left(\frac{\omega_0^2}{\omega^2} - 1\right)^2 + \left(\frac{\Gamma}{\omega}\right)^2\right]}
+   \end{equation*}
+   Assim, a seção de choque diferencial é dada por
+   \begin{equation*}
+      \diff{\sigma}{\Omega} = \frac{\left(\frac{e^2}{4\pi \epsilon_0 m c^2}\right)^2}{\left(\frac{\omega_0^2}{\omega^2} - 1\right)^2 + \left(\frac{\Gamma}{\omega}\right)^2} \frac{1 + \cos^2\theta}{2},
+   \end{equation*}
+   e então a seção de choque total é
+   \begin{equation*}
+      \sigma = \frac{\sigma_T}{\left(\frac{\omega_0^2}{\omega^2} - 1\right)^2 + \left(\frac{\Gamma}{\omega}\right)^2},
+   \end{equation*}
+   onde \(\sigma_T = \pi r_e^2\) é a seção de choque total do espalhamento Thomson, determinado no \cref{ex:ex1}.
+\end{proof}
