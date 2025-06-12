@@ -35,12 +35,14 @@
         &= \norm{(\vetor{n} - \vetor{\beta})\times\dot{\vetor{\beta}}}^2 - \inner*{\vetor{n}}{\left[(\vetor{n} - \vetor{\beta}) \times \dot{\vetor{\beta}}\right]}^2\\
         &= \norm{\vetor{n} - \vetor{\beta}}^2 \norm{\dot{\vetor{\beta}}}^2 - \inner{\vetor{n} - \vetor{\beta}}{\dot{\vetor{\beta}}}^2 + \inner{\vetor{n}}{\vetor{\beta}\times\dot{\vetor{\beta}}}^2\\
         % &= \left(1 + \norm{\vetor{\beta}}^2 - 2 \inner{\vetor{n}}{\vetor{\beta}}\right)\norm{\dot{\vetor{\beta}}}^2 - \\
-        &= \delta_{ij} \left[(n_i - \beta_i) \left(\norm{\dot{\vetor{\beta}}}^2 (n_j - \beta_j) - \delta_{k\ell} (n_k - \beta_k)\dot{\beta}_j\dot{\beta}_{\ell}\right) + \delta_{k\ell} n_in_k (\vetor{\beta} \times \dot{\vetor{\beta}})_j (\vetor{\beta} \times \dot{\vetor{\beta}})_\ell\right].
+        &= \delta_{ij} \left[(n_i - \beta_i) \left(\norm{\dot{\vetor{\beta}}}^2 (n_j - \beta_j) - \delta_{k\ell} (n_k - \beta_k)\dot{\beta}_j\dot{\beta}_{\ell}\right) + \delta_{k\ell} n_in_k (\vetor{\beta} \times \dot{\vetor{\beta}})_j (\vetor{\beta} \times \dot{\vetor{\beta}})_\ell\right]\\
+        &= \left[(1 + \norm{\vetor{\beta}}^2) \norm{\dot{\vetor{\beta}}}^2 + \inner{\vetor{\beta}}{\dot{\vetor{\beta}}}^2\right] - 2n_i \delta_{ij} \left(\beta_j \norm{\dot{\vetor{\beta}}}^2 + \dot{\beta}_j\inner{\vetor{\beta}}{\dot{\vetor{\beta}}}\right) + \\
+        &{}\phantom{=} + n_i n_k \delta_{ij} \delta_{k\ell}\left[\dot{\beta}_j \dot{\beta}_\ell + (\vetor{\beta}\times\dot{\vetor{\beta}})_j(\vetor{\beta}\times\dot{\vetor{\beta}})_\ell\right]
     \end{align*}
     Vemos que a contribuição do último termo para a integral é
     \begin{equation*}
         K_{ik}\delta_{ij}\delta_{k \ell} (\vetor{\beta}\times \dot{\vetor{\beta}})_j(\vetor{\beta}\times \dot{\vetor{\beta}})_\ell
-        = \frac{4\pi}{3} \norm{\vetor{\beta} \times \dot{\vetor{\beta}}}^2 \gamma^6 + 8 \pi \inner{\vetor{\beta}}{\vetor{\beta}\times \dot{\vetor{\beta}}}^2 = \frac{4\pi}{3} \norm{\vetor{\beta}\times \dot{\vetor{\beta}}}^2
+        = \frac{4\pi}{3} \norm{\vetor{\beta} \times \dot{\vetor{\beta}}}^2 \gamma^6 + 8 \pi \inner{\vetor{\beta}}{\vetor{\beta}\times \dot{\vetor{\beta}}}^2\gamma^8 = \frac{4\pi}{3} \norm{\vetor{\beta}\times \dot{\vetor{\beta}}}^2 \gamma^6
     \end{equation*}
     a menos do prefator \(\frac{\mu_0 q^2 c}{16 \pi^2},\)
 \end{proof}
