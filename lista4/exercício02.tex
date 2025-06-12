@@ -1,7 +1,21 @@
 % vim: spl=pt
-\begin{exercício}{Casca esférica expandindo não emite radiação}{ex2}
+\begin{exercício}{Casca esférica oscilando radialmente não emite radiação}{ex2}
     Uma casca esférica uniformemente carregada oscila de maneira puramente radial. Mostre que neste caso não há campo magnético e, portanto, não há emissão de radiação.
 \end{exercício}
 \begin{proof}[Resolução]
-    
+    Seja \(a = a(t)\) o raio da esfera no instante \(t,\) então
+    \begin{equation*}
+        \rho(\vetor{\x}, t) = \frac{Q}{4\pi a^2} \delta(\norm{\vetor{\x}} - a) = \frac{Q}{4\pi \norm{\vetor{\x}}^2} \delta(\norm{\vetor{\x}} - a)
+        \quad\text{e}\quad
+        \vetor{J}(\vetor{\x}, t) = \rho(\vetor{\x}, t) \dot{a}\frac{\vetor{\x}}{\norm{\vetor{\x}}} = \frac{Q \dot{a} \vetor{\x}}{4\pi\norm{\vetor{\x}}^3} \delta(\norm{\vetor{\x}} - a).
+    \end{equation*}
+    Notemos que \(\vetor{J}\) é radial e depende apenas de \(\norm{\vetor{\x}},\) portanto \(\nabla \times \vetor{J} = 0.\) De fato, escrevendo a distribuição \(f(r, t) = \frac{Q \dot{a}}{4\pi r^3}\delta(r - a),\) obtemos
+    \begin{equation*}
+        (\nabla \times \vetor{J})_k = \epsilon_{ijk} \partial_i \left[x_j f(\norm{\vetor{\x}},t)\right]= \epsilon_{ijk} \left[\delta_{ij} f(\norm{\vetor{\x}},t) + x_j \diffp{f(\norm{\vetor{\x}},t)}{r}[r = \norm{\vetor{\x}}]\frac{x_i}{\norm{\vetor{\x}}}\right] = 0,
+    \end{equation*}
+    pois tanto \(\delta_{ij}\) quanto \(x_i x_j\) são simétricos e \(\epsilon_{ijk}\) é antissimétrico. Com isso, temos
+    \begin{equation*}
+        \nabla \times (\nabla \times \vetor{B}) = \nabla \times \left(\mu_0 \vetor{J} + \frac{1}{c^2} \diffp{\vetor{E}}{t}\right) \implies -\nabla^2 \vetor{B} = \frac{1}{c^2} \diffp*{\nabla \times \vetor{E}}{t}  \implies \square\vetor{B} = 0.
+    \end{equation*}
+    Assim, \(\vetor{B}\) satisfaz uma equação de ondas homogênea em todo espaço, isto é, o movimento das cargas na superfície esférica não afeta o campo magnético, então não há emissão de radiação.
 \end{proof}
