@@ -3,5 +3,23 @@
     Um dos principais problemas do modelo atômico de Bohr é a noção de que cargas aceleradas emitem radiação eletromagnética, impossibilitando a existência de órbitas circulares estáveis. Vamos revisitar esse modelo considerando o átomo de hidrogênio em seu estado fundamental. Assumindo que o elétron se encontra inicialmente em um movimento circular de raio \(r = a_0\) em torno do próton, onde \(a_0\) é o raio de Bohr, estime o tempo que levaria para o elétron colidir com o núcleo.
 \end{exercício}
 \begin{proof}[Resolução]
-    Obs: Estimativa, fórmula de Larmor não relativística, teorema do Virial.
+    Para uma órbita circular com raio \(r,\) temos
+    \begin{equation*}
+        \frac{m v^2}{r} = \frac{q^2}{4\pi \epsilon_0 r^2} \implies \beta = \sqrt{\frac{q^2\mu_0}{4\pi m a_0}} \left(\frac{r}{a_0}\right)^{-\frac12} = \alpha \left(\frac{r}{a_0}\right)^{-\frac12},
+    \end{equation*}
+    onde \(\alpha = \frac{q^2}{4\pi \epsilon_0 \hbar c} \simeq \frac1{137}\) é a constante de estrutura fina e \(a_0 = \frac{4\pi \epsilon_0 \hbar^2}{m q^2}\) é o raio de Bohr. Assim, vemos que para \(r \gtrsim \alpha a_0\) podemos assumir que o elétron tem velocidades não relativísticas,com \(\beta \lesssim \frac1{10}.\) A fim de obter uma estimativa, vamos utilizar a expressão não relativística da fórmula de Larmor, ignorando seu domínio de validade.
+
+    Pelo teorema do virial, sabemos que a energia cinética do elétron é dada por \(T = -\frac12 U,\) portanto a sua energia total é dada por \(E = \frac12 U = -\frac{q^2}{8\pi \epsilon_0 r}\) na órbita de raio \(r.\) A energia perdida pela decréscimo do raio \(\dli{r}\) é então
+    \begin{equation*}
+        \dli{E} = - \frac{q^2}{8\pi \epsilon_0 r^2} \dli{r}.
+    \end{equation*}
+    Esse valor deve ser comparado com a potência irradiada, portanto
+    \begin{equation*}
+        -\frac{q^2}{8\pi \epsilon_0 r^2} \dli{r} = \frac{\mu_0 q^2}{6\pi c}\left(\frac{v^2}{r}\right)^2\dli{t} \implies \dli{r} = - \frac{4c\beta^4}{3}\dli{t} \implies r^2 \dli{r} =  -\frac{4c \alpha^4 a_0^2}{3}\dli{t}.
+    \end{equation*}
+    Integrando, obtemos
+    \begin{equation*}
+        \int_{a_0}^0 \dli{r} r^2 = -\int_0^{t} \dli{t'} \frac{4 c \alpha^4 a_0^2}{3} \implies t = \frac{a_0}{4c \alpha^4} = \SI{15.56}{\pico\second}
+    \end{equation*}
+    como o tempo necessário para que o életron colidir com o núcleo no modelo de Bohr quando ignoramos o seu postulado da ausência de radiação de cargas em movimento.
 \end{proof}
