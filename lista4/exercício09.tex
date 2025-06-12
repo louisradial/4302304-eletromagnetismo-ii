@@ -1,0 +1,46 @@
+% vim: spl=pt
+\begin{exercício}{Fórmula de Larmor generalizada}{ex9}
+    Mostre que a potência irradiada por uma carga pontual \(q\) é dada por
+    \begin{equation*}
+        P_\mathrm{rad}(\tr) = \left[\int_{\Sigma} \dln2\x (1 - \vetor{n} \cdot \vetor{\beta})\frac{\vetor{\x}}{\norm{\vetor{\x}}}\cdot \vetor{S}(\vetor{\x})\right]_\ret = \frac{2 \gamma^6}{3} \frac{q^2}{4\pi \epsilon_0} \left[\norm{\vetor{a}}^2 - \norm{\vetor{a} \times \vetor{\beta}}\right],
+    \end{equation*}
+    onde \(\Sigma\) é uma casca esférica enorme.
+\end{exercício}
+\begin{proof}[Resolução]
+    Consideramos
+    \begin{align*}
+        I &= \int_{\Sigma}\dli{\Omega}\frac1{(1 - \vetor{n} \cdot \vetor{\beta})^3}\\
+          &= \int_{-1}^{1} \dli{(\cos\theta)} \int_0^{2\pi} \dli{\varphi} \frac{1}{(1 - \beta \cos\theta)^3}\\
+          &= \frac{\pi}{\beta} \int_{-1}^1 \dli{u} \diff*{\frac{1}{(1 - \beta u)^2}}{u}\\
+          &= \frac{\pi}{\beta} \left[\frac{1}{(1 - \beta)^2} - \frac{1}{(1 + \beta)^2}\right]\\
+          &= \frac{\pi}{\beta} \frac{(1 + \beta)^2 - (1 - \beta)^2}{(1 - \beta^2)^2}\\
+          &= \frac{4\pi}{(1 - \beta^2)^2}\\
+          &= 4\pi \gamma^4
+    \end{align*}
+    Agora, notemos que
+    \begin{equation*}
+        J_i = \int_{\Sigma} \dli{\Omega} \frac{n_i}{(1 - \vetor{n} \cdot \vetor{\beta})^4} = \frac{1}{3} \diffp{I}{\beta_i} = \frac{16\pi \beta_i}{3(1 - \beta^2)^3} = \frac{16\pi}{3} \beta_i \gamma^6
+    \end{equation*}
+    e que
+    \begin{equation*}
+        K_{ij} = \int_{\Sigma} \dli{\Omega} \frac{n_i n_j}{(1 - \vetor{n} \cdot \vetor{\beta})^5} = \frac{1}{4} \diffp{J_i}{\beta_j} = \frac{4\pi}{3}\left(\frac{\delta_{ij}}{(1 - \beta^2)^3} + \frac{6 \beta_i \beta_j}{(1 - \beta^2)^4}\right) = \frac{4\pi}{3} \delta_{ij} \gamma^6 + 8\pi \beta_i \beta_j \gamma^8.
+    \end{equation*}
+    Precisamos integrar 
+    \begin{equation*}
+        \diff{P_\mathrm{rad}}{\Omega} = \frac{\mu_0 q^2 c}{16 \pi^2}  \frac{\norm*{\vetor{n} \times \left[(\vetor{n} - \vetor{\beta}) \times \dot{\vetor{\beta}}\right]}^2}{(1 - \vetor{n}\cdot \vetor{\beta})^5}
+    \end{equation*}
+    mas antes vamos trabalhar com a expressão do denominador para utilizar as integrais obtidas. Temos de \(\norm{\vetor{x} \times \vetor{y}}^2 = \norm{\vetor{x}}^2 \norm{\vetor{y}}^2 - \inner{\vetor{x}}{\vetor{y}}^2\) que
+    \begin{align*}
+        \norm*{\vetor{n} \times \left[(\vetor{n} - \vetor{\beta}) \times \dot{\vetor{\beta}}\right]}^2 
+        &= \norm{(\vetor{n} - \vetor{\beta})\times\dot{\vetor{\beta}}}^2 - \inner*{\vetor{n}}{\left[(\vetor{n} - \vetor{\beta}) \times \dot{\vetor{\beta}}\right]}^2\\
+        &= \norm{\vetor{n} - \vetor{\beta}}^2 \norm{\dot{\vetor{\beta}}}^2 - \inner{\vetor{n} - \vetor{\beta}}{\dot{\vetor{\beta}}}^2 + \inner{\vetor{n}}{\vetor{\beta}\times\dot{\vetor{\beta}}}^2\\
+        % &= \left(1 + \norm{\vetor{\beta}}^2 - 2 \inner{\vetor{n}}{\vetor{\beta}}\right)\norm{\dot{\vetor{\beta}}}^2 - \\
+        &= \delta_{ij} \left[(n_i - \beta_i) \left(\norm{\dot{\vetor{\beta}}}^2 (n_j - \beta_j) - \delta_{k\ell} (n_k - \beta_k)\dot{\beta}_j\dot{\beta}_{\ell}\right) + \delta_{k\ell} n_in_k (\vetor{\beta} \times \dot{\vetor{\beta}})_j (\vetor{\beta} \times \dot{\vetor{\beta}})_\ell\right].
+    \end{align*}
+    Vemos que a contribuição do último termo para a integral é
+    \begin{equation*}
+        K_{ik}\delta_{ij}\delta_{k \ell} (\vetor{\beta}\times \dot{\vetor{\beta}})_j(\vetor{\beta}\times \dot{\vetor{\beta}})_\ell
+        = \frac{4\pi}{3} \norm{\vetor{\beta} \times \dot{\vetor{\beta}}}^2 \gamma^6 + 8 \pi \inner{\vetor{\beta}}{\vetor{\beta}\times \dot{\vetor{\beta}}}^2 = \frac{4\pi}{3} \norm{\vetor{\beta}\times \dot{\vetor{\beta}}}^2
+    \end{equation*}
+    a menos do prefator \(\frac{\mu_0 q^2 c}{16 \pi^2},\)
+\end{proof}
