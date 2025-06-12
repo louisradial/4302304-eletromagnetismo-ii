@@ -11,4 +11,23 @@
     \begin{equation*}
         \diff{E_\mathrm{rad}}{x_q} = \frac{\hbar \alpha Z^2}{c} \int_{\beta^2 \epsilon(\omega) > 1} \dli{\omega}\omega\left(1 - \frac{1}{\beta^2 \epsilon(\omega)}\right).
     \end{equation*}
+    A energia perdida por radiação por unidade de comprimento por unidade de frequência é dada por
+    \begin{equation*}
+        \diff{E_{\mathrm{rad}}}{x_q,\omega} = \hbar \omega \diff{N}{x_q,\omega},
+    \end{equation*}
+    onde \(N\) é o número de fótons emitidos. Assim, o número de fótons emitidos por unidade de comprimento é dado por
+    \begin{align*}
+        \diff{N}{x_q}[\omega]\dl{\omega} = \frac{\alpha Z^2}{c} \left(1 - \frac{1}{\beta^2 \epsilon(\omega)}\right) \dli{\omega} 
+        &\implies \diff{N}{x_q} = \frac{\alpha Z^2}{c} \int_{\beta^2 \epsilon(\omega) > 1} \dli{\omega}\left(1 - \frac{1}{\beta^2 \epsilon(\omega)}\right)\\
+        &\implies\diff{N}{x_q} = \frac{\alpha Z^2}{c} \int_{0}^{\infty} \dli{\omega}\left(1 - \frac{1}{\beta^2 \epsilon(\omega)}\right)\theta(\beta^2 \epsilon(\omega) - 1).
+    \end{align*}
+    Mudando de variáveis para o comprimento de onda e escrevendo \(\epsilon(\lambda) = \epsilon(\omega)\) para \(\lambda \omega = 2\pi c,\) temos
+    \begin{equation*}
+        \diff{N}{x_q} = 2\pi \alpha Z^2 \int_0^\infty \dli{\lambda} \frac{1 - \frac{1}{\beta^2 \epsilon(\lambda)}}{\lambda^2} \theta(\beta^2 \epsilon(\lambda) - 1),
+    \end{equation*}
+    portanto 
+    \begin{equation*}
+        \diff{N}{x_q}([\lambda_1, \lambda_2]) = 2\pi \alpha Z^2 \int_{\lambda_1}^{\lambda_2} \dli{\lambda} \frac{1 - \frac{1}{\beta^2 \epsilon(\lambda)}}{\lambda^2}\theta(\beta^2 \epsilon(\lambda) - 1)
+    \end{equation*}
+    é o número de fótons emitidos com comprimento de onda no intervalo \([\lambda_1, \lambda_2]\) por unidade de comprimento percorrido.
 \end{proof}
