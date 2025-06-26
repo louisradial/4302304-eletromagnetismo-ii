@@ -1,0 +1,44 @@
+% vim: spl=pt
+\begin{exercício}{Força relativística}{ex5}
+   O momento relativístico de uma partícula é definido como \(\vetor{p} = \gamma m \vetor{v},\) em que \(m\) e \(\vetor{v}\) são a massa e o vetor velocidade da partícula, e é tal que
+   \begin{equation*}
+      \diff{\vetor{p}}{t} = \vetor{F}.
+   \end{equation*}
+   \begin{enumerate}[label=(\alph*)]
+       \item Mostre que
+          \begin{equation*}
+             \vetor{F} = \gamma m\left[\vetor{a} + \gamma^2 \frac{\vetor{v}\cdot\vetor{a}}{c^2}\vetor{v}\right],
+          \end{equation*}
+          onde \(\vetor{a}\) é o vetor aceleração da partícula.
+       \item Suponha que a partícula tenha carga \(q\) e esteja sujeita a ação de campos \(\vetor{E}\) e \(\vetor{B}.\) Mostre que, devido à força de Lorentz, 
+          \begin{equation*}
+             \vetor{a} = \frac{q}{m \gamma} \left[\vetor{E} + \vetor{v} \times \vetor{B} - \frac{\vetor{v}\cdot \vetor{E}}{c^2}\vetor{v}\right]
+          \end{equation*}
+          é o vetor aceleração da partícula.
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+   Já mostramos que \(\diff{\gamma}{t} = \gamma^3 \frac{\vetor{v}\cdot \vetor{a}}{c^2},\) então
+   \begin{equation*}
+      \vetor{F} = \diff{p}{t} = \gamma m \diff{\vetor{v}}{t} + m \diff{\gamma}{t}\vetor{v} = \gamma m \vetor{a} + m \gamma^3 \frac{\vetor{v}\cdot \vetor{a}}{c^2} \vetor{v} = \gamma m \left[\vetor{a} + \gamma^2 \frac{\vetor{v}\cdot \vetor{a}}{c^2} \vetor{v}\right] = \gamma m \left(\vetor{a} + \gamma^2 \inner{\vetor{\beta}}{\vetor{a}} \vetor{\beta}\right)
+   \end{equation*}
+   como desejado. 
+
+   Para uma partícula de carga \(q\) sob ação dos campos \(\vetor{E}\) e \(\vetor{B}\), temos a força de Lorentz
+   \begin{equation*}
+      \vetor{F} = q \left(\vetor{E} + \vetor{v} \times \vetor{B}\right),
+   \end{equation*}
+   portanto
+   \begin{equation*}
+      \vetor{a} + \gamma^2 \inner{\vetor{\beta}}{\vetor{a}}\vetor{\beta} = \frac{q}{m \gamma}\left(\vetor{E} + \vetor{v} \times \vetor{B}\right).
+   \end{equation*}
+   Tomando o produto escalar com \(\vetor{\beta}\) nessa equação, vemos que
+   \begin{equation*}
+      \inner{\vetor{\beta}}{\vetor{a}} + \gamma^2 \inner{\vetor{\beta}}{\vetor{a}} \norm{\vetor{\beta}}^2 = \frac{q}{m \gamma} \inner{\vetor{\beta}}{\vetor{E}} \implies \inner{\vetor{\beta}}{\vetor{a}} = \frac{q}{m \gamma^3} \inner{\vetor{\beta}}{\vetor{E}}.
+   \end{equation*}
+   Substituindo na relação anterior, obtemos
+   \begin{equation*}
+      \vetor{a} = \frac{q}{m \gamma} \left[\vetor{E} + \vetor{v} \times \vetor{B}\right] - \gamma^2\inner{\vetor{\beta}}{\vetor{a}}\vetor{\beta}= \frac{q}{m\gamma}\left(\vetor{E} + \vetor{v}\times \vetor{B} - \inner{\vetor{\beta}}{\vetor{E}}\vetor{\beta}\right) = \frac{q}{m \gamma} \left[\vetor{E} + \vetor{v}\times \vetor{B} - \frac{\vetor{v}\cdot \vetor{E}}{c^2}\vetor{v}\right]
+   \end{equation*}
+   como a aceleração da partícula em função dos campos e sua velocidade.
+\end{proof}
