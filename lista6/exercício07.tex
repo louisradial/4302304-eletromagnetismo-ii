@@ -1,0 +1,95 @@
+% vim: spl=pt
+\begin{exercício}{Teoria de Proca}{ex7}
+   As equações de Maxwell pressupõem que o fóton tem massa zero. Se a lei de Coulomb não for exatamente válida e o campo de uma carga puntiforme tiver um alcance finito, isto pode ser atribuído ao fato de o fóton possuir uma massa não nula. Aparentemente, quem primeiro considerou as consequências de se atribuir uma massa ao fóton foi Proca. A densidade de Lagrangiana de Proca é definida por
+   \begin{equation*}
+      \mathcal{L} = - \frac{1}{4\mu_0} F^{\mu\nu} F_{\mu\nu} - \frac{\lambda^2}{2\mu_0} A^\alpha A_\alpha + J^\alpha A_\alpha,
+   \end{equation*}
+   onde o parâmetro \(\lambda\) é proporcional à \enquote{massa do fóton} e tem dimensão de inverso de comprimento.
+   \begin{enumerate}[label=(\alph*)]
+       \item Mostre que as equações de Lagrange para o campo de Proca \(A^\alpha\) são
+          \begin{equation*}
+             \partial_\beta F^{\alpha \beta} + \lambda^2 A^\alpha = \mu_0 J^\alpha,
+          \end{equation*}
+          que não são invariantes sob uma transformação de Gauge \(A^\alpha \to A^\alpha + \partial^\alpha \xi.\)
+       \item Mostre que a conservação local da carga elétrica exige que o campo de Proca satisfaça a condição de Lorenz \(\partial_\alpha A^\alpha = 0.\) Prove que, como consequência, o campo de Proca obedece à equação 
+          \begin{equation*}
+              \square^2 A^\alpha + \mu_0 \lambda^2 A^\alpha = - \mu_0 J^\alpha.
+          \end{equation*}
+          No caso estático, em que há apenas uma carga puntiforme na origem, mostre que a solução esfericamente simétrica para o campo de Proca do tipo \(A^\alpha = (\frac{\phi}{c}, \vetor{0})\) é dada por
+          \begin{equation*}
+             \phi(r) = \frac{q}{4\pi \epsilon_0 r} e^{-\lambda r}.
+          \end{equation*}
+          Isto é, na teoria de Proca o potencial de uma carga puntiforme decai exponencialmente com a distância e o termo \(\frac{1}{\lambda}\) dá uma medida de seu alcance.
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+   Notemos que
+   \begin{equation*}
+      \diffp{F_{\mu\nu}}{(\partial_\sigma A_\rho)} = \delta\indices{^\sigma_\mu} \delta\indices{^\rho_\nu} - \delta\indices{^\sigma_\nu}\delta\indices{^\rho_\mu},
+   \end{equation*}
+   então
+   \begin{align*}
+      \diffp{(F_{\mu\nu}F^{\mu\nu})}{(\partial_\sigma A_\rho)} &= g^{\alpha\mu} g^{\beta\nu} \diffp{(F_{\mu\nu} F_{\alpha \beta})}{(\partial_\sigma A_\rho)} = g^{\alpha \mu} g^{\beta \nu} \left[\left(\delta\indices{^\sigma_\mu} \delta\indices{^\rho_\nu} - \delta\indices{^\sigma_\nu}\delta\indices{^\rho_\mu}\right) F_{\alpha \beta} + F_{\mu\nu} \left(\delta\indices{^\sigma_\alpha} \delta\indices{^\rho_\beta} - \delta\indices{^\sigma_\beta}\delta\indices{^\rho_\alpha}\right)\right]\\
+                                                               &= \left[\left(g^{\sigma \alpha} g^{\rho \beta} - g^{\sigma \beta} g^{\rho \alpha}\right) F_{\alpha \beta} + F_{\mu\nu}\left(g^{\sigma \mu} g^{\rho \nu} - g^{\sigma \nu} g^{\rho \mu}\right)\right] = F^{\sigma \rho} - F^{\rho \sigma} + F^{\sigma \rho} - F^{\rho \sigma}\\
+                                                               &= 4F^{ \sigma \rho},
+   \end{align*}
+   portanto as equações de Euler-Lagrange são
+   \begin{align*}
+      \diffp{\mathcal{L}}{A_\rho} - \partial_\sigma\diffp{\mathcal{L}}{(\partial_\sigma A_\rho)} = 0  
+      &\implies -\frac{\lambda^2}{\mu_0} A^\rho + J^\rho + \frac1{\mu_0} \partial_\sigma F^{\sigma \rho} = 0\\
+         &\implies \partial_\sigma F^{\rho\sigma} + \lambda^2 A^\rho = \mu_0 J^\rho.
+   \end{align*}
+   Como \(F^{\mu\nu}\) é invariante de transformações de gauge,
+   \begin{equation*}
+      \tilde{F}_{\mu\nu} = \partial_\mu \left(A_\nu + \partial_\nu \xi\right) - \partial_\nu\left(A_\mu + \partial_\mu \xi\right) = F_{\mu\nu} + \left(\partial_\mu \partial_\nu - \partial_\nu \partial_\mu\right) \xi = F_{\mu\nu},
+   \end{equation*}
+   é claro que o as equações de movimento não o são, pois o termo \(\lambda^2 A^\rho\) é o único que sofre alterações com tais transformações. 
+
+   Usando as equações de movimento, temos
+   \begin{equation*}
+      \partial_{\alpha} \partial_\beta F^{\alpha \beta} + \lambda^2 \partial_\alpha A^{\alpha} = \mu_0 \partial_\alpha J^\alpha \implies \lambda^2 \partial_\alpha A^{\alpha} = \mu_0 \partial_\alpha J^\alpha.
+   \end{equation*}
+   Como \(\partial_\mu J^\mu = 0\) pela conservação local da carga elétrica, vamos ter a condição \(\partial_\mu A^\mu = 0\) \emph{on shell}. Com isso, temos
+   \begin{equation*}
+      \partial_\alpha F^{\alpha \beta} = \partial_\alpha \partial^\alpha A^\beta - \partial_\alpha \partial^\beta A^\alpha = \partial_\alpha \partial^\alpha A^\beta,
+   \end{equation*}
+   logo a equação de movimento se simplifica para
+   \begin{equation*}
+       \partial_\nu \partial^\nu A^\mu - \lambda^2 A^\mu = -\mu_0 J^\mu.
+   \end{equation*}
+   Assim, cada componente do campo de Proca satisfaz a equação de Klein-Gordon não homogênea, dada por
+   \begin{equation*}
+       \left(\lambda^2 - \partial^\nu \partial_\nu\right)A^\mu = \mu_0 J^\mu,
+   \end{equation*}
+   e então, usando a função de Green desse operador diferencial\footnote{Ver, por exemplo, o item (f) da \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset2}{Lista II de Teoria Quântica de Campos} e adaptar a assinatura da métrica.} podemos escrever
+   \begin{equation*}
+      A^{\alpha}(x) = \mu_0 \int_{\mathbb{R}^4} \dln4y \int_{\mathbb{R}^4} \frac{\dln4k}{(2\pi)^4} \frac{e^{-i k_\mu (x^\mu - y^\mu)} J^\alpha(y)}{k_\mu k^\mu - \lambda^2 + i \epsilon},
+   \end{equation*}
+   ignorando as soluções da equação de Klein-Gordon homogênea.
+
+   Para o caso estático em que há apenas uma carga puntiforme na origem, temos \(J^0 = cq \delta(\vetor{\x})\) e as demais componentes nulas, portanto ignorando soluções homogêneas da equação de Klein-Gordon, podemos tomar \(A^i = 0.\) Assim, o potencial \(\phi(x) = cA^0(x)\) satisfaz a equação diferencial
+   \begin{equation*}
+      (\lambda^2 - \partial_\nu \partial^\nu) \phi(x) = \frac{q}{\epsilon_0}\delta(\vetor{\x}).
+   \end{equation*}
+   Impondo que o potencial é estático, \(\phi(x) = \phi(\vetor{\x}),\) temos a equação de Yukawa
+   \begin{equation*}
+      (\lambda^2 - \nabla^2) \phi(\vetor{\x}) = \frac{q}{\epsilon_0} \delta(\vetor{x}).
+   \end{equation*}
+   Como a fonte é radialmente simétrica, podemos escrever \(\phi(x) = \phi(\norm{\vetor{\x}}),\) então para \(\norm{\vetor{\x}} = r > 0,\) temos
+   \begin{equation*}
+      \lambda^2 = \frac{1}{r^2}\diff*{\left(r^2 \diff{\phi}{r}\right)}{r} \implies \diff[2]{(r \phi)}{r} = \lambda^2 (r\phi) \implies \phi(r) \propto \frac{e^{\pm \lambda r}}{r}.
+   \end{equation*}
+   Como o potencial deve ser limitado no infinito, propomos a solução
+   \begin{equation*}
+      \phi(x) = \frac{q e^{-\lambda \norm{\vetor{\x}}}}{4\pi \epsilon_0 \norm{\vetor{\x}}},
+   \end{equation*}
+   que satisfaz a equação diferencial em todo o espaço, exceto possivelmente na origem. Temos
+   \begin{align*}
+      \nabla^2\left(\frac{e^{-\lambda \norm{\vetor{\x}}}}{4\pi \norm{\vetor{\x}}}\right) 
+      &= \nabla^2\left(\frac{1}{4\pi \norm{\vetor{\x}}}\right) e^{-\lambda \norm{\vetor{\x}}} + \frac{1}{4\pi \norm{\vetor{\x}}}\nabla^2(e^{-\lambda \norm{\vetor{\x}}}) + 2 \nabla\left(\frac{1}{4\pi \norm{\vetor{\x}}}\right)\cdot \nabla(e^{-\lambda \norm{\vetor{\x}}})\\
+      &= -\delta(\vetor{\x}) e^{-\lambda \norm{\vetor{\x}}} + 2 \left(-\frac{\vetor{\x}}{4\pi \norm{\vetor{\x}}^3}\right)\cdot \left[- \lambda \frac{\vetor{\x}}{\norm{\vetor{\x}}}e^{-\lambda \norm{\vetor{\x}}}\right] + \frac1{4\pi \norm{\vetor{\x}}} \nabla\cdot \left[-\lambda \frac{\vetor{\x}}{\norm{\vetor{\x}}} e^{-\lambda \norm{\vetor{\x}}}\right]\\
+      &= -\delta(\vetor{\x}) + \frac{\lambda e^{-\lambda \norm{\vetor{\x}}}}{2\pi \norm{\vetor{\x}}^2} + \frac{1}{4\pi \norm{\vetor{\x}}}\left[\lambda^2 e^{-\lambda \norm{\vetor{\x}}} - \frac{2\lambda}{\norm{\vetor{\x}}}e^{-\lambda \norm{\vetor{\x}}}\right]\\
+      &= -\delta(\vetor{\x}) + \lambda^2\frac{e^{-\lambda\norm{\vetor{\x}}}}{4\pi \norm{\vetor{\x}}},
+   \end{align*}
+   portanto a solução proposta satisfaz a equação diferencial em todo o espaço.
+\end{proof}
