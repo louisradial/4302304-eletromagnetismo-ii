@@ -1,0 +1,54 @@
+% vim: spl=pt
+\begin{exercício}{Quadriaceleração}{ex4}
+   A quadriaceleração de uma partícula é definida como
+   \begin{equation*}
+      \alpha^\mu = \diff{u^\mu}{\tau} = \diff[2]{x^\mu}{\tau},
+   \end{equation*}
+   em que \(u^\mu\) denota a quadrivelocidade e \(\tau\) é o tempo próprio da partícula.
+   \begin{enumerate}[label=(\alph*)]
+      \item Encontre cada uma das componentes de \(\alpha\) em termos de \(\vetor{v}\) e \(\vetor{a},\) isto é, dos vetores velocidade e aceleração, medidos a partir de um certo referencial.
+      \item Expresse \(\alpha_\mu \alpha^\mu\) em termos de \(\vetor{v}\) e \(\vetor{a}\).
+      \item Mostre que a quadriaceleração é ortogonal à quadrivelocidade.
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    Notemos que
+    \begin{equation*}
+       \gamma^{-2} = 1 - \frac{\vetor{v}\cdot \vetor{v}}{c^2} \implies -2 \gamma^{-3} \diff{\gamma}{t} = - 2 \frac{\vetor{v} \cdot \vetor{a}}{c^2} \implies \diff{\gamma}{t} = \gamma^3 \frac{\vetor{v} \cdot \vetor{a}}{c^2},
+    \end{equation*}
+    portanto
+    \begin{equation*}
+       \alpha^\mu = \diff{u^\mu}{t}\diff{t}{\tau} = \gamma \diff*{\left(\gamma \diff{x^\mu}{t}\right)}{t} = \gamma^2 \diff[2]{x^\mu}{t} + \gamma^4 \frac{\vetor{v}\cdot \vetor{a}}{c^2} \diff{x^\mu}{t} 
+    \end{equation*}
+    e obtemos
+    \begin{equation*}
+        \alpha^0  = \gamma^4\frac{\vetor{v}\cdot\vetor{a}}{c} \quad\text{e}\quad \alpha^k = \gamma^2 \left(a^k + \gamma^2 \frac{\vetor{v}\cdot \vetor{a}}{c^2}v^k\right)
+    \end{equation*}
+    como as componentes da quadriaceleração.
+
+    Temos o invariante
+    \begin{align*}
+       \alpha_\mu \alpha^\mu &= -\gamma^8 (\vetor{\beta} \cdot \vetor{a})^2 + \gamma^4 \left[\vetor{a} + \gamma^2(\vetor{\beta} \cdot \vetor{a})\vetor{\beta}\right] \cdot \left[\vetor{a} + \gamma^2(\vetor{\beta} \cdot \vetor{a})\vetor{\beta}\right]\\
+                             &= \gamma^4 \norm{\vetor{a}}^2 + 2 \gamma^6 (\vetor{\beta}\cdot\vetor{a})^2 + \gamma^8 (\vetor{\beta}\cdot \vetor{a})^2 \left(\norm{\vetor{\beta}}^2 - 1\right)\\
+                             &= \gamma^4 \left[\norm{\vetor{a}}^2 + \gamma^2 (\vetor{\beta}\cdot \vetor{a})^2\right].
+    \end{align*}
+    É conveniente reescrever
+    \begin{equation*}
+       (\vetor{\beta}\cdot \vetor{a})^2 = \norm{\vetor{\beta}}^2 \norm{\vetor{a}}^2 - \norm{\vetor{\beta}\times \vetor{a}}^2,
+    \end{equation*}
+    de forma que
+    \begin{equation*}
+       \alpha_\mu \alpha^\mu = \gamma^4 \norm{\vetor{a}}^2 \left(1 + \gamma^2 \norm{\vetor{\beta}}^2\right) - \gamma^6\norm{\vetor{\beta}\times \vetor{a}}^2 = \gamma^6 \left(\norm{\vetor{a}}^2 - \frac{\norm{\vetor{v}\times \vetor{a}}^2}{c^2}\right),
+    \end{equation*}
+    e então reconhecemos que esse é o fator dependente do movimento na expressão de Larmor generalizada.
+
+    Notemos que
+    \begin{equation*}
+       u^\mu u_\mu = g_{\mu\nu} \gamma^2\diff{x^\mu}{t} \diff{x^\nu}{t} = \gamma^2 \left(\norm{\vetor{v}}^2 - c^2\right) = - c^2,
+    \end{equation*}
+    portanto
+    \begin{equation*}
+       a^\mu u_\mu = \frac12\diff*{u^\mu u_\mu}{\tau} = -\frac12 \diff*{c^2}{\tau} = 0,
+    \end{equation*}
+    isto é, a quadriaceleração é ortogonal à quadrivelocidade.
+\end{proof}
