@@ -1,0 +1,95 @@
+% vim: spl=pt
+\begin{exercício}{Força de Minkowski e reação de radiação}{ex6}
+   A equação covariante de movimento de uma partícula pode ser expressa mediante a definição de um quadrivetor de força (força de Minkoswki \(K\)), de forma que \(\diff{p^\mu}{\tau} = K^\mu\),
+   onde \(p\) é o quadrimomento e \(\tau\) é o tempo próprio da partícula. Note que \(c K^0 = \diff{E}{\tau}.\)
+   \begin{enumerate}[label=(\alph*)]
+      \item Mostre que \(p_\mu K^\mu = 0\) e que \(u_\mu K^\mu = 0.\)
+      \item Quando uma partícula pontual sem carga elétrica executa uma certa trajetória quando submetida a uma força externa \(\vetor{F}\), a componente \(K^0\) da força de Minkowski é dada por \(K^0 = \gamma \vetor{F} \cdot \vetor{\beta},\) que por sua vez é proporcional ao trabalho realizado pela força sobre a partícula por unidade de tempo. Contudo, se a partícula possui uma carga elétrica \(q,\) sabemos que a mesma perde energia por emissão de radiação a uma taxa (energia radiada por unidade de \emph{tempo retardado}) dada pela expressão de Larmor
+      \begin{equation*}
+         P_\mathrm{rad} = \frac{\mu_0 q^2}{6\pi c}\gamma^6 \left(\norm{\vetor{a}}^2 - \norm{\vetor{\beta}\times\vetor{a}}^2\right),
+      \end{equation*}
+      em que os vetores velocidade \(c\vetor{\beta}\) e aceleração \(\vetor{a}\) são, em geral, funções de \(t\). Isso sugere que para aprtículas carregadas, \(K\), originalmente dado por \((\gamma \vetor{F} \cdot \vetor{\beta}, \gamma \vetor{F}),\) deve ser modificado para um \(\tilde{K}\) de tal forma que \(\tilde{K}^0\) contemple tanto a energia adquirida devido ao trabalho da força externa quanto a energia perdida por radiação, ambas por unidade de \emph{tempo próprio}. Em outras palavras, desejamos construir um \(\tilde{K}\) que seja compatível com 
+      \begin{equation*}
+         \tilde{K}^0 = \gamma \vetor{F} \cdot \vetor{\beta} - \frac{\mu_0 q^2}{6\pi c^2} \gamma^7 \left(\norm{\vetor{a}}^2 - \norm{\vetor{\beta} \times \vetor{a}}^2\right).
+      \end{equation*}
+      De imediato, observa-se que, caso \(\vetor{v} = 0\) em um certo instante, a relação anterior se reduz a \(\tilde{K}^0 = - \frac{\mu_0 q^2}{6\pi c^2} \norm{\vetor{a}}^2.\) Percebendo que \(\alpha_\mu \alpha^\mu = a^2\) caso \(\vetor{v} = 0,\) mostre que a proposta \emph{preliminar}
+      \begin{equation*}
+         \bar{K}^\mu = K^\mu - \frac{\mu_0 q^2}{6\pi c^3} \alpha^\nu \alpha_\nu u^\mu
+      \end{equation*}
+      satisfaz a condição desejada para a componente temporal mesmo para velocidades não nulas.
+      \item O quadrivetor proposto \(\bar{K}\) não é ortogonal à quadrivelocidade, portanto consideramos \(\tilde{K}^\mu = \bar{K}^\mu + \xi^\mu\) de sorte que \(u_\mu \tilde{K}^\mu = 0\).
+      \item Mostre que a equação de movimento para uma partícula carregada é
+      \begin{equation*}
+         \diff{p^\mu}{\tau} = K^\mu + \frac{\mu_0q^2}{6\pi c}\left[\diff{\alpha^\mu}{\tau} - \frac{\alpha^\nu \alpha_\nu}{c^2}u^\mu\right] = K^\mu + K^\mu_{\mathrm{RR}},
+      \end{equation*}
+      que corresponde à versão covariante da equação de Abraham-Lorentz e em que o segundo termo corresponde à quadriforça de reação de radiação.
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+   Como \(u_\mu u^\mu = -c^2,\) temos \(p_\mu p^\mu = -m^2c^2\) logo
+   \begin{equation*}
+      K_\mu u^\mu = \frac1m K_\mu p^\mu = \frac1{2m} \diff*{p_\mu p^\mu}{\tau} = - \frac1{2m} \diff*{m^2 c^2}{\tau} = 0,
+   \end{equation*}
+   e concluímos que \(u_\mu K^\mu = 0 = p_\mu K^\mu.\)
+
+   No \cref{ex:ex4} já mostramos que \(\alpha_\mu \alpha^\mu = \gamma^6 \left(\norm{\vetor{a}}^2 - \norm{\vetor{\beta}\times \vetor{a}}^2\right),\) portanto a partícula emite radiação a uma taxa
+   \begin{equation*}
+      P_\mathrm{rad} = \frac{\mu_0 q^2}{6\pi c} \alpha_\nu \alpha^\nu.
+   \end{equation*}
+   Sendo \(K^\mu = (\gamma \vetor{F}\cdot \vetor{\beta}, \gamma \vetor{F}),\) consideramos
+   \begin{equation*}
+      \bar{K}^\mu = K^\mu - \frac{\mu_0 q^2}{6\pi c^3} \alpha_\nu \alpha^\nu u^\mu,
+   \end{equation*}
+   então
+   \begin{equation*}
+      \bar{K}^0 = \gamma \vetor{F} \cdot \vetor{\beta} - \frac{\mu_0 q^2}{6\pi c^2} \alpha_\nu \alpha^\nu \gamma = \gamma \vetor{F} \cdot \vetor{\beta} - \frac{\mu_0 q^2}{6\pi c^2} \gamma^7 \left(\norm{\vetor{a}}^2 - \norm{\vetor{\beta} \times \vetor{a}}^2\right).
+   \end{equation*}
+   Entretanto, temos
+   \begin{equation*}
+      u_\mu K^\mu = -\gamma^2 \vetor{F} \cdot c\vetor{\beta}  + \gamma^2 \vetor{F} \cdot \vetor{v} = 0
+   \end{equation*}
+   e
+   \begin{equation*}
+      u_\mu \bar{K}^\mu = u_\mu K^\mu - \frac{\mu_0 q^2}{6\pi c^3} \alpha_\nu \alpha^\nu u^\mu u_\mu = \frac{\mu_0 q^2}{6\pi c} \alpha_\nu \alpha^\nu,
+   \end{equation*}
+   portanto \(\bar{K}^\mu\) não pode ser força de Minkowski. 
+
+   Notemos que
+   \begin{equation*}
+      \alpha_\nu \alpha^\nu = \alpha_\nu \diff{u^\nu}{\tau} = \diff*{(\alpha_\nu u^\nu)}{\tau} - \diff{\alpha_\nu}{\tau} u^\nu = - \diff{\alpha_\nu}{\tau} u^\nu
+   \end{equation*}
+   e consideremos
+   \begin{equation*}
+      \xi^\mu = \frac{\mu_0q^2}{6\pi c} \diff{\alpha^\mu}{\tau}.
+   \end{equation*}
+   Assim, definindo \(\tilde{K}^\mu = \bar{K}^\mu + \xi^\mu,\) obtemos
+   \begin{equation*}
+      u_\mu \tilde{K}^\mu = u_\mu \bar{K}^\mu + u_\mu \xi^\mu = \frac{\mu_0 q^2}{6\pi c}\left(\alpha_\nu \alpha^\nu - u_\mu \diff{\alpha^\mu}{\tau}\right) = 0,
+   \end{equation*}
+   portanto \(\tilde{K}^\mu\) é a força de Minkowski que procuramos, e é dada por
+   \begin{equation*}
+      \tilde{K}^\mu = K^\mu + \frac{\mu_0 q^2}{6\pi c}\left(\diff{\alpha^\mu}{\tau} - \alpha^\nu - \alpha_\nu \frac{u^\mu}{c^2}\right).
+   \end{equation*}
+ 
+   Com isso, a equação de movimento para uma partícula carregada é
+   \begin{equation*}
+      \diff{p^\mu}{\tau} = \tilde{K}^\mu = K^\mu + \frac{\mu_0q^2}{6\pi c}\left[\diff{\alpha^\mu}{\tau} - \alpha^\nu \alpha_\nu \frac{u^\mu}{c^2}\right].
+   \end{equation*}
+   No caso particular em que a força \(\vetor{F}\) é a força de Lorentz, temos
+   \begin{equation*}
+      K^\mu = q u_\nu F^{\mu\nu},
+   \end{equation*}
+   já que
+   \begin{equation*}
+      q u_\nu F^{0\nu} = q\frac{u_i}{c} E^i = \gamma q \vetor{\beta} \cdot \vetor{E} = \gamma \vetor{\beta} \cdot \vetor{F} = K^0
+   \end{equation*}
+   e que
+   \begin{equation*}
+      q u_\nu F^{i\nu} = q u_0 F^{i0} + q u_j F^{ij} = q (-\gamma c) \left(-\frac{E^i}{c}\right) + q \gamma v_j \epsilon^{ijk} B_k = \gamma q\left[E^i + \epsilon^{ijk} v_j B_k\right] = \gamma F^i = K^i.
+   \end{equation*}
+   Assim,
+   \begin{equation*}
+      \diff{p^\mu}{\tau} = q u_\nu F^{\mu\nu} + \frac{\mu_0 q^2}{6\pi c}\left[\diff{\alpha^\mu}{\tau} - \alpha^\nu \alpha_\nu \frac{u^\mu}{c^2}\right]
+   \end{equation*}
+   é a equação de movimento para uma partícula carregada sob a ação de campos \(\vetor{E}\) e \(\vetor{B}.\)
+\end{proof}
