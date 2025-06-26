@@ -1,0 +1,99 @@
+% vim: spl=pt
+\begin{exercício}{Tensor eletromagnético}{ex2}
+   O tensor eletromagnético é um tensor anti-simétrico de ordem \((2,0)\) definido por
+   \begin{equation*}
+      F^{\mu \nu} = \partial^\mu A^\nu - \partial^\nu A^\mu,
+   \end{equation*}
+   onde \(A^\mu\) é o quadripotencial. O tensor eletromagnético dual é definido por
+   \begin{equation*}
+      G^{\mu\nu} = \frac12 \epsilon^{\mu \nu \alpha \beta} F_{\alpha \beta},
+   \end{equation*}
+   onde \(\epsilon^{\mu\nu \alpha \beta}\) é o símbolo de Levi-Civita.
+   \begin{enumerate}[label=(\alph*)]
+      \item Apresente a representação matricial de \(F^{\mu\nu}\) em termos das componentes cartesianas dos campos \(\vetor{E}\) e \(\vetor{B}\). Em seguida, obtenha a representação matricial de \(F_{\mu\nu}.\)
+      \item Repita o item anterior para \(G^{\mu\nu}.\)
+      \item Mostre que as equações de Maxwell podem ser escritas na notação covariante como
+         \begin{equation*}
+            \partial_\nu F^{\mu\nu} = \mu_0 J^\mu
+            \quad\text{e}\quad
+            \partial_\mu G^{\mu\nu} = 0.
+         \end{equation*}
+      \item Calcule os invariantes \(F_{\mu\nu} F^{\mu\nu}\) e \(G_{\mu\nu} F^{\mu\nu}.\)
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+   Para deixar claro, estamos usando a métrica com assinatura em maioria positiva. Notemos que
+   \begin{equation*}
+      F^{0i} = \partial^0 A^i - \partial^i A^0 = -\frac{1}{c}\diffp{A^i}{t} - \frac{1}{c} \diffp{\phi}{x^i} = \frac{E^i}{c}
+      \quad\text{e}\quad
+      F^{ij} = \partial^i A^j - \partial^j A^i = \epsilon\indices{_k^{ij}} B^k.
+   \end{equation*}
+   Como \(F_{\mu\nu} = g_{\mu \sigma}g_{\nu \rho} F^{\sigma \rho}\) temos \(F_{ij} = F^{ij}\) e \(F_{0i} = - F^{0i},\) isto é, \(F_{ij} = \epsilon_{kij}B^k\) e \(F_{0i} = -\frac{E_i}{c}\). Assim, as representações matriciais deste tensor são
+   \begin{equation*}
+      F^{\mu\nu} \doteq \begin{pmatrix}
+         0 && \frac{E_x}{c} && \frac{E_y}{c} && \frac{E_z}{c}\\
+         -\frac{E_x}{c} && 0 && B_z && -B_y\\
+         -\frac{E_y}{c} && -B_z && 0 && B_x\\
+         -\frac{E_z}{c} && B_y && -B_x && 0
+      \end{pmatrix}
+      \quad\text{e}\quad
+      F_{\mu\nu} \doteq \begin{pmatrix}
+         0 && -\frac{E_x}{c} && -\frac{E_y}{c} && -\frac{E_z}{c}\\
+         \frac{E_x}{c} && 0 && B_z && -B_y\\
+         \frac{E_y}{c} && -B_z && 0 && B_x\\
+         \frac{E_z}{c} && B_y && -B_x && 0
+      \end{pmatrix}.
+   \end{equation*}
+
+   Notemos que \(\epsilon^{0i \alpha \beta}\) só não se anula se \(\alpha,\beta \in \set{1,2,3},\) e então \(\epsilon^{0 i \alpha \beta} = \epsilon^{i\alpha \beta}.\) Assim, temos as componentes
+   \begin{equation*}
+      G^{0i} = \frac12 \epsilon^{0i \alpha \beta} F_{\alpha \beta} = \frac12 \epsilon^{i a b} F_{ab} = \frac12 \epsilon^{i a b} \epsilon_{k ab} B^k = B^i.
+   \end{equation*}
+   Notemos agora que \(\epsilon^{ij \alpha \beta}\) não se anula ou se \(\alpha = 0\) e \(\beta \in \set{1,2,3} \setminus \set{i,j}\) ou se \(\alpha \in \set{1,2,3} \setminus \set{i,j}\) e \(\beta = 0,\) então
+   \begin{equation*}
+      G^{ij} = \frac12 \epsilon^{ij \alpha \beta} F_{\alpha \beta} = \frac12 (\epsilon^{ij 0 b} F_{0 b} + \epsilon^{ij a 0} F_{a 0}) = \epsilon^{ijk0}F_{k 0} = -\epsilon^{ijk}\frac{E_k}{c},
+   \end{equation*}
+   onde usamos que \(\epsilon^{ijk0} = (-1)^3 \epsilon^{0ijk} = - \epsilon^{ijk}.\)
+   Assim, as representações matriciais de \(G^{\mu\nu}\) e \(G_{\mu\nu}\) são
+   \begin{equation*}
+      G^{\mu\nu} \doteq \begin{pmatrix}
+         0 && B_x && B_y && B_z\\
+         -B_x && 0 && -\frac{E_z}{c} && \frac{E_y}{c}\\
+         -B_y && \frac{E_z}{c} && 0 && -\frac{E_x}{c}\\
+         -B_z && -\frac{E_y}{c} && \frac{E_x}{c} && 0
+      \end{pmatrix}
+      \quad\text{e}\quad
+      G_{\mu\nu} \doteq \begin{pmatrix}
+         0 && -B_x && -B_y && -B_z\\
+         B_x && 0 && -\frac{E_z}{c} && \frac{E_y}{c}\\
+         B_y && \frac{E_z}{c} && 0 && -\frac{E_x}{c}\\
+         B_z && -\frac{E_y}{c} && \frac{E_x}{c} && 0
+      \end{pmatrix}.
+   \end{equation*}
+
+   Vamos mostrar que as equações de Maxwell são equivalentes às equações \(\partial_\nu F^{\mu\nu} = \mu_0 J^\mu\) e \(\partial_\mu G^{\mu\nu} = 0.\) Para as equações de divergentes dos campos, temos
+   \begin{equation*}
+      \nabla \cdot \vetor{E} = \frac{\rho}{\epsilon_0} \iff \partial_i E^i = \mu_0 c J^0 \iff \partial_i F^{0i} = \mu_0 J^0
+      \quad\text{e}\quad
+      \nabla\cdot \vetor{B} = 0 \iff -\partial_i B^i = 0 \iff \partial_i G^{i0} = 0
+   \end{equation*}
+   e para as equações de rotacionais, temos
+   \begin{equation*}
+      \nabla \times \vetor{B} = \mu_0 \vetor{J} + \frac{1}{c^2} \diffp{\vetor{E}}{t} \iff \epsilon\indices{^{ki}_j} \partial_i B^j - \partial_0 \frac{E^k}{c} = \mu_0 J^k \iff \partial_i F^{ki} + \partial_0 F^{k0} = \mu_0 J^k \iff \partial_\mu F^{k\mu} = \mu_0 J^k
+   \end{equation*}
+   e
+   \begin{equation*}
+      \nabla\times \vetor{E} = - \diffp{\vetor{B}}{t} \iff \epsilon\indices{^{kij}} \partial_i \frac{E_j}{c} + \partial_0 B^k = 0 \iff \partial_i G^{ik} + \partial_0 G^{0k} = 0 \iff \partial_\mu G^{\mu k} = 0.
+   \end{equation*}
+   Assim, as equações consideradas são equivalentes às equações de Maxwell.
+
+   Podemos construir alguns invariantes de Lorentz com as contrações dos tensores considerados, por exemplo \(F_{\mu\nu}F^{\mu\nu}\) e \(G_{\mu\nu} F^{\mu\nu}.\) Temos
+   \begin{equation*}
+      F_{\mu\nu} F^{\mu\nu} = F_{0i} F^{0i} + F_{i0}F^{i0} + F_{ij}F^{ij} = -\frac{2}{c^2} E_i E^i + \epsilon_{kij} B^k \epsilon^{\ell ij} B_{\ell} = \frac{2}{c^2} \norm{\vetor{E}}^2 + 2 \delta\indices{^\ell_k} B^k B_{\ell} = 2\left(\norm{\vetor{B}}^2 - \frac1{c^2} \norm{\vetor{E}}^2\right)
+   \end{equation*}
+   e
+   \begin{equation*}
+      G_{\mu\nu} F^{\mu\nu} = G_{0i}F^{0i} + G_{i0} F^{i0} + G_{ij}F^{ij} = -\frac{2}{c} B_i E^i - \frac1c\epsilon_{ijk} E_k \epsilon^{ij\ell} B^\ell = -\frac4c \vetor{B} \cdot \vetor{E}
+   \end{equation*}
+   para os escalares considerados.
+\end{proof}
