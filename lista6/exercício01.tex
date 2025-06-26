@@ -1,0 +1,34 @@
+% vim: spl=pt
+\begin{exercício}{Quadrivetores, tensor métrico e invariantes de Lorentz}{ex1}
+   Mostre que
+   \begin{enumerate}[label=(\alph*)]
+      \item se \(\vetor{A}\) e \(\vetor{B}\) são dois quadrivetores, então o produto escalar \(g(\vetor{A}, \vetor{B}) = \vetor{A} \cdot \vetor{B}\) é invariante sob uma transformação de Lorentz; e
+      \item se \(\vetor{A} \cdot \vetor{B}\) é um invariante e \(\vetor{A}\) é um quadrivetor não nulo, então \(\vetor{B}\) também o é.
+   \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+   Supondo que \(\vetor{A}\) e \(\vetor{B}\) são quadrivetores, sob uma transformação de Lorentz \(x^\mu \to \tilde{x}^\mu = \Lambda\indices{^\mu_\nu} x^\nu\) temos a transformação análoga para as componentes de \(\vetor{A}\) e \(\vetor{B}.\) Assim, como o grupo de Lorentz é definido pela relação
+   \begin{equation*}
+      g_{\mu\nu} = \Lambda\indices{^\alpha_\mu} g_{\alpha \beta} \Lambda\indices{^\beta_\nu}
+   \end{equation*}
+   temos
+   \begin{equation*}
+      g_{\mu\nu} \tilde{A}^\mu \tilde{B}^\nu = g_{\mu\nu} \Lambda\indices{^\mu_\sigma} \Lambda\indices{^\nu_\rho} A^\sigma B^\rho = g_{\sigma \rho} A^{\sigma} B^\rho,
+   \end{equation*}
+   isto é, \(g(\vetor{A}, \vetor{B})\) é invariante.
+
+   Supondo agora que \(\vetor{A}\cdot \vetor{B}\) é um invariante e que \(\vetor{A}\) é quadrivetor, então sob uma transformação de Lorentz temos
+   \begin{align*}
+      A_\nu B^\nu = \tilde{A}_\mu \tilde{B}^\mu
+      &\implies A_\nu B^\nu = \Lambda\indices{_\mu^\sigma} A_\sigma \tilde{B}^\mu\\
+      &\implies A_\nu\left(B^\nu - \Lambda\indices{_\mu^\nu} \tilde{B}^\mu\right) = 0.
+   \end{align*}
+   Supondo ainda que \(\vetor{A}\) é não nulo, temos
+   \begin{align*}
+      B^\nu = \Lambda\indices{_\mu^\nu} \tilde{B}^\mu 
+      &\implies \Lambda\indices{^\sigma_\nu} B^\nu = \Lambda\indices{^\sigma_\nu} \Lambda\indices{_\mu^\nu} \tilde{B}^\mu\\
+      &\implies \Lambda\indices{^\sigma_\nu} B^\nu = \diffp{\tilde{x}^\sigma}{x^\nu} \diffp{x^\nu}{\tilde{x}^\mu} \tilde{B}^\mu\\
+      &\implies \tilde{B}^\sigma = \Lambda\indices{^\sigma_\mu} B^\mu,
+   \end{align*}
+   isto é, \(\vetor{B}\) é um quadrivetor.
+\end{proof}
