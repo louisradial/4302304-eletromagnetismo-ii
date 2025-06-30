@@ -11,15 +11,15 @@
       \vetor{\tilde{E}}(\vetor{\tilde{\x}},\tilde{t}) = \frac{q \vetor{\tilde{\x}}}{4\pi \epsilon_0 \norm{\vetor{\tilde{\x}}}^3} \quad\text{e}\quad
       \vetor{\tilde{B}}(\vetor{\tilde{\x}},\tilde{t}) = \vetor{0}.
    \end{equation*}
-   Seja \(\Lambda\indices{^\mu_\nu}\) as componentes do boost que relaciona \(\mathscr{K}\) com \(\tilde{\mathscr{K}},\) isto é, \(x^\mu = \Lambda\indices{^\mu_\nu} \tilde{x}^\nu,\) temos
+   Sejam \(\Lambda\indices{^\mu_\nu}\) as componentes do boost que relaciona \(\mathscr{K}\) com \(\tilde{\mathscr{K}},\) isto é, \(x^\mu = \Lambda\indices{^\mu_\nu} \tilde{x}^\nu,\) temos
    \begin{align*}
-      A^\mu = \Lambda\indices{^\mu_\nu} \tilde{A}^\nu &\implies \phi(\vetor{\x}, t) = \gamma \tilde{\phi}(\vetor{\tilde{\x}}, \tilde{t}) \quad\text{e}\quad \vetor{A}(\vetor{\x}, t) = -\gamma \beta \frac{\tilde{\phi}(\vetor{\tilde{\x}}, \tilde{t})}{c}\vetor{e}_1\\
-                                                      &\implies \phi(\vetor{\x},t) = \frac{q}{4\pi \epsilon_0 \sqrt{(x + \beta ct)^2 + \frac{y^2 + z^2}{\gamma^2}}}
-                                                      \quad\text{e}\quad \vetor{A}(\vetor{\x}, t)  = -\frac{\beta q}{4\pi \epsilon_0 c\sqrt{(x + \beta ct)^2 + \frac{y^2 + z^2}{\gamma^2}}}\vetor{e}_1
+      A^\mu = \Lambda\indices{^\mu_\nu} \tilde{A}^\nu &\implies \phi(\vetor{\x}, t) = \gamma \tilde{\phi}(\vetor{\tilde{\x}}, \tilde{t}) \quad\text{e}\quad \vetor{A}(\vetor{\x}, t) = \gamma \beta \frac{\tilde{\phi}(\vetor{\tilde{\x}}, \tilde{t})}{c}\vetor{e}_1\\
+                                                      &\implies \phi(\vetor{\x},t) = \frac{q}{4\pi \epsilon_0 \sqrt{(x - \beta ct)^2 + \frac{y^2 + z^2}{\gamma^2}}}
+                                                      \quad\text{e}\quad \vetor{A}(\vetor{\x}, t)  = \frac{\beta q}{4\pi \epsilon_0 c\sqrt{(x - \beta ct)^2 + \frac{y^2 + z^2}{\gamma^2}}}\vetor{e}_1
    \end{align*}
    como as expressões dos potenciais, onde \(\beta = \frac{v}{c}\) e \(\gamma = (1 - \beta^2)^{-\frac12}.\) As componentes do tensor eletromagnético \(F^{\mu\nu}\) são
    \begin{align*}
-      F^{\mu\nu} &= \Lambda\indices{^\mu_\sigma}\Lambda^{\nu_\rho} \tilde{F}^{\sigma \rho}\\
+      F^{\mu\nu} &= \Lambda\indices{^\mu_\sigma}\Lambda\indices{^\nu_\rho} \tilde{F}^{\sigma \rho}\\
                  &= \Lambda\indices{^\mu_0} \Lambda\indices{^\nu_r} \tilde{F}^{0r}  + \Lambda\indices{^\mu_s} \Lambda\indices{^\nu_0} \tilde{F}^{s0} + \Lambda\indices{^\mu_s}\Lambda\indices{^\nu_r} \tilde{F}^{sr}\\
                  &= \frac1c\left(\Lambda\indices{^\mu_0}\Lambda\indices{^\nu_k} - \Lambda\indices{^\mu_k}\Lambda\indices{^\nu_0}\right)\tilde{E}^{k} + \epsilon^{ksr} \Lambda\indices{^\mu_s} \Lambda\indices{^\nu_r} \tilde{B}_k\\
                  &= \left(\Lambda\indices{^\mu_0}\Lambda\indices{^\nu_k} - \Lambda\indices{^\mu_k}\Lambda\indices{^\nu_0}\right)\tilde{F}^{0k},
@@ -32,7 +32,7 @@
           &= c\left(\Lambda\indices{^0_0}\Lambda\indices{^1_k} - \Lambda\indices{^0_k}\Lambda\indices{^1_0}\right)\tilde{F}^{0k}&
           &= c\left(\Lambda\indices{^0_0}\Lambda\indices{^2_k} - \Lambda\indices{^0_k}\Lambda\indices{^2_0}\right)\tilde{F}^{0k}&
           &= c\left(\Lambda\indices{^0_0}\Lambda\indices{^3_k} - \Lambda\indices{^0_k}\Lambda\indices{^3_0}\right)\tilde{F}^{0k}\\
-          &= c(\gamma \Lambda\indices{^1_k} + \gamma \beta \Lambda\indices{^0_k})\tilde{F}^{0k}&
+          &= c(\gamma \Lambda\indices{^1_k} - \gamma \beta \Lambda\indices{^0_k})\tilde{F}^{0k}&
           &= c\gamma \Lambda\indices{^2_k}\tilde{F}^{0k}&
           &= c\gamma \Lambda\indices{^2_k}\tilde{F}^{0k}\\
           &= c(\gamma^2 - \gamma^2 \beta^2) \tilde{F}^{01}&
@@ -51,20 +51,20 @@
           &= \left(\Lambda\indices{^3_0}\Lambda\indices{^1_k} - \Lambda\indices{^3_k}\Lambda\indices{^1_0}\right)\tilde{F}^{0k}&
           &= \left(\Lambda\indices{^1_0}\Lambda\indices{^2_k} - \Lambda\indices{^1_k}\Lambda\indices{^2_0}\right)\tilde{F}^{0k}\\
           &= 0&
-          &= \gamma\beta \Lambda\indices{^3_k} \tilde{F}^{0k}&
-          &= -\gamma\beta \Lambda\indices{^2_k} \tilde{F}^{0k}\\
+          &= -\gamma\beta \Lambda\indices{^3_k} \tilde{F}^{0k}&
+          &= \gamma\beta \Lambda\indices{^2_k} \tilde{F}^{0k}\\
           &&
-          &= \gamma\beta \tilde{F}^{03}&
-          &= - \gamma\beta \tilde{F}^{02}\\
+          &= -\gamma\beta \tilde{F}^{03}&
+          &= \gamma\beta \tilde{F}^{02}\\
           &&
-          &= \frac{\gamma \beta E^3}{c}&
-          &= - \frac{\gamma \beta E^2}{c}.
+          &= -\frac{\gamma \beta E^3}{c}&
+          &= \frac{\gamma \beta E^2}{c}.
    \end{align*}
    Dessa forma, 
    \begin{equation*}
-      \vetor{E}(\vetor{\x}, t) = \frac{\gamma q \left[(x + \beta ct)\vetor{e}_1 + y\vetor{e}_2 + z\vetor{e}_3\right]}{4\pi \epsilon_0 \left[\gamma^2 (x + \beta ct)^2 + y^2 + z^2\right]^{\frac32}}
+      \vetor{E}(\vetor{\x}, t) = \frac{\gamma q \left[(x - \beta ct)\vetor{e}_1 + y\vetor{e}_2 + z\vetor{e}_3\right]}{4\pi \epsilon_0 \left[\gamma^2 (x - \beta ct)^2 + y^2 + z^2\right]^{\frac32}}
       \quad\text{e}\quad
-      \vetor{B}(\vetor{\x}, t) = \frac{\gamma \beta q \left(z\vetor{e}_2 - y\vetor{e}_3\right)}{4\pi \epsilon_0 c\left[\gamma^2 (x + \beta ct)^2 + y^2 + z^2\right]^{\frac32}}
+      \vetor{B}(\vetor{\x}, t) = -\frac{\gamma \beta q \left(z\vetor{e}_2 - y\vetor{e}_3\right)}{4\pi \epsilon_0 c\left[\gamma^2 (x - \beta ct)^2 + y^2 + z^2\right]^{\frac32}}
    \end{equation*}
    são os campos elétrico e magnético no referencial \(\mathscr{K}.\)
 \end{proof}
